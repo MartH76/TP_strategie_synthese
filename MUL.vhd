@@ -20,7 +20,7 @@ port(
     sum_a : in std_logic_vector(Width_ram-1 downto 0);
     sum_b : in std_logic_vector(Width_ram-1 downto 0);
 
-    multipl   : in std_logic_vector(Width_rom-1 downto 0)
+    multipl   : in std_logic_vector(Width_rom downto 0)
 );
 end mul;
 
@@ -33,7 +33,7 @@ begin
             mul_out <= (others => '0');
         elsif(rising_edge(clk)) then
             if(start = '1') then
-                buff_calc <= (to_unsigned(sum_a) + to_unsigned(sum_b))*to_unsigned(multipl);
+                buff_calc <= (unsigned(sum_a) + unsigned(sum_b))*unsigned(multipl);
                 mul_out <= to_std_logic_vector(buff_calc);
             end if;
         end if;

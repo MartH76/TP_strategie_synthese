@@ -4,8 +4,8 @@ use ieee.numeric_std.all;
 
 entity DRAM is
     generic (
-        SIZE_ADDR : integer range 1 to 100;
-        WIDTH_OF_WORD : in integer range 0 to 100
+        SIZE_ADDR : integer range 1 to 28 := 16;
+        WIDTH_OF_WORD : in integer range 0 to 100 := 8
     );
     port (
         clka   : in std_logic;
