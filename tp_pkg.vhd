@@ -13,4 +13,9 @@ package tp_pkg is
 
     type input_accu is array (0 to  NBR_TILES) of std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM downto 0);
 
+
+    -- DRAM
+    constant SIZE_ADDR : integer range 1 to 28 := 16;
+    constant WIDTH_OF_WORD : integer range 0 to 100 := 8
+
 end package;

@@ -2,11 +2,11 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
+library work;
+use work.tp_pkg.all;
+
+
 entity DRAM is
-    generic (
-        SIZE_ADDR : integer range 1 to 28 := 16;
-        WIDTH_OF_WORD : in integer range 0 to 100 := 8
-    );
     port (
         clka   : in std_logic;
         clkb   : in std_logic;

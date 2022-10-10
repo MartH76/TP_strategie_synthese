@@ -2,17 +2,11 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-
 library work;
 use work.tp_pkg.all;
 
+
 entity accu is
-    generic(
-        WIDTH_OF_ROM : integer range 0 to 100;
-        WIDTH_OF_RAM : integer range 0 to 100;
-        SIZE_ADDR : integer range 1 to 100;
-        NBR_TILES : integer range 1 to 100
-    );
     port (
         clk : in std_logic;
         rst : in std_logic;

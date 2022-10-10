@@ -2,12 +2,11 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
+library work;
+use work.tp_pkg.all;
+
 
 entity mul is 
-generic(
-    Width_ram : integer;
-    Width_rom : integer
-);
 port(
     clk : in std_logic;
     rst : in std_logic;
@@ -15,17 +14,17 @@ port(
     start : in std_logic;
 
 
-    mul_out : out std_logic_vector(Width_ram+Width_rom downto 0);
+    mul_out : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM downto 0);
 
-    sum_a : in std_logic_vector(Width_ram-1 downto 0);
-    sum_b : in std_logic_vector(Width_ram-1 downto 0);
+    sum_a : in std_logic_vector(WIDTH_OF_RAM-1 downto 0);
+    sum_b : in std_logic_vector(WIDTH_OF_RAM-1 downto 0);
 
-    multipl   : in std_logic_vector(Width_rom downto 0)
+    multipl   : in std_logic_vector(WIDTH_OF_ROM downto 0)
 );
 end mul;
 
 architecture rtl of mul is
-    signal buff_calc: unsigned(Width_ram + Width_rom downto 0);
+    signal buff_calc: unsigned(WIDTH_OF_RAM + WIDTH_OF_ROM downto 0);
 begin
     process(clk,rst)
     begin
