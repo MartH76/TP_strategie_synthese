@@ -10,6 +10,21 @@ entity sequenceur is
     port (
         clk   : in std_logic;
         reset : in std_logic;
+
+        start_mul : in std_logic;
+        start_accu_tile : in std_logic;
+        start_accu_tot : in std_logic;
+
+
         
     );
 end entity;
+
+architecture rtl of sequenceur is
+
+
+begin
+
+    
+
+end architecture;
