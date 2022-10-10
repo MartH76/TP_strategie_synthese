@@ -1,0 +1,64 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity DRAM is
+    generic (
+        SIZE_ADDR : integer range 1 to 100;
+        WIDTH_OF_WORD : in integer range 0 to 100
+    );
+    port (
+        clka   : in std_logic;
+        clkb   : in std_logic;
+
+        
+        dina : in std_logic_vector(WIDTH_OF_WORD downto 0);
+        addra : in std_logic_vector(SIZE_ADDR downto 0);
+        wea : in std_logic;
+        ena : in std_logic;
+
+        douta : out std_logic_vector(WIDTH_OF_WORD downto 0);
+
+        dinb : in std_logic_vector(WIDTH_OF_WORD downto 0);
+        addrb : in std_logic_vector(SIZE_ADDR downto 0);
+        web : in std_logic;
+        enb : in std_logic;
+
+        doutb : out std_logic_vector(WIDTH_OF_WORD downto 0)        
+    );
+end entity;
+
+
+-- architecture of dram
+architecture rtl of DRAM is
+    type mem is array ((2**(SIZE_ADDR))-1 downto 0) of std_logic_vector(WIDTH_OF_WORD downto 0);
+    shared variable memory : mem;
+
+begin
+    process (clka)
+    begin
+        if rising_edge(clka) then
+            if (ena = '1') then
+                if (wea = '1') then
+                    memory(to_integer(unsigned(addra))) := dina;
+                end if;
+                douta <= memory(to_integer(unsigned(addra)));
+            end if;
+        end if;
+    end process;
+
+
+    process(clkb)
+    begin
+        if rising_edge(clkb) then
+            if (enb = '1') then
+                if (web = '1') then
+                    memory(to_integer(unsigned(addrb))) := dinb;
+                end if;
+                doutb <= memory(to_integer(unsigned(addrb)));
+            end if;
+        end if;
+    end process;
+
+end architecture;
+
