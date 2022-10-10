@@ -34,7 +34,7 @@ begin
         elsif(rising_edge(clk)) then
             if(start = '1') then
                 buff_calc <= (unsigned(sum_a) + unsigned(sum_b))*unsigned(multipl);
-                mul_out <= to_std_logic_vector(buff_calc);
+                mul_out <= std_logic_vector(buff_calc);
             end if;
         end if;
     end process;
