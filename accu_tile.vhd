@@ -41,7 +41,7 @@ begin
                         done <= '1';
                         counter_accu_tile <= 0;
                     else
-                        data_out <= data_out + (zero & data_in);
+                        data_out <= std_logic_vector(unsigned(data_out) + (unsigned(zero) & unsigned(data_in)));
                         done <= '0';
                         counter_accu_tile <= counter_accu_tile + 1;
                     end if;
