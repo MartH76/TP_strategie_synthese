@@ -9,12 +9,16 @@ entity Tile is
 port(
     clk : in std_logic;
     reset : in std_logic;
-    start_MUL : in std_logic;
-    start_accu : in std_logic;
+
+    select_out : in std_logic;
+
+    input_data : in std_logic_vector(WIDTH_OF_WORD downto 0);
+
+    data_out : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM downto 0);
 
     done : out std_logic;
-
     
+    enable_load_ram : in std_logic
 );
 end Tile;
 
@@ -28,7 +32,8 @@ architecture rtl of Tile is
         mul_out : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM downto 0);
         sum_a : in std_logic_vector(WIDTH_OF_RAM-1 downto 0);
         sum_b : in std_logic_vector(WIDTH_OF_RAM-1 downto 0);
-        multipl   : in std_logic_vector(WIDTH_OF_ROM downto 0)  
+        multipl   : in std_logic_vector(WIDTH_OF_ROM downto 0);
+        done : out std_logic  
     );
     end component MUL;
     
@@ -74,52 +79,136 @@ architecture rtl of Tile is
         );
     end component accu_tile;
 
+    component sequenceur is 
+        port(
+            clk             : in std_logic;
+            reset           : in std_logic;
+
+            enable_load_ram : in std_logic;
+
+            start_mul       : out std_logic;
+            start_accu_tile : out std_logic;  
+
+            select_output   : in std_logic;
+
+            -- input for DRAM
+            input_data      : in std_logic_vector(WIDTH_OF_WORD downto 0);
+            data_a          : in std_logic_vector(WIDTH_OF_WORD downto 0);
+            data_b          : in std_logic_vector(WIDTH_OF_WORD downto 0);
+            -- output for DRAM
+            dina            : out std_logic_vector(WIDTH_OF_WORD downto 0);
+            addra           : out std_logic_vector(SIZE_ADDR downto 0);
+            wea             : out std_logic;
+            ena             : out std_logic;
+
+            dinb            : out std_logic_vector(WIDTH_OF_WORD downto 0);
+            addrb           : out std_logic_vector(SIZE_ADDR downto 0);
+            web             : out std_logic;
+            enb             : out std_logic;
+
+            -- mul
+            sum_a           : out std_logic_vector(WIDTH_OF_RAM-1 downto 0);
+            sum_b           : out std_logic_vector(WIDTH_OF_RAM-1 downto 0);
+            multipl         : out std_logic_vector(WIDTH_OF_ROM downto 0)
+        );
+    end component sequenceur;
+
+
+    signal s_clk            : std_logic;
+    signal s_reset          : std_logic;
+
+    signal s_sum_a          : std_logic_vector(WIDTH_OF_RAM-1 downto 0);
+    signal s_sum_b          : std_logic_vector(WIDTH_OF_RAM-1 downto 0);
+    signal s_multipl        :std_logic_vector(WIDTH_OF_ROM downto 0);
+
+    signal s_rom_addr       : std_logic_vector(ROM_SIZE_ADDR-1 downto 0);
+    signal s_ram_addr_a     : std_logic_vector(SIZE_ADDR downto 0);
+    signal s_ram_addr_b     : std_logic_vector(SIZE_ADDR downto 0);
+
+    signal s_wea            : std_logic;
+    signal s_ena            : std_logic;
+    signal s_web            : std_logic;
+    signal s_enb            : std_logic;
+
+    signal s_en_rom         : std_logic;
+
+    signal s_start_mul      : std_logic;
+
+    signal s_accu_in        : std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM downto 0);
+
+    signal s_done_mul       : std_logic;
+
 
 begin
     DRAM : DRAM
     port map(
-        clka => clk,
-        clkb => clk,
-        dina => data_in,
-        addra => "00000000000000000000000000000000",
-        wea => '1',
-        ena => '1',
-        douta => data_out,
-        dinb => data_in,
-        addrb => "00000000000000000000000000000000",
-        web => '1',
-        enb => '1',
-        doutb => data_out
+        clka => s_clk,
+        clkb => s_clk,
+        dina => input_data,
+        addra => s_ram_addr_a,
+        wea => s_wea,
+        ena => s_ena,
+        douta => s_sum_a,
+        dinb => input_data,
+        addrb => s_ram_addr_b,
+        web => s_web,
+        enb => s_enb,
+        doutb => s_sum_b
     );
     
     ROM : ROM
     port map(
-        clk => clk,
-        enrom => '1',
-        addr => "00000000000000000000000000000000",
-        data => data_out
+        clk => s_clk,
+        enrom => s_en_rom,
+        addr => s_rom_addr,
+        data => s_multipl
     );
 
     MUL : MUL
     port map(
-        clk => clk,
-        rst => reset,
-        start => start,
-        mul_out => data_out,
-        sum_a => data_in,
-        sum_b => data_in,
-        multipl => data_in
+        clk => s_clk,
+        rst => s_reset,
+        start => s_start_mul,
+        mul_out => s_accu_in,
+        sum_a => s_sum_a,
+        sum_b => s_sum_b,
+        multipl => s_multipl,
+        done => s_done_mul
     );
 
     ACCU : accu_tile 
     port map(
-        clk => clk,
-        rst => reset,
-        start => start,
+        clk => s_clk,
+        rst => s_reset,
+        start => s_done_mul,
         done => done,
         select_out => '1',
-        data_in => data_out,
+        data_in => s_accu_in,
         data_out => data_out
+    );
+
+    SEQ : sequenceur
+    port map(
+        clk => s_clk,
+        reset => s_reset,
+        enable_load_ram => enable_load_ram,
+        start_mul => s_start_mul,
+        start_accu_tile => s_done_mul,
+        select_output => select_out,
+        input_data => input_data,
+        data_a => s_sum_a,
+        data_b => s_sum_b,
+        dina => s_ram_addr_a,
+        addra => s_ram_addr_a,
+        wea => s_wea,
+        ena => s_ena,
+        dinb => s_ram_addr_b,
+        addrb => s_ram_addr_b,
+        web => s_web,
+        enb => s_enb,
+        sum_a => s_sum_a,
+        sum_b => s_sum_b,
+        multipl => s_multipl
     );
 
 end architecture;
