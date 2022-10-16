@@ -31,13 +31,13 @@ begin
     process(clk,rst)
     begin
         if rst = '0' then
-            mul_out <= (others => '0');
+            buff_calc <= (others => '0');
         elsif(rising_edge(clk)) then
             if(start = '1') then
                 buff_calc <= (unsigned(sum_a) + unsigned(sum_b))*unsigned(multipl); 
                 done <= '1';
             else
-                mul_out <= (others => '0');
+                buff_calc <= (others => '0');
                 done <= '0';
             end if;
         end if;
