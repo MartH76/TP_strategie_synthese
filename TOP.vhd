@@ -74,7 +74,7 @@ begin
             data_in => s_data_out_tile
         );
 
-    gen_tiles: for i in 0 to NBR_TILES generate
+    gen_tiles: for i in 0 to NBR_TILES-1 generate
         tile_i : Tile
             port map (
                 clk => clk,
