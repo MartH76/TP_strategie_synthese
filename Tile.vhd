@@ -32,7 +32,7 @@ architecture rtl of Tile is
         mul_out : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM downto 0);
         sum_a : in std_logic_vector(WIDTH_OF_RAM-1 downto 0);
         sum_b : in std_logic_vector(WIDTH_OF_RAM-1 downto 0);
-        multipl   : in std_logic_vector(WIDTH_OF_ROM downto 0);
+        multipl   : in std_logic_vector(WIDTH_OF_ROM-1 downto 0);
         done : out std_logic  
     );
     end component MUL;
@@ -105,11 +105,6 @@ architecture rtl of Tile is
             addrb           : out std_logic_vector(SIZE_ADDR downto 0);
             web             : out std_logic;
             enb             : out std_logic;
-
-            -- mul
-            sum_a           : out std_logic_vector(WIDTH_OF_RAM-1 downto 0);
-            sum_b           : out std_logic_vector(WIDTH_OF_RAM-1 downto 0);
-            multipl         : out std_logic_vector(WIDTH_OF_ROM-1 downto 0)
         );
     end component sequenceur;
 
@@ -204,9 +199,6 @@ begin
         addrb => s_ram_addr_b,
         web => s_web,
         enb => s_enb,
-        sum_a => s_sum_a,
-        sum_b => s_sum_b,
-        multipl => s_multipl
     );
 
 end architecture;

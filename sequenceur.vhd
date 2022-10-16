@@ -32,11 +32,6 @@ entity sequenceur is
         web             : out std_logic;
         enb             : out std_logic;
 
-        -- mul
-        sum_a           : out std_logic_vector(WIDTH_OF_RAM-1 downto 0);
-        sum_b           : out std_logic_vector(WIDTH_OF_RAM-1 downto 0);
-        multipl         : out std_logic_vector(WIDTH_OF_ROM-1 downto 0);
-
         -- rom
         en_rom         : out std_logic
     );
