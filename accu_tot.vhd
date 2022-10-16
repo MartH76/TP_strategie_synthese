@@ -21,6 +21,8 @@ end accu_tot;
 
 architecture rtl of accu_tot is
     signal zero : std_logic_vector( NBR_TILES downto 0) := (others => '0');
+	 
+	 signal buff_data_out : std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM + NBR_TILES downto 0);
 begin
     
     process(clk, reset)
@@ -30,8 +32,11 @@ begin
             elsif rising_edge(clk) then
                 if start = '1' then
                     for k in 0 to NBR_TILES - 1 loop
-                        data_out <= std_logic_vector(unsigned(data_out) + (unsigned(zero) & unsigned(data_in(k))));
+                        buff_data_out <= std_logic_vector(unsigned(buff_data_out) + (unsigned(zero) & unsigned(data_in(k))));
                     end loop;
+						  data_out <= buff_data_out;
+					  else
+						  buff_data_out <= (others => '0');
                 end if;
             end if;
     end process;

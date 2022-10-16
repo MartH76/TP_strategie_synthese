@@ -16,7 +16,7 @@ entity top is
 
         done : out std_logic;
 
-        enable_load_ram : in std_logic_vector(NBR_TILES downto 0);
+        enable_load_ram_i : in std_logic_vector(NBR_TILES downto 0);
         --sortie
         Datout_o : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM + NBR_TILES downto 0)
     );
@@ -83,7 +83,7 @@ begin
                 input_data => input_data,
                 data_out => s_data_out_tile(i),
                 done => s_tile_done,
-                enable_load_ram => enable_load_ram
+                enable_load_ram => enable_load_ram_i(i)
             );
     end generate gen_tiles;
   

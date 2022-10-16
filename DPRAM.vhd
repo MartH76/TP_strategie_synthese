@@ -30,7 +30,7 @@ end entity;
 
 
 -- architecture of dram
-architecture rtl of DRAM is
+architecture rtl of DPRAM is
     type mem is array ((2**(SIZE_ADDR))-1 downto 0) of std_logic_vector(WIDTH_OF_WORD downto 0);
     shared variable memory : mem;
 
