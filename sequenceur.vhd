@@ -22,11 +22,11 @@ entity sequenceur is
         data_a          : in std_logic_vector(WIDTH_OF_RAM-1 downto 0);
         data_b          : in std_logic_vector(WIDTH_OF_RAM-1 downto 0);
         -- output for DRAM
-        addra           : out std_logic_vector(SIZE_ADDR downto 0);
+        addra           : out std_logic_vector(SIZE_ADDR-1 downto 0);
         wea             : out std_logic;
         ena             : out std_logic;
 
-        addrb           : out std_logic_vector(SIZE_ADDR downto 0); 
+        addrb           : out std_logic_vector(SIZE_ADDR-1 downto 0); 
         web             : out std_logic;
         enb             : out std_logic;
 

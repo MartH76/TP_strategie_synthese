@@ -10,13 +10,13 @@ entity top is
         clk : in std_logic;
         reset : in std_logic;
         
-        numero_tile : in std_logic_vector(NBR_TILES downto 0);
+        numero_tile : in std_logic_vector(NBR_TILES-1 downto 0);
 
         input_data : in std_logic_vector(WIDTH_OF_RAM-1 downto 0);
 
         done : out std_logic;
 
-        enable_load_ram_i : in std_logic_vector(NBR_TILES downto 0);
+        enable_load_ram_i : in std_logic_vector(NBR_TILES-1 downto 0);
         --sortie
         Datout_o : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM + NBR_TILES downto 0)
     );
@@ -56,7 +56,7 @@ architecture rtl of TOP is
         );
     end component accu_tot;
 
-    signal select_out : std_logic_vector(NBR_TILES downto 0);
+    signal select_out : std_logic_vector(NBR_TILES-1 downto 0);
 
     signal s_data_out_tile : input_accu;
 

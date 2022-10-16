@@ -52,12 +52,12 @@ architecture rtl of Tile is
             clka   : in std_logic;
             clkb   : in std_logic;
             dina : in std_logic_vector(WIDTH_OF_RAM-1 downto 0);
-            addra : in std_logic_vector(SIZE_ADDR downto 0);
+            addra : in std_logic_vector(SIZE_ADDR-1 downto 0);
             wea : in std_logic;
             ena : in std_logic;
             douta : out std_logic_vector(WIDTH_OF_RAM-1 downto 0);
             dinb : in std_logic_vector(WIDTH_OF_RAM-1 downto 0);
-            addrb : in std_logic_vector(SIZE_ADDR downto 0);
+            addrb : in std_logic_vector(SIZE_ADDR-1 downto 0);
             web : in std_logic;
             enb : in std_logic;
             doutb : out std_logic_vector(WIDTH_OF_RAM-1 downto 0)      
@@ -96,11 +96,11 @@ architecture rtl of Tile is
             data_b          : in std_logic_vector(WIDTH_OF_RAM-1 downto 0);
             -- output for DRAM
 
-            addra           : out std_logic_vector(SIZE_ADDR downto 0);
+            addra           : out std_logic_vector(SIZE_ADDR-1 downto 0);
             wea             : out std_logic;
             ena             : out std_logic;
 
-            addrb           : out std_logic_vector(SIZE_ADDR downto 0);
+            addrb           : out std_logic_vector(SIZE_ADDR-1 downto 0);
             web             : out std_logic;
             enb             : out std_logic
         );
@@ -113,8 +113,8 @@ architecture rtl of Tile is
     signal s_multipl        :std_logic_vector(WIDTH_OF_ROM-1 downto 0);
 
     signal s_rom_addr       : std_logic_vector(ROM_SIZE_ADDR-1 downto 0);
-    signal s_ram_addr_a     : std_logic_vector(SIZE_ADDR downto 0);
-    signal s_ram_addr_b     : std_logic_vector(SIZE_ADDR downto 0);
+    signal s_ram_addr_a     : std_logic_vector(SIZE_ADDR-1 downto 0);
+    signal s_ram_addr_b     : std_logic_vector(SIZE_ADDR-1 downto 0);
 
     signal s_wea            : std_logic;
     signal s_ena            : std_logic;

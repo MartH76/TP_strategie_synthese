@@ -13,14 +13,14 @@ entity DPRAM is
 
         
         dina : in std_logic_vector(WIDTH_OF_RAM-1 downto 0);
-        addra : in std_logic_vector(SIZE_ADDR downto 0);
+        addra : in std_logic_vector(SIZE_ADDR-1 downto 0);
         wea : in std_logic;
         ena : in std_logic;
 
         douta : out std_logic_vector(WIDTH_OF_RAM-1 downto 0);
 
         dinb : in std_logic_vector(WIDTH_OF_RAM-1 downto 0);
-        addrb : in std_logic_vector(SIZE_ADDR downto 0);
+        addrb : in std_logic_vector(SIZE_ADDR-1 downto 0);
         web : in std_logic;
         enb : in std_logic;
 
