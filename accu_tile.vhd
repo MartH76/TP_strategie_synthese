@@ -16,6 +16,7 @@ entity accu_tile is
         select_out : in std_logic;
 
         data_in : in std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM  - 1 downto 0);
+
         data_out : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM - 1 downto 0)
     );
 end accu_tile;
@@ -38,13 +39,13 @@ begin
 
                     if (counter_accu_tile = 0) then
                         data_out <= (others => '0');
-								buff_data_out <= (others => '0');
+						buff_data_out <= (others => '0');
                     end if;
 
                     if counter_accu_tile = WIDTH_OF_ROM - 1 then
                         done <= '1';
                         counter_accu_tile <= 0;
-								data_out <= buff_data_out;
+                        data_out <= buff_data_out;
                     else
                         buff_data_out <= std_logic_vector(unsigned(buff_data_out) + (unsigned(zero) & unsigned(data_in)));
                         done <= '0';

@@ -17,7 +17,7 @@ port(
     data_out : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM - 1 downto 0);
 
     done : out std_logic;
-    
+
     enable_load_ram : in std_logic
 );
 end Tile;
