@@ -17,6 +17,6 @@ package tp_pkg is
 
     -- DRAM
     constant SIZE_ADDR : integer range 1 to 28 := 16;
-    constant WIDTH_OF_WORD : integer range 0 to 100 := 8
+    constant WIDTH_OF_WORD : integer range 0 to 100 := 8;
 
 end package;
