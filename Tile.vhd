@@ -117,7 +117,7 @@ architecture rtl of Tile is
 
     signal s_sum_a          : std_logic_vector(WIDTH_OF_WORD downto 0);
     signal s_sum_b          : std_logic_vector(WIDTH_OF_WORD downto 0);
-    signal s_multipl        :std_logic_vector(WIDTH_OF_ROM downto 0);
+    signal s_multipl        :std_logic_vector(WIDTH_OF_ROM-1 downto 0);
 
     signal s_rom_addr       : std_logic_vector(ROM_SIZE_ADDR-1 downto 0);
     signal s_ram_addr_a     : std_logic_vector(SIZE_ADDR downto 0);
