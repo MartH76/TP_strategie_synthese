@@ -71,7 +71,7 @@ begin
             clk => clk,
             reset => reset,
             start => s_tile_done,
-            done => done,
+            done => s_done,
             data_out => Datout_o,
             data_in => s_data_out_tile
         );
@@ -89,5 +89,5 @@ begin
             );
     end generate gen_tiles;
   
-    s_done <= '1' when (s_tile_done != (others => '0')) else '0';
+    s_done <= '0' when (s_tile_done = (others => '0')) else '1';
 end architecture;
