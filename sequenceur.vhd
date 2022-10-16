@@ -30,7 +30,7 @@ entity sequenceur is
         enb             : out std_logic;
 
         -- rom
-        en_rom         : out std_logic
+        en_rom         : out std_logic;
         addr_rom       : out std_logic_vector(ROM_SIZE_ADDR-1 downto 0)
     );
 end entity;
