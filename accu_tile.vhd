@@ -21,6 +21,7 @@ entity accu_tile is
 end accu_tile;
 
 architecture rtl of accu_tile is
+    
     signal zero : std_logic_vector(WIDTH_OF_ROM - 1 downto 0) := (others => '0');
     signal counter_accu_tile : integer range 0 to WIDTH_OF_ROM - 1 := 0;
 	 
@@ -53,10 +54,4 @@ begin
                 end if;
             end if;
         end process;
-<<<<<<< HEAD
-=======
-		
-		  
->>>>>>> a7e233f27002267dcb74381e76ffd3d456576b84
-
 end architecture;
