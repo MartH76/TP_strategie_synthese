@@ -92,10 +92,10 @@ begin
                     when CONFIG_CALCULATION => -- chercher la data dans la dpram
 
                         -- lecture de la data dans la ram
-                        addra <= std_logic_vector(to_unsigned(counter_nbr_multiplication, ROM_SIZE_ADDR));
+                        addra <= std_logic_vector(to_unsigned(counter_nbr_multiplication, SIZE_ADDR));
                         ena <= '1';
                         wea <= '0';
-                        addrb <= std_logic_vector(to_unsigned((2**(WIDTH_OF_RAM))-1 + counter_nbr_multiplication, ROM_SIZE_ADDR));
+                        addrb <= std_logic_vector(to_unsigned((2**(WIDTH_OF_RAM))-1 + counter_nbr_multiplication, SIZE_ADDR));
                         enb <= '1';
                         web <= '0';
 
