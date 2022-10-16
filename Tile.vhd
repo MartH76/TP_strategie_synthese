@@ -47,7 +47,7 @@ architecture rtl of Tile is
         );
     end component ROM;
 
-    component DRAM is 
+    component DPRAM is 
         port(
             clka   : in std_logic;
             clkb   : in std_logic;
@@ -62,7 +62,7 @@ architecture rtl of Tile is
             enb : in std_logic;
             doutb : out std_logic_vector(WIDTH_OF_WORD downto 0)      
         );
-    end component DRAM;
+    end component DPRAM;
 
     component accu_tile is 
         port(
@@ -114,8 +114,6 @@ architecture rtl of Tile is
     end component sequenceur;
 
 
-    signal s_clk            : std_logic;
-    signal s_reset          : std_logic;
 
     signal s_sum_a          : std_logic_vector(WIDTH_OF_RAM-1 downto 0);
     signal s_sum_b          : std_logic_vector(WIDTH_OF_RAM-1 downto 0);
@@ -140,10 +138,10 @@ architecture rtl of Tile is
 
 
 begin
-    DRAM : DRAM
+    DPRAM_1 : DPRAM
     port map(
-        clka => s_clk,
-        clkb => s_clk,
+        clka => clk,
+        clkb => clk,
         dina => input_data,
         addra => s_ram_addr_a,
         wea => s_wea,
@@ -156,18 +154,18 @@ begin
         doutb => s_sum_b
     );
     
-    ROM : ROM
+    ROM_1 : ROM
     port map(
-        clk => s_clk,
+        clk => clk,
         enrom => s_en_rom,
         addr => s_rom_addr,
         data => s_multipl
     );
 
-    MUL : MUL
+    MULTIPLIEUR : MUL
     port map(
-        clk => s_clk,
-        rst => s_reset,
+        clk => clk,
+        rst => reset,
         start => s_start_mul,
         mul_out => s_accu_in,
         sum_a => s_sum_a,
@@ -178,8 +176,8 @@ begin
 
     ACCU : accu_tile 
     port map(
-        clk => s_clk,
-        rst => s_reset,
+        clk => clk,
+        rst => reset,
         start => s_done_mul,
         done => done,
         select_out => '1',
@@ -189,8 +187,8 @@ begin
 
     SEQ : sequenceur
     port map(
-        clk => s_clk,
-        reset => s_reset,
+        clk => clk,
+        reset => reset,
         enable_load_ram => enable_load_ram,
         start_mul => s_start_mul,
         start_accu_tile => s_done_mul,
