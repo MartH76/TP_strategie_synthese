@@ -41,7 +41,7 @@ architecture rtl of sequenceur is
 
     signal counter_data_to_write : integer range 0 to (2**(SIZE_ADDR))-1 := 0;
 
-    signal counter_nbr_multiplication : integer range 0 to (2**(SIZE_ROM_ADDR))-1 := 0;
+    signal counter_nbr_multiplication : integer range 0 to (2**(ROM_SIZE_ADDR))-1 := 0;
     
 begin
     process(clk) is 
@@ -92,20 +92,20 @@ begin
                     when CONFIG_CALCULATION => -- chercher la data dans la dpram
 
                         -- lecture de la data dans la ram
-                        addra <= std_logic_vector(to_unsigned(counter_nbr_multiplication, SIZE_ROM_ADDR));
+                        addra <= std_logic_vector(to_unsigned(counter_nbr_multiplication, ROM_SIZE_ADDR));
                         ena <= '1';
                         wea <= '0';
-                        addrb <= std_logic_vector(to_unsigned((2**(WIDTH_OF_RAM))-1 + counter_nbr_multiplication, SIZE_ROM_ADDR));
+                        addrb <= std_logic_vector(to_unsigned((2**(WIDTH_OF_RAM))-1 + counter_nbr_multiplication, ROM_SIZE_ADDR));
                         enb <= '1';
                         web <= '0';
 
                         -- lecture data dans la rom
                         en_rom <= '1';
-                        addr_rom <= std_logic_vector(to_unsigned(counter_nbr_multiplication, SIZE_ROM_ADDR));
+                        addr_rom <= std_logic_vector(to_unsigned(counter_nbr_multiplication, ROM_SIZE_ADDR));
                         state <= CALCULATION;
    
                     when CALCULATION =>
-                        if(counter_nbr_multiplication < (2**(SIZE_ROM_ADDR))-1) then
+                        if(counter_nbr_multiplication < (2**(ROM_SIZE_ADDR))-1) then
                             counter_nbr_multiplication <= counter_nbr_multiplication + 1;
                             start_mul <= '1';
                             state <= CONFIG_CALCULATION;
