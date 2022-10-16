@@ -14,16 +14,6 @@ port(
 
     done : out std_logic;
 
-    -- output for DRAM
-    dina : out std_logic_vector(WIDTH_OF_WORD downto 0);
-    addra : out std_logic_vector(SIZE_ADDR downto 0);
-    wea : out std_logic;
-    ena : out std_logic;
-
-    dinb : out std_logic_vector(WIDTH_OF_WORD downto 0);
-    addrb : out std_logic_vector(SIZE_ADDR downto 0);
-    web : out std_logic;
-    enb : out std_logic;
     
 );
 end Tile;

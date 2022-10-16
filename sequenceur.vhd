@@ -16,6 +16,8 @@ entity sequenceur is
         start_mul : out std_logic;
         start_accu_tile : out std_logic;  
         
+        -- input for DRAM
+        input_data : in std_logic_vector(WIDTH_OF_WORD downto 0);
         -- output for DRAM
         dina : out std_logic_vector(WIDTH_OF_WORD downto 0);
         addra : out std_logic_vector(SIZE_ADDR downto 0);
@@ -40,6 +42,7 @@ begin
         if rising_edge(clk) then
             if reset = '1' then
                 state <= IDLE;
+                counter_data_to_write <= 0;
             else
                 case state is
                     when IDLE =>
@@ -51,13 +54,28 @@ begin
 
                     when LOAD_RAM =>
                         if (enable_load_ram = '1') then
-                            state <= LOAD_RAM;
-
+                            -- si la ram n'est pas encore remplie
+                            if (counter_data_to_write < (2**(SIZE_ADDR))-1) then
+                                -- écriture dans la ram
+                                addra <= std_logic_vector(to_unsigned(counter_data_to_write, SIZE_ADDR));
+                                ena <= '1';
+                                wea <= '1';        
+                                dina <= input_data;
+                                -- incrémentation du compteur d'addresses
+                                counter_data_to_write <= counter_data_to_write + 1;
+                                state <= LOAD_RAM;
+                            else
+                                counter_data_to_write <= 0;
+                                state <= CALCULATION;
+                            end if;
+          
                         else
                             state <= CALCULATION;
                         end if;
-                    when CALCULATION =>
 
+
+                    when CALCULATION =>
+                        start_mul <= '1';
 
                         state <= DATA_READ;
                     when DATA_READ =>
