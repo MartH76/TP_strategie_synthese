@@ -14,12 +14,12 @@ port(
     start : in std_logic;
 
 
-    mul_out : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM downto 0);
+    mul_out : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM  downto 0);
 
     sum_a : in std_logic_vector(WIDTH_OF_RAM-1 downto 0);
     sum_b : in std_logic_vector(WIDTH_OF_RAM-1 downto 0);
 
-    multipl   : in std_logic_vector(WIDTH_OF_ROM downto 0);
+    multipl   : in std_logic_vector(WIDTH_OF_ROM-1 downto 0);
 
     done : out std_logic
 );
