@@ -31,6 +31,7 @@ entity sequenceur is
 
         -- rom
         en_rom         : out std_logic
+        addr_rom       : out std_logic_vector(ROM_SIZE_ADDR-1 downto 0)
     );
 end entity;
 
@@ -100,7 +101,7 @@ begin
 
                         -- lecture data dans la rom
                         en_rom <= '1';
-
+                        addr_rom <= std_logic_vector(to_unsigned(counter_nbr_multiplication, WIDTH_OF_ROM));
                         state <= CALCULATION;
    
                     when CALCULATION =>

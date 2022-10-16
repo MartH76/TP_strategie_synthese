@@ -101,7 +101,10 @@ architecture rtl of Tile is
 
             addrb           : out std_logic_vector(SIZE_ADDR-1 downto 0);
             web             : out std_logic;
-            enb             : out std_logic
+            enb             : out std_logic;
+
+            en_rom         : out std_logic;
+            addr_rom       : out std_logic_vector(ROM_SIZE_ADDR-1 downto 0)
         );
     end component sequenceur;
 
@@ -193,6 +196,9 @@ begin
         addrb => s_ram_addr_b,
         web => s_web,
         enb => s_enb
+
+        en_rom => s_en_rom,
+        addr_rom => s_rom_addr
     );
 
 end architecture;
