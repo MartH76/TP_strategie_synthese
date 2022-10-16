@@ -32,9 +32,13 @@ begin
             mul_out <= (others => '0');
         elsif(rising_edge(clk)) then
             if(start = '1') then
-                buff_calc <= (unsigned(sum_a) + unsigned(sum_b))*unsigned(multipl);
-                mul_out <= std_logic_vector(buff_calc);
+                buff_calc <= (unsigned(sum_a) + unsigned(sum_b))*unsigned(multipl); 
+            else
+                mul_out <= (others => '0');
             end if;
         end if;
     end process;
+
+    mul_out <= std_logic_vector(buff_calc);
+
 end architecture;

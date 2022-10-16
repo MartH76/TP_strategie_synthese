@@ -8,34 +8,47 @@ use work.tp_pkg.all;
 
 entity sequenceur is
     port (
-        clk   : in std_logic;
-        reset : in std_logic;
+        clk             : in std_logic;
+        reset           : in std_logic;
 
         enable_load_ram : in std_logic;
 
-        start_mul : out std_logic;
+        start_mul       : out std_logic;
         start_accu_tile : out std_logic;  
         
-        -- input for DRAM
-        input_data : in std_logic_vector(WIDTH_OF_WORD downto 0);
-        -- output for DRAM
-        dina : out std_logic_vector(WIDTH_OF_WORD downto 0);
-        addra : out std_logic_vector(SIZE_ADDR downto 0);
-        wea : out std_logic;
-        ena : out std_logic;
+        select_output   : in std_logic;
 
-        dinb : out std_logic_vector(WIDTH_OF_WORD downto 0);
-        addrb : out std_logic_vector(SIZE_ADDR downto 0);
-        web : out std_logic;
-        enb : out std_logic;
+        -- input for DRAM
+        input_data      : in std_logic_vector(WIDTH_OF_WORD downto 0);
+        data_a          : in std_logic_vector(WIDTH_OF_WORD downto 0);
+        data_b          : in std_logic_vector(WIDTH_OF_WORD downto 0);
+        -- output for DRAM
+        dina            : out std_logic_vector(WIDTH_OF_WORD downto 0);
+        addra           : out std_logic_vector(SIZE_ADDR downto 0);
+        wea             : out std_logic;
+        ena             : out std_logic;
+
+        dinb            : out std_logic_vector(WIDTH_OF_WORD downto 0);
+        addrb           : out std_logic_vector(SIZE_ADDR downto 0);
+        web             : out std_logic;
+        enb             : out std_logic;
+
+        -- mul
+        sum_a           : out std_logic_vector(WIDTH_OF_RAM-1 downto 0);
+        sum_b           : out std_logic_vector(WIDTH_OF_RAM-1 downto 0);
+        multipl         : out std_logic_vector(WIDTH_OF_ROM downto 0)
+
     );
 end entity;
 
 architecture rtl of sequenceur is
-    type state_type is (IDLE, LOAD_RAM, CALCULATION, DATA_READ);
+    type state_type is (IDLE, LOAD_RAM, CONFIG_CALCULATION, CALCULATION);
     signal state : state_type := IDLE;
 
     signal counter_data_to_write : integer range 0 to (2**(SIZE_ADDR))-1 := 0;
+
+    signal counter_nbr_multiplication : integer range 0 to (2**(WIDTH_OF_ROM))-1 := 0;
+    
 begin
     process(clk) is 
     begin
@@ -43,6 +56,7 @@ begin
             if reset = '1' then
                 state <= IDLE;
                 counter_data_to_write <= 0;
+                start_mul <= '0';
             else
                 case state is
                     when IDLE =>
@@ -66,26 +80,40 @@ begin
                                 state <= LOAD_RAM;
                             else
                                 counter_data_to_write <= 0;
-                                state <= CALCULATION;
+                                state <= CONFIG_CALCULATION;
                             end if;
-          
                         else
-                            state <= CALCULATION;
+                            state <= CONFIG_CALCULATION;
                         end if;
 
 
+                    when CONFIG_CALCULATION => -- chercher la data dans la dpram
+                        -- lecture de la data dans la ram
+                        addra <= std_logic_vector(to_unsigned(counter_nbr_multiplication, SIZE_ADDR));
+                        ena <= '1';
+                        wea <= '0';
+                        addrb <= std_logic_vector(to_unsigned((2**(WIDTH_OF_ROM))-1 + counter_nbr_multiplication, SIZE_ADDR));
+                        enb <= '1';
+                        web <= '0';
+
+                        state <= CALCULATION;
+   
                     when CALCULATION =>
-                        start_mul <= '1';
+                        if(counter_nbr_multiplication < (2**(WIDTH_OF_ROM))-1) then
+                            counter_nbr_multiplication <= counter_nbr_multiplication + 1;
+                            start_mul <= '1';
+                            state <= CONFIG_CALCULATION;
+                        else
+                            counter_nbr_multiplication <= 0;
+                            start_mul <= '0';
+                            state <= IDLE;
+                        end if;
 
-                        state <= DATA_READ;
-                    when DATA_READ =>
 
-
-                        state <= IDLE;
                     when others =>
-
                         state <= IDLE;
                 end case;
+
             end if;
         end if;
     end process;
