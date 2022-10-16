@@ -70,8 +70,8 @@ begin
         port map (
             clk => clk,
             reset => reset,
-            start => s_tile_done,
-            done => s_done,
+            start => s_done,
+            done => done,
             data_out => Datout_o,
             data_in => s_data_out_tile
         );
@@ -90,4 +90,5 @@ begin
     end generate gen_tiles;
   
     s_done <= '0' when (s_tile_done = (others => '0')) else '1';
+
 end architecture;
