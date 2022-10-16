@@ -60,7 +60,7 @@ architecture rtl of TOP is
 
     signal s_data_out_tile : input_accu;
 
-    signal s_tile_done : std_logic;
+    signal s_tile_done : std_logic_vector(NBR_TILES-1 downto 0);
 
 begin
 
@@ -82,9 +82,10 @@ begin
                 select_out => select_out(i),
                 input_data => input_data,
                 data_out => s_data_out_tile(i),
-                done => s_tile_done,
+                done => s_tile_done(i),
                 enable_load_ram => enable_load_ram_i(i)
             );
     end generate gen_tiles;
   
+        
 end architecture;
