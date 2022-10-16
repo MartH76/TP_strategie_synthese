@@ -12,7 +12,7 @@ port(
 
     select_out : in std_logic;
 
-    input_data : in std_logic_vector(WIDTH_OF_WORD downto 0);
+    input_data : in std_logic_vector(WIDTH_OF_RAM-1 downto 0);
 
     data_out : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM downto 0);
 
@@ -51,16 +51,16 @@ architecture rtl of Tile is
         port(
             clka   : in std_logic;
             clkb   : in std_logic;
-            dina : in std_logic_vector(WIDTH_OF_WORD downto 0);
+            dina : in std_logic_vector(WIDTH_OF_RAM-1 downto 0);
             addra : in std_logic_vector(SIZE_ADDR downto 0);
             wea : in std_logic;
             ena : in std_logic;
-            douta : out std_logic_vector(WIDTH_OF_WORD downto 0);
-            dinb : in std_logic_vector(WIDTH_OF_WORD downto 0);
+            douta : out std_logic_vector(WIDTH_OF_RAM-1 downto 0);
+            dinb : in std_logic_vector(WIDTH_OF_RAM-1 downto 0);
             addrb : in std_logic_vector(SIZE_ADDR downto 0);
             web : in std_logic;
             enb : in std_logic;
-            doutb : out std_logic_vector(WIDTH_OF_WORD downto 0)      
+            doutb : out std_logic_vector(WIDTH_OF_RAM-1 downto 0)      
         );
     end component DPRAM;
 
