@@ -64,6 +64,7 @@ architecture rtl of TOP is
     
     signal s_done : std_logic;
 
+    signal zero : std_logic_vector(NBR_TILES-1 downto 0) := (others => '0');
 begin
 
     accu : accu_tot
@@ -89,6 +90,6 @@ begin
             );
     end generate gen_tiles;
   
-    s_done <= '0' when (s_tile_done = (others => '0')) else '1';
+    s_done <= '0' when (s_tile_done = zero) else '1';
 
 end architecture;
