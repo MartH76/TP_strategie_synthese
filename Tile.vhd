@@ -92,7 +92,6 @@ architecture rtl of Tile is
             select_output   : in std_logic;
 
             -- input for DRAM
-            input_data      : in std_logic_vector(WIDTH_OF_RAM -1 downto 0);
             data_a          : in std_logic_vector(WIDTH_OF_RAM-1 downto 0);
             data_b          : in std_logic_vector(WIDTH_OF_RAM-1 downto 0);
             -- output for DRAM
@@ -188,7 +187,6 @@ begin
         start_mul => s_start_mul,
         start_accu_tile => s_done_mul,
         select_output => select_out,
-        input_data => input_data,
         data_a => s_sum_a,
         data_b => s_sum_b,
         addra => s_ram_addr_a,
