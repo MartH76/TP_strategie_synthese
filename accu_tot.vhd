@@ -20,7 +20,7 @@ entity accu_tot is
 end accu_tot;
 
 architecture rtl of accu_tot is
-    signal zero : std_logic_vector( NBR_TILES downto 0) := (others => '0');
+    signal zero : std_logic_vector(NBR_TILES - 1 downto 0) := (others => '0');
 begin
     
     process(clk, reset)
