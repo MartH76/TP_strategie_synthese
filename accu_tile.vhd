@@ -15,17 +15,17 @@ entity accu_tile is
 
         select_out : in std_logic;
 
-        data_in : in std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM downto 0);
-        data_out : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM downto 0)
+        data_in : in std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM  - 1 downto 0);
+        data_out : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM - 1 downto 0)
     );
 end accu_tile;
 
 architecture rtl of accu_tile is
-    
+
     signal zero : std_logic_vector(WIDTH_OF_ROM - 1 downto 0) := (others => '0');
     signal counter_accu_tile : integer range 0 to WIDTH_OF_ROM - 1 := 0;
 	 
-	 signal buff_data_out : std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM downto 0) := (others => '0');
+	 signal buff_data_out : std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM - 1 downto 0) := (others => '0');
 begin
     
         process(clk, rst)

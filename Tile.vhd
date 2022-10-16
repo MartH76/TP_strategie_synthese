@@ -14,7 +14,7 @@ port(
 
     input_data : in std_logic_vector(WIDTH_OF_RAM-1 downto 0);
 
-    data_out : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM downto 0);
+    data_out : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM - 1 downto 0);
 
     done : out std_logic;
     
@@ -29,7 +29,7 @@ architecture rtl of Tile is
         clk : in std_logic;
         rst : in std_logic;
         start : in std_logic;
-        mul_out : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM downto 0);
+        mul_out : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM - 1 downto 0);
         sum_a : in std_logic_vector(WIDTH_OF_RAM-1 downto 0);
         sum_b : in std_logic_vector(WIDTH_OF_RAM-1 downto 0);
         multipl   : in std_logic_vector(WIDTH_OF_ROM-1 downto 0);
@@ -74,8 +74,8 @@ architecture rtl of Tile is
     
             select_out : in std_logic;
     
-            data_in : in std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM downto 0);
-            data_out : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM downto 0)
+            data_in : in std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM  - 1 downto 0);
+            data_out : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM - 1 downto 0)
         );
     end component accu_tile;
 
@@ -104,7 +104,7 @@ architecture rtl of Tile is
             dinb            : out std_logic_vector(WIDTH_OF_RAM-1 downto 0);
             addrb           : out std_logic_vector(SIZE_ADDR downto 0);
             web             : out std_logic;
-            enb             : out std_logic;
+            enb             : out std_logic
         );
     end component sequenceur;
 
@@ -127,12 +127,13 @@ architecture rtl of Tile is
 
     signal s_start_mul      : std_logic;
 
-    signal s_accu_in        : std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM downto 0);
+    signal s_accu_in        : std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM - 1 downto 0);
 
     signal s_done_mul       : std_logic;
 
 
 begin
+
     DPRAM_1 : DPRAM
     port map(
         clka => clk,
@@ -198,7 +199,7 @@ begin
         dinb => s_ram_addr_b,
         addrb => s_ram_addr_b,
         web => s_web,
-        enb => s_enb,
+        enb => s_enb
     );
 
 end architecture;

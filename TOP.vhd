@@ -31,9 +31,9 @@ architecture rtl of TOP is
 
             select_out : in std_logic;
 
-            input_data : in std_logic_vector(WIDTH_OF_RAM-1 downto 0);
+            input_data : in std_logic_vector(WIDTH_OF_RAM - 1 downto 0);
 
-            data_out : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM downto 0);
+            data_out : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM - 1 downto 0);
 
             done : out std_logic;
             

@@ -14,7 +14,7 @@ port(
     start : in std_logic;
 
 
-    mul_out : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM  downto 0);
+    mul_out : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM -1  downto 0);
 
     sum_a : in std_logic_vector(WIDTH_OF_RAM-1 downto 0);
     sum_b : in std_logic_vector(WIDTH_OF_RAM-1 downto 0);
@@ -26,7 +26,7 @@ port(
 end mul;
 
 architecture rtl of mul is
-    signal buff_calc: unsigned(WIDTH_OF_RAM + WIDTH_OF_ROM downto 0);
+    signal buff_calc: unsigned(WIDTH_OF_RAM + WIDTH_OF_ROM - 1  downto 0);
 begin
     process(clk,rst)
     begin
