@@ -11,6 +11,7 @@ entity accu_tot is
         reset : in std_logic;
 
         start : in std_logic;
+        done : out std_logic;
         
         data_out : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM + NBR_TILES downto 0);
 
