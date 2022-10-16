@@ -195,7 +195,7 @@ begin
         ena => s_ena,
         addrb => s_ram_addr_b,
         web => s_web,
-        enb => s_enb
+        enb => s_enb,
 
         en_rom => s_en_rom,
         addr_rom => s_rom_addr
