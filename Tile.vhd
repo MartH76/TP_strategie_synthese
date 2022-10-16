@@ -86,8 +86,7 @@ architecture rtl of Tile is
 
             enable_load_ram : in std_logic;
 
-            start_mul       : out std_logic;
-            start_accu_tile : out std_logic;  
+            start_mul       : out std_logic; 
 
             select_output   : in std_logic;
 
@@ -185,7 +184,6 @@ begin
         reset => reset,
         enable_load_ram => enable_load_ram,
         start_mul => s_start_mul,
-        start_accu_tile => s_done_mul,
         select_output => select_out,
         data_a => s_sum_a,
         data_b => s_sum_b,

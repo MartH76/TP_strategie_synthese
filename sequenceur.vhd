@@ -14,7 +14,6 @@ entity sequenceur is
         enable_load_ram : in std_logic;
 
         start_mul       : out std_logic;
-        start_accu_tile : out std_logic;  
         
         select_output   : in std_logic;
 
