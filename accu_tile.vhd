@@ -38,7 +38,6 @@ begin
                 if(start = '1' and select_out = '1') then
 
                     if (counter_accu_tile = 0) then
-                        data_out <= (others => '0');
 						buff_data_out <= (others => '0');
                     end if;
 
