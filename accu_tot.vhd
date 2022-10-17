@@ -13,7 +13,7 @@ entity accu_tot is
         start : in std_logic;
         done : out std_logic;
         
-        data_out : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM + NBR_TILES downto 0);
+        data_out : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM + NBR_TILES - 1 downto 0);
 
         data_in : in input_accu
     );
