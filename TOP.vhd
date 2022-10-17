@@ -18,7 +18,9 @@ entity top is
         --sortie
         Datout_o : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM + NBR_TILES - 1 downto 0);
 
-        select_out : in std_logic_vector(NBR_TILES-1 downto 0)
+        select_out : in std_logic_vector(NBR_TILES-1 downto 0);
+
+        start_accu_global : in std_logic
     );
 end top;
 
@@ -60,7 +62,6 @@ architecture rtl of TOP is
 
     signal s_tile_done : std_logic_vector(NBR_TILES-1 downto 0);
     
-    signal s_done : std_logic;
 
 
 begin
@@ -69,7 +70,7 @@ begin
         port map (
             clk => clk,
             reset => reset,
-            start => s_done,
+            start => start_accu_global,
             done => done,
             data_out => Datout_o,
             data_in => s_data_out_tile
@@ -88,6 +89,5 @@ begin
             );
     end generate gen_tiles;
   
-    s_done <= '1' when (s_tile_done(0) = '1') else '0';
 
 end architecture;
