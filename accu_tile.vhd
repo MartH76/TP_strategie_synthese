@@ -32,7 +32,7 @@ begin
         process(clk, rst)
         begin
             if rst = '0' then
-                data_out <= (others => '0');
+                buff_data_out <= (others => '0');
                 counter_accu_tile <= 0;
             elsif rising_edge(clk) then
                 if(start = '1' and select_out = '1') then

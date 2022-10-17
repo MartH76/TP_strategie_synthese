@@ -56,8 +56,6 @@ architecture rtl of TOP is
         );
     end component accu_tot;
 
-    signal s_reset : std_logic;
-
     signal s_data_out_tile : input_accu;
 
     signal s_tile_done : std_logic_vector(NBR_TILES-1 downto 0);
@@ -71,7 +69,7 @@ begin
     accu : accu_tot
         port map (
             clk => clk,
-            reset => s_reset,
+            reset => reset,
             start => s_done,
             done => done,
             data_out => Datout_o,
@@ -82,7 +80,7 @@ begin
         tile_i : Tile
             port map (
                 clk => clk,
-                reset => s_reset,
+                reset => reset,
                 select_out => select_out(i),
                 input_data => input_data,
                 data_out => s_data_out_tile(i),

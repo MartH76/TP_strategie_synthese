@@ -105,7 +105,6 @@ architecture rtl of Tile is
         );
     end component sequenceur;
 
-    signal s_reset : std_logic;
 
     signal s_sum_a          : std_logic_vector(WIDTH_OF_RAM-1 downto 0);
     signal s_sum_b          : std_logic_vector(WIDTH_OF_RAM-1 downto 0);
@@ -158,7 +157,7 @@ begin
     MULTIPLIEUR : MUL
     port map(
         clk => clk,
-        rst => s_reset,
+        rst => reset,
         start => s_start_mul,
         mul_out => s_accu_in,
         sum_a => s_sum_a,
@@ -170,7 +169,7 @@ begin
     ACCU : accu_tile 
     port map(
         clk => clk,
-        rst => s_reset,
+        rst => reset,
         start => s_done_mul,
         done => done,
         select_out => '1',
@@ -181,7 +180,7 @@ begin
     SEQ : sequenceur
     port map(
         clk => clk,
-        reset => s_reset,
+        reset => reset,
         enable_load_ram => enable_load_ram,
         start_mul => s_start_mul,
         addra => s_ram_addr_a,
