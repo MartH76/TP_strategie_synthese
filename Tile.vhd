@@ -106,7 +106,6 @@ architecture rtl of Tile is
     end component sequenceur;
 
     signal s_reset : std_logic;
-    signal s_clk : std_logic;
 
     signal s_sum_a          : std_logic_vector(WIDTH_OF_RAM-1 downto 0);
     signal s_sum_b          : std_logic_vector(WIDTH_OF_RAM-1 downto 0);
@@ -134,8 +133,8 @@ begin
 
     DPRAM_1 : DPRAM
     port map(
-        clka => s_clk,
-        clkb => s_clk,
+        clka => clk,
+        clkb => clk,
         dina => input_data,
         addra => s_ram_addr_a,
         wea => s_wea,
@@ -150,7 +149,7 @@ begin
     
     ROM_1 : ROM
     port map(
-        clk => s_clk,
+        clk => clk,
         enrom => s_en_rom,
         addr => s_rom_addr,
         data => s_multipl
@@ -158,7 +157,7 @@ begin
 
     MULTIPLIEUR : MUL
     port map(
-        clk => s_clk,
+        clk => clk,
         rst => s_reset,
         start => s_start_mul,
         mul_out => s_accu_in,
@@ -170,7 +169,7 @@ begin
 
     ACCU : accu_tile 
     port map(
-        clk => s_clk,
+        clk => clk,
         rst => s_reset,
         start => s_done_mul,
         done => done,
@@ -181,7 +180,7 @@ begin
 
     SEQ : sequenceur
     port map(
-        clk => s_clk,
+        clk => clk,
         reset => s_reset,
         enable_load_ram => enable_load_ram,
         start_mul => s_start_mul,
