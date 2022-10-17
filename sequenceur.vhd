@@ -54,7 +54,8 @@ begin
             else
                 case state is
                     when IDLE =>
-
+                        addra <= (others => '0');
+                        addrb <= (others => '0');
                         ena <= '0';
                         enb <= '0';
                         wea <= '0';
