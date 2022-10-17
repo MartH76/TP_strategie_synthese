@@ -34,9 +34,11 @@ begin
                     for k in 0 to NBR_TILES - 1 loop
                         buff_data_out <= std_logic_vector(unsigned(buff_data_out) + (unsigned(zero) & unsigned(data_in(k))));
                     end loop;
-						  data_out <= buff_data_out;
-					  else
-						  buff_data_out <= (others => '0');
+                        data_out <= buff_data_out;
+                        done <= '1';
+                else
+                    buff_data_out <= (others => '0');
+                    done <= '0';
                 end if;
             end if;
     end process;

@@ -74,7 +74,7 @@ architecture rtl of Tile is
     
             select_out : in std_logic;
     
-            data_in : in std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM  - 1 downto 0);
+            data_in : in std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM - 1 downto 0);
             data_out : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM - 1 downto 0)
         );
     end component accu_tile;
