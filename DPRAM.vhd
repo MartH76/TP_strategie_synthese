@@ -34,8 +34,8 @@ architecture rtl of DPRAM is
     type mem is array ((2**(SIZE_ADDR))-1 downto 0) of std_logic_vector(WIDTH_OF_RAM-1 downto 0);
     shared variable memory : mem;
 
-    signal buff_douta : std_logic_vector(WIDTH_OF_RAM-1 downto 0);
-    signal buff_doutb : std_logic_vector(WIDTH_OF_RAM-1 downto 0);
+    --signal buff_douta : std_logic_vector(WIDTH_OF_RAM-1 downto 0);
+    --signal buff_doutb : std_logic_vector(WIDTH_OF_RAM-1 downto 0);
 
 begin
     process (clka)
@@ -45,7 +45,7 @@ begin
                 if (wea = '1') then
                     memory(to_integer(unsigned(addra))) := dina;
                 end if;
-                buff_douta <= memory(to_integer(unsigned(addra)));
+                douta <= memory(to_integer(unsigned(addra)));
             end if;
         end if;
     end process;
@@ -58,14 +58,14 @@ begin
                 if (web = '1') then
                     memory(to_integer(unsigned(addrb))) := dinb;
                 end if;
-                buff_doutb <= memory(to_integer(unsigned(addrb)));
+                doutb <= memory(to_integer(unsigned(addrb)));
             end if;
         end if;
     end process;
 
     --tri-state buffer control
-    douta <= buff_douta when (ena = '1' and wea = '0') else (others => 'Z');
-    doutb <= buff_doutb when (enb = '1' and web = '0') else (others => 'Z');
+    --douta <= buff_douta when (ena = '1' and wea = '0') else (others => 'Z');
+    --doutb <= buff_doutb when (enb = '1' and web = '0') else (others => 'Z');
 
 end architecture;
 
