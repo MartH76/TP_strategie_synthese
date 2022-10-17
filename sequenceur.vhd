@@ -57,6 +57,8 @@ begin
 
                         ena <= '0';
                         enb <= '0';
+                        wea <= '0';
+                        web <= '0';
                         en_rom <= '0';
 
                         if (enable_load_ram = '1') then
@@ -91,9 +93,9 @@ begin
                         addra <= std_logic_vector(to_unsigned(counter_nbr_multiplication, SIZE_ADDR));
                         ena <= '1';
                         wea <= '0';
-                        addrb <= std_logic_vector(to_unsigned((2**(WIDTH_OF_RAM))-1 + counter_nbr_multiplication, SIZE_ADDR));
+                        addrb <= std_logic_vector(to_unsigned(((2**(WIDTH_OF_RAM))-1 + counter_nbr_multiplication), SIZE_ADDR));
                         enb <= '1';
-                        web <= '0';
+                        --web <= '0';
 
                         -- lecture data dans la rom
                         en_rom <= '1';
