@@ -96,7 +96,7 @@ begin
                         wea <= '0';
                         addrb <= std_logic_vector(to_unsigned(((2**(WIDTH_OF_RAM))-1 + counter_nbr_multiplication), SIZE_ADDR));
                         enb <= '1';
-                        --web <= '0';
+                        web <= '0';
 
                         -- lecture data dans la rom
                         en_rom <= '1';
