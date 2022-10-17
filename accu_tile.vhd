@@ -26,7 +26,7 @@ architecture rtl of accu_tile is
     signal zero : std_logic_vector(WIDTH_OF_ROM - 1 downto 0) := (others => '0');
     signal counter_accu_tile : integer range 0 to WIDTH_OF_ROM - 1 := 0;
 	 
-	 signal buff_data_out : std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM - 1 downto 0) := (others => '0');
+	signal buff_data_out : std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM - 1 downto 0) := (others => '0');
 begin
     
         process(clk)
@@ -55,4 +55,7 @@ begin
                 end if;
             end if;
         end process;
+
+        data_out <= buff_data_out when select_out = '1' else (others => '0');
+            
 end architecture;

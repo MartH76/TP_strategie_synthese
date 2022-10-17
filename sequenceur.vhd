@@ -15,8 +15,6 @@ entity sequenceur is
 
         start_mul       : out std_logic;
         
-        select_output   : in std_logic;
-
     
         -- output for DRAM
         addra           : out std_logic_vector(SIZE_ADDR-1 downto 0);

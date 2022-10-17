@@ -88,7 +88,6 @@ architecture rtl of Tile is
 
             start_mul       : out std_logic; 
 
-            select_output   : in std_logic;
 
            
             -- output for DRAM
@@ -186,7 +185,6 @@ begin
         reset => s_reset,
         enable_load_ram => enable_load_ram,
         start_mul => s_start_mul,
-        select_output => select_out,
         addra => s_ram_addr_a,
         wea => s_wea,
         ena => s_ena,
