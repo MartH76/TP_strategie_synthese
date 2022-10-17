@@ -25,7 +25,7 @@ architecture rtl of accu_tot is
 
 begin
     
-    process(clk)
+    process(clk, reset)
         begin
             if reset = '0' then
                 data_out <= (others => '0');

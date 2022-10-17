@@ -40,7 +40,7 @@ architecture rtl of sequenceur is
     signal counter_nbr_multiplication : integer range 0 to (2**(ROM_SIZE_ADDR))-1 := 0;
     
 begin
-    process(clk) is 
+    process(clk, reset) is 
     begin
         if rising_edge(clk) then
             if reset = '0' then

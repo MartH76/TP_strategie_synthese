@@ -29,7 +29,7 @@ architecture rtl of accu_tile is
 	signal buff_data_out : std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM - 1 downto 0) := (others => '0');
 begin
     
-        process(clk)
+        process(clk, rst)
         begin
             if rst = '0' then
                 data_out <= (others => '0');
@@ -57,5 +57,5 @@ begin
         end process;
 
         data_out <= buff_data_out when select_out = '1' else (others => '0');
-            
+
 end architecture;
