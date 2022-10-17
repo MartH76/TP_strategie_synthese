@@ -21,7 +21,8 @@ end accu_tot;
 
 architecture rtl of accu_tot is
     signal zero : std_logic_vector( NBR_TILES -1 downto 0) := (others => '0');
-	variable buff_data_out : std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM + NBR_TILES - 1 downto 0);
+    
+    shared variable buff_data_out : std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM + NBR_TILES - 1 downto 0);
 
 begin
     
