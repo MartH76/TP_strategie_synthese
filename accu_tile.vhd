@@ -29,9 +29,9 @@ architecture rtl of accu_tile is
 	 signal buff_data_out : std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM - 1 downto 0) := (others => '0');
 begin
     
-        process(clk, rst)
+        process(clk)
         begin
-            if rst = '1' then
+            if rst = '0' then
                 data_out <= (others => '0');
                 counter_accu_tile <= 0;
             elsif rising_edge(clk) then

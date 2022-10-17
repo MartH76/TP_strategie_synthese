@@ -42,8 +42,8 @@ begin
 
 
     clk <= not clk after 10 ns;
-    reset <= '1' after 100 ns;
-    reset <= '0' after 200 ns;
+    reset <= '0' after 100 ns;
+    reset <= '1' after 200 ns;
     
     
 

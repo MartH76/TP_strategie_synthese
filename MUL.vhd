@@ -28,7 +28,7 @@ end mul;
 architecture rtl of mul is
     signal buff_calc: unsigned(WIDTH_OF_RAM + WIDTH_OF_ROM - 1  downto 0);
 begin
-    process(clk,rst)
+    process(clk)
     begin
         if rst = '0' then
             buff_calc <= (others => '0');

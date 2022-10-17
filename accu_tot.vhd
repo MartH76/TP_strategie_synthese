@@ -25,9 +25,9 @@ architecture rtl of accu_tot is
 
 begin
     
-    process(clk, reset)
+    process(clk)
         begin
-            if reset = '1' then
+            if reset = '0' then
                 data_out <= (others => '0');
             elsif rising_edge(clk) then
                 if start = '1' then

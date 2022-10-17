@@ -45,7 +45,7 @@ begin
     process(clk) is 
     begin
         if rising_edge(clk) then
-            if reset = '1' then
+            if reset = '0' then
                 state <= IDLE;
                 counter_data_to_write <= 0;
                 counter_nbr_multiplication <= 0;
