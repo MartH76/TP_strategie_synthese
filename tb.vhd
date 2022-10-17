@@ -44,8 +44,8 @@ begin
     clk <= not clk after 10 ns;
     reset <= '0' after 100 ns, '1' after 200 ns;
     input_data <= x"FAB" after 300 ns;
-    enable_load_ram_i <= "0001" after 400 ns;
-    select_out <= "0001" after 1000 ns;
+    enable_load_ram_i <= "00001" after 400 ns;
+    select_out <= "00001" after 1000 ns;
     
 
 end;
