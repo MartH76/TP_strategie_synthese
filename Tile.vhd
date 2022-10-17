@@ -172,7 +172,7 @@ begin
         rst => reset,
         start => s_done_mul,
         done => done,
-        select_out => '1',
+        select_out => select_out,
         data_in => s_accu_in,
         data_out => data_out
     );
