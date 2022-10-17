@@ -9,8 +9,6 @@ entity top is
     port (
         clk : in std_logic;
         reset : in std_logic;
-        
-        numero_tile : in std_logic_vector(NBR_TILES-1 downto 0);
 
         input_data : in std_logic_vector(WIDTH_OF_RAM-1 downto 0);
 
