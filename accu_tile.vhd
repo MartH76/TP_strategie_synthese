@@ -45,7 +45,7 @@ begin
                     if counter_accu_tile = WIDTH_OF_ROM - 1 then
                         done <= '1';
                         counter_accu_tile <= 0;
-                        data_out <= buff_data_out;
+                        buff_data_out <= (others => '0');
                     else
                         buff_data_out <= std_logic_vector(unsigned(buff_data_out) + (unsigned(zero) & unsigned(data_in)));
                         done <= '0';
