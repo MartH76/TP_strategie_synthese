@@ -23,12 +23,12 @@ architecture bench of top_tb is
   end component;
 
   signal clk: std_logic := '0';
-  signal reset: std_logic;
-  signal input_data: std_logic_vector(WIDTH_OF_RAM-1 downto 0);
+  signal reset: std_logic := '0';
+  signal input_data: std_logic_vector(WIDTH_OF_RAM-1 downto 0) := (others => '0');
   signal done: std_logic;
-  signal enable_load_ram_i: std_logic_vector(NBR_TILES-1 downto 0);
+  signal enable_load_ram_i: std_logic_vector(NBR_TILES-1 downto 0) := (others => '0');
   signal Datout_o: std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM + NBR_TILES downto 0);
-  signal select_out: std_logic_vector(NBR_TILES-1 downto 0) ;
+  signal select_out: std_logic_vector(NBR_TILES-1 downto 0) := (others => '0');
 
 begin
 
