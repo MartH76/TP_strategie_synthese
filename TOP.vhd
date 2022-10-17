@@ -16,7 +16,7 @@ entity top is
 
         enable_load_ram_i : in std_logic_vector(NBR_TILES-1 downto 0);
         --sortie
-        Datout_o : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM + NBR_TILES downto 0);
+        Datout_o : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM + NBR_TILES - 1 downto 0);
 
         select_out : in std_logic_vector(NBR_TILES-1 downto 0)
     );
