@@ -1,0 +1,886 @@
+Release 14.7 - xst P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> 
+Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.03 secs
+ 
+--> 
+Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.03 secs
+ 
+--> 
+Reading design: top.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "top.prj"
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "top"
+Output Format                      : NGC
+Target Device                      : xc6vcx75t-2-ff484
+
+---- Source Options
+Top Module Name                    : top
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Shift Register Extraction          : YES
+ROM Style                          : Auto
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Shift Register Minimum Size        : 2
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Auto
+Reduce Control Sets                : Auto
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 32
+Register Duplication               : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Parsing VHDL file "/home/martin/Desktop/TP_strategie_synthese/tp_pkg.vhd" into library work
+Parsing package <tp_pkg>.
+Parsing VHDL file "/home/martin/Desktop/TP_strategie_synthese/sequenceur.vhd" into library work
+Parsing entity <sequenceur>.
+Parsing architecture <rtl> of entity <sequenceur>.
+Parsing VHDL file "/home/martin/Desktop/TP_strategie_synthese/ROM.vhd" into library work
+Parsing entity <ROM>.
+Parsing architecture <rtl> of entity <rom>.
+Parsing VHDL file "/home/martin/Desktop/TP_strategie_synthese/MUL.vhd" into library work
+Parsing entity <mul>.
+Parsing architecture <rtl> of entity <mul>.
+Parsing VHDL file "/home/martin/Desktop/TP_strategie_synthese/DPRAM.vhd" into library work
+Parsing entity <DPRAM>.
+Parsing architecture <rtl> of entity <dpram>.
+Parsing VHDL file "/home/martin/Desktop/TP_strategie_synthese/accu_tile.vhd" into library work
+Parsing entity <accu_tile>.
+Parsing architecture <rtl> of entity <accu_tile>.
+Parsing VHDL file "/home/martin/Desktop/TP_strategie_synthese/Tile.vhd" into library work
+Parsing entity <Tile>.
+Parsing architecture <rtl> of entity <tile>.
+Parsing VHDL file "/home/martin/Desktop/TP_strategie_synthese/accu_tot.vhd" into library work
+Parsing entity <accu_tot>.
+Parsing architecture <rtl> of entity <accu_tot>.
+Parsing VHDL file "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" into library work
+Parsing entity <top>.
+Parsing architecture <rtl> of entity <top>.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating entity <top> (architecture <rtl>) from library <work>.
+
+Elaborating entity <accu_tot> (architecture <rtl>) from library <work>.
+
+Elaborating entity <Tile> (architecture <rtl>) from library <work>.
+
+Elaborating entity <DPRAM> (architecture <rtl>) from library <work>.
+
+Elaborating entity <ROM> (architecture <rtl>) from library <work>.
+
+Elaborating entity <mul> (architecture <rtl>) from library <work>.
+
+Elaborating entity <accu_tile> (architecture <rtl>) from library <work>.
+
+Elaborating entity <sequenceur> (architecture <rtl>) from library <work>.
+INFO:HDLCompiler:679 - "/home/martin/Desktop/TP_strategie_synthese/sequenceur.vhd" Line 118. Case statement is complete. others clause is never selected
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <top>.
+    Related source file is "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd".
+    Found 1-bit register for signal <s_done>.
+    Summary:
+	inferred   1 D-type flip-flop(s).
+Unit <top> synthesized.
+
+Synthesizing Unit <accu_tot>.
+    Related source file is "/home/martin/Desktop/TP_strategie_synthese/accu_tot.vhd".
+    Found 54-bit register for signal <data_out>.
+    Found 54-bit register for signal <buff_data_out>.
+    Found 1-bit register for signal <done>.
+    Found 54-bit adder for signal <_n0154> created at line 36.
+    Found 54-bit adder for signal <_n0155> created at line 36.
+    Found 54-bit adder for signal <_n0156> created at line 36.
+    Found 54-bit adder for signal <_n0157> created at line 36.
+    Found 54-bit adder for signal <_n0158> created at line 36.
+    Found 54-bit adder for signal <_n0159> created at line 36.
+    Found 54-bit adder for signal <_n0160> created at line 36.
+    Found 54-bit adder for signal <_n0161> created at line 36.
+    Found 54-bit adder for signal <_n0162> created at line 36.
+    Found 54-bit adder for signal <_n0163> created at line 36.
+    Found 54-bit adder for signal <_n0164> created at line 36.
+    Found 54-bit adder for signal <_n0165> created at line 36.
+    Found 54-bit adder for signal <_n0166> created at line 36.
+    Found 54-bit adder for signal <_n0167> created at line 36.
+    Found 54-bit adder for signal <_n0168> created at line 36.
+    Found 54-bit adder for signal <_n0169> created at line 36.
+    Found 54-bit adder for signal <_n0170> created at line 36.
+    Found 54-bit adder for signal <_n0171> created at line 36.
+    Found 54-bit adder for signal <_n0172> created at line 36.
+    Found 54-bit adder for signal <buff_data_out[53]_GND_6_o_add_19_OUT> created at line 36.
+    Summary:
+	inferred  20 Adder/Subtractor(s).
+	inferred 109 D-type flip-flop(s).
+Unit <accu_tot> synthesized.
+
+Synthesizing Unit <Tile>.
+    Related source file is "/home/martin/Desktop/TP_strategie_synthese/Tile.vhd".
+    Summary:
+	no macro.
+Unit <Tile> synthesized.
+
+Synthesizing Unit <DPRAM>.
+    Related source file is "/home/martin/Desktop/TP_strategie_synthese/DPRAM.vhd".
+    Found 32x12-bit dual-port RAM <Mram_memory> for signal <memory>.
+    Found 12-bit register for signal <doutb>.
+    Found 12-bit register for signal <douta>.
+    Summary:
+	inferred   1 RAM(s).
+	inferred  24 D-type flip-flop(s).
+	inferred   2 Multiplexer(s).
+Unit <DPRAM> synthesized.
+
+Synthesizing Unit <ROM>.
+    Related source file is "/home/martin/Desktop/TP_strategie_synthese/ROM.vhd".
+    Found 11-bit register for signal <data>.
+    Found 16x11-bit Read Only RAM for signal <addr[3]_GND_9_o_wide_mux_0_OUT>
+    Summary:
+	inferred   1 RAM(s).
+	inferred  11 D-type flip-flop(s).
+Unit <ROM> synthesized.
+
+Synthesizing Unit <mul>.
+    Related source file is "/home/martin/Desktop/TP_strategie_synthese/MUL.vhd".
+    Found 23-bit register for signal <buff_calc>.
+    Found 1-bit register for signal <done>.
+    Found 12-bit adder for signal <sum_a[11]_sum_b[11]_add_0_OUT> created at line 37.
+    Found 12x11-bit multiplier for signal <sum_a[11]_multipl[10]_MuLt_1_OUT> created at line 37.
+    Summary:
+	inferred   1 Multiplier(s).
+	inferred   1 Adder/Subtractor(s).
+	inferred  24 D-type flip-flop(s).
+	inferred   1 Multiplexer(s).
+Unit <mul> synthesized.
+
+Synthesizing Unit <accu_tile>.
+    Related source file is "/home/martin/Desktop/TP_strategie_synthese/accu_tile.vhd".
+    Found 4-bit register for signal <counter_accu_tile>.
+    Found 34-bit register for signal <buff_data_out>.
+    Found 1-bit register for signal <done>.
+    Found 34-bit adder for signal <buff_data_out[33]_GND_12_o_add_3_OUT> created at line 48.
+    Found 4-bit adder for signal <counter_accu_tile[3]_GND_12_o_add_4_OUT> created at line 50.
+    Summary:
+	inferred   2 Adder/Subtractor(s).
+	inferred  39 D-type flip-flop(s).
+	inferred   3 Multiplexer(s).
+Unit <accu_tile> synthesized.
+
+Synthesizing Unit <sequenceur>.
+    Related source file is "/home/martin/Desktop/TP_strategie_synthese/sequenceur.vhd".
+    Found 5-bit register for signal <counter_data_to_write>.
+    Found 4-bit register for signal <counter_nbr_multiplication>.
+    Found 1-bit register for signal <start_mul>.
+    Found 1-bit register for signal <ena>.
+    Found 1-bit register for signal <enb>.
+    Found 1-bit register for signal <en_rom>.
+    Found 5-bit register for signal <addra>.
+    Found 5-bit register for signal <addrb>.
+    Found 1-bit register for signal <wea>.
+    Found 1-bit register for signal <web>.
+    Found 4-bit register for signal <addr_rom>.
+    Found 2-bit register for signal <state>.
+    Found finite state machine <FSM_0> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 4                                              |
+    | Transitions        | 8                                              |
+    | Inputs             | 3                                              |
+    | Outputs            | 6                                              |
+    | Clock              | clk (rising_edge)                              |
+    | Reset              | reset_INV_19_o (positive)                      |
+    | Reset type         | synchronous                                    |
+    | Reset State        | idle                                           |
+    | Power Up State     | idle                                           |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 5-bit adder for signal <counter_data_to_write[4]_GND_13_o_add_2_OUT> created at line 80.
+    Found 5-bit adder for signal <n0086> created at line 97.
+    Found 4-bit adder for signal <counter_nbr_multiplication[3]_GND_13_o_add_11_OUT> created at line 108.
+    Found 5-bit comparator greater for signal <counter_data_to_write[4]_PWR_12_o_LessThan_2_o> created at line 74
+    Found 4-bit comparator greater for signal <counter_nbr_multiplication[3]_PWR_12_o_LessThan_11_o> created at line 107
+    Summary:
+	inferred   3 Adder/Subtractor(s).
+	inferred  29 D-type flip-flop(s).
+	inferred   2 Comparator(s).
+	inferred   5 Multiplexer(s).
+	inferred   1 Finite State Machine(s).
+Unit <sequenceur> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 40
+ 16x11-bit single-port Read Only RAM                   : 20
+ 32x12-bit dual-port RAM                               : 20
+# Multipliers                                          : 20
+ 12x11-bit multiplier                                  : 20
+# Adders/Subtractors                                   : 140
+ 12-bit adder                                          : 20
+ 34-bit adder                                          : 20
+ 4-bit adder                                           : 40
+ 5-bit adder                                           : 40
+ 54-bit adder                                          : 20
+# Registers                                            : 384
+ 1-bit register                                        : 162
+ 11-bit register                                       : 20
+ 12-bit register                                       : 40
+ 23-bit register                                       : 20
+ 34-bit register                                       : 20
+ 4-bit register                                        : 60
+ 5-bit register                                        : 60
+ 54-bit register                                       : 2
+# Comparators                                          : 40
+ 4-bit comparator greater                              : 20
+ 5-bit comparator greater                              : 20
+# Multiplexers                                         : 220
+ 12-bit 2-to-1 multiplexer                             : 40
+ 23-bit 2-to-1 multiplexer                             : 20
+ 34-bit 2-to-1 multiplexer                             : 40
+ 4-bit 2-to-1 multiplexer                              : 40
+ 5-bit 2-to-1 multiplexer                              : 80
+# FSMs                                                 : 20
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+WARNING:Xst:1710 - FF/Latch <web> (without init value) has a constant value of 0 in block <SEQ>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <web> (without init value) has a constant value of 0 in block <SEQ>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <web> (without init value) has a constant value of 0 in block <SEQ>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <web> (without init value) has a constant value of 0 in block <SEQ>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <web> (without init value) has a constant value of 0 in block <SEQ>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <web> (without init value) has a constant value of 0 in block <SEQ>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <web> (without init value) has a constant value of 0 in block <SEQ>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <web> (without init value) has a constant value of 0 in block <SEQ>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <web> (without init value) has a constant value of 0 in block <SEQ>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <web> (without init value) has a constant value of 0 in block <SEQ>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <web> (without init value) has a constant value of 0 in block <SEQ>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <web> (without init value) has a constant value of 0 in block <SEQ>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <web> (without init value) has a constant value of 0 in block <SEQ>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <web> (without init value) has a constant value of 0 in block <SEQ>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <web> (without init value) has a constant value of 0 in block <SEQ>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <web> (without init value) has a constant value of 0 in block <SEQ>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <web> (without init value) has a constant value of 0 in block <SEQ>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <web> (without init value) has a constant value of 0 in block <SEQ>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <web> (without init value) has a constant value of 0 in block <SEQ>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <web> (without init value) has a constant value of 0 in block <SEQ>. This FF/Latch will be trimmed during the optimization process.
+
+Synthesizing (advanced) Unit <ROM>.
+INFO:Xst:3231 - The small RAM <Mram_addr[3]_GND_9_o_wide_mux_0_OUT> will be implemented on LUTs in order to maximize performance and save block RAM resources. If you want to force its implementation on block, use option/constraint ram_style.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 16-word x 11-bit                    |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <addr>          |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+Unit <ROM> synthesized (advanced).
+
+Synthesizing (advanced) Unit <Tile>.
+INFO:Xst:3226 - The RAM <DPRAM_1/Mram_memory> will be implemented as a BLOCK RAM, absorbing the following register(s): <DPRAM_1/douta> <DPRAM_1/doutb>
+    -----------------------------------------------------------------------
+    | ram_type           | Block                               |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 32-word x 12-bit                    |          |
+    |     mode           | write-first                         |          |
+    |     clkA           | connected to signal <clk>           | rise     |
+    |     enA            | connected to signal <s_ena>         | high     |
+    |     weA            | connected to signal <s_wea>         | high     |
+    |     addrA          | connected to signal <s_ram_addr_a>  |          |
+    |     diA            | connected to signal <input_data>    |          |
+    |     doA            | connected to signal <s_sum_a>       |          |
+    -----------------------------------------------------------------------
+    | optimization       | speed                               |          |
+    -----------------------------------------------------------------------
+    | Port B                                                              |
+    |     aspect ratio   | 32-word x 12-bit                    |          |
+    |     mode           | write-first                         |          |
+    |     clkB           | connected to signal <clk>           | rise     |
+    |     enB            | connected to signal <s_enb>         | high     |
+    |     weB            | connected to signal <s_web>         | high     |
+    |     addrB          | connected to signal <s_ram_addr_b>  |          |
+    |     diB            | connected to signal <input_data>    |          |
+    |     doB            | connected to signal <s_sum_b>       |          |
+    -----------------------------------------------------------------------
+    | optimization       | speed                               |          |
+    -----------------------------------------------------------------------
+Unit <Tile> synthesized (advanced).
+
+Synthesizing (advanced) Unit <accu_tile>.
+The following registers are absorbed into accumulator <buff_data_out>: 1 register on signal <buff_data_out>.
+The following registers are absorbed into counter <counter_accu_tile>: 1 register on signal <counter_accu_tile>.
+Unit <accu_tile> synthesized (advanced).
+
+Synthesizing (advanced) Unit <accu_tot>.
+The following registers are absorbed into accumulator <buff_data_out>: 1 register on signal <buff_data_out>.
+	The following adders/subtractors are grouped into adder tree <Madd__n01721> :
+ 	<Madd__n0154> in block <accu_tot>, 	<Madd__n0155> in block <accu_tot>, 	<Madd__n0157> in block <accu_tot>, 	<Madd__n0158> in block <accu_tot>, 	<Madd__n0161> in block <accu_tot>, 	<Madd__n0162> in block <accu_tot>, 	<Madd__n0164> in block <accu_tot>, 	<Madd__n0165> in block <accu_tot>, 	<Madd__n0167> in block <accu_tot>, 	<Madd__n0168> in block <accu_tot>.
+	The following adders/subtractors are grouped into adder tree <Madd__n01711> :
+ 	<Madd__n0163> in block <accu_tot>, 	<Madd__n0166> in block <accu_tot>, 	<Madd__n0169> in block <accu_tot>.
+	The following adders/subtractors are grouped into adder tree <Madd__n01601> :
+ 	<Madd__n0156> in block <accu_tot>, 	<Madd__n0159> in block <accu_tot>.
+Unit <accu_tot> synthesized (advanced).
+
+Synthesizing (advanced) Unit <sequenceur>.
+The following registers are absorbed into counter <counter_data_to_write>: 1 register on signal <counter_data_to_write>.
+The following registers are absorbed into counter <counter_nbr_multiplication>: 1 register on signal <counter_nbr_multiplication>.
+Unit <sequenceur> synthesized (advanced).
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 40
+ 16x11-bit single-port distributed Read Only RAM       : 20
+ 32x12-bit dual-port block RAM                         : 20
+# Multipliers                                          : 20
+ 12x11-bit multiplier                                  : 20
+# Adders/Subtractors                                   : 41
+ 12-bit adder                                          : 20
+ 5-bit adder                                           : 20
+ 54-bit adder                                          : 1
+# Adder Trees                                          : 1
+ 54-bit / 20-inputs adder tree                         : 1
+# Counters                                             : 60
+ 4-bit up counter                                      : 40
+ 5-bit up counter                                      : 20
+# Accumulators                                         : 21
+ 34-bit up loadable accumulator                        : 20
+ 54-bit up accumulator                                 : 1
+# Registers                                            : 1176
+ Flip-Flops                                            : 1176
+# Comparators                                          : 40
+ 4-bit comparator greater                              : 20
+ 5-bit comparator greater                              : 20
+# Multiplexers                                         : 100
+ 23-bit 2-to-1 multiplexer                             : 20
+ 34-bit 2-to-1 multiplexer                             : 20
+ 5-bit 2-to-1 multiplexer                              : 60
+# FSMs                                                 : 20
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:1710 - FF/Latch <SEQ/web> (without init value) has a constant value of 0 in block <Tile>. This FF/Latch will be trimmed during the optimization process.
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <FSM_0> on signal <state[1:2]> with user encoding.
+--------------------------------
+ State              | Encoding
+--------------------------------
+ idle               | 00
+ load_ram           | 01
+ config_calculation | 10
+ calculation        | 11
+--------------------------------
+INFO:Xst:2261 - The FF/Latch <gen_tiles[6].tile_i/SEQ/enb> in Unit <top> is equivalent to the following FF/Latch, which will be removed : <gen_tiles[6].tile_i/SEQ/en_rom> 
+INFO:Xst:2261 - The FF/Latch <gen_tiles[9].tile_i/SEQ/enb> in Unit <top> is equivalent to the following FF/Latch, which will be removed : <gen_tiles[9].tile_i/SEQ/en_rom> 
+INFO:Xst:2261 - The FF/Latch <gen_tiles[1].tile_i/SEQ/enb> in Unit <top> is equivalent to the following FF/Latch, which will be removed : <gen_tiles[1].tile_i/SEQ/en_rom> 
+INFO:Xst:2261 - The FF/Latch <gen_tiles[4].tile_i/SEQ/enb> in Unit <top> is equivalent to the following FF/Latch, which will be removed : <gen_tiles[4].tile_i/SEQ/en_rom> 
+INFO:Xst:2261 - The FF/Latch <gen_tiles[7].tile_i/SEQ/enb> in Unit <top> is equivalent to the following FF/Latch, which will be removed : <gen_tiles[7].tile_i/SEQ/en_rom> 
+INFO:Xst:2261 - The FF/Latch <gen_tiles[13].tile_i/SEQ/enb> in Unit <top> is equivalent to the following FF/Latch, which will be removed : <gen_tiles[13].tile_i/SEQ/en_rom> 
+INFO:Xst:2261 - The FF/Latch <gen_tiles[18].tile_i/SEQ/enb> in Unit <top> is equivalent to the following FF/Latch, which will be removed : <gen_tiles[18].tile_i/SEQ/en_rom> 
+INFO:Xst:2261 - The FF/Latch <gen_tiles[12].tile_i/SEQ/enb> in Unit <top> is equivalent to the following FF/Latch, which will be removed : <gen_tiles[12].tile_i/SEQ/en_rom> 
+INFO:Xst:2261 - The FF/Latch <gen_tiles[17].tile_i/SEQ/enb> in Unit <top> is equivalent to the following FF/Latch, which will be removed : <gen_tiles[17].tile_i/SEQ/en_rom> 
+INFO:Xst:2261 - The FF/Latch <gen_tiles[16].tile_i/SEQ/enb> in Unit <top> is equivalent to the following FF/Latch, which will be removed : <gen_tiles[16].tile_i/SEQ/en_rom> 
+INFO:Xst:2261 - The FF/Latch <gen_tiles[2].tile_i/SEQ/enb> in Unit <top> is equivalent to the following FF/Latch, which will be removed : <gen_tiles[2].tile_i/SEQ/en_rom> 
+INFO:Xst:2261 - The FF/Latch <gen_tiles[5].tile_i/SEQ/enb> in Unit <top> is equivalent to the following FF/Latch, which will be removed : <gen_tiles[5].tile_i/SEQ/en_rom> 
+INFO:Xst:2261 - The FF/Latch <gen_tiles[8].tile_i/SEQ/enb> in Unit <top> is equivalent to the following FF/Latch, which will be removed : <gen_tiles[8].tile_i/SEQ/en_rom> 
+INFO:Xst:2261 - The FF/Latch <gen_tiles[11].tile_i/SEQ/enb> in Unit <top> is equivalent to the following FF/Latch, which will be removed : <gen_tiles[11].tile_i/SEQ/en_rom> 
+INFO:Xst:2261 - The FF/Latch <gen_tiles[10].tile_i/SEQ/enb> in Unit <top> is equivalent to the following FF/Latch, which will be removed : <gen_tiles[10].tile_i/SEQ/en_rom> 
+INFO:Xst:2261 - The FF/Latch <gen_tiles[15].tile_i/SEQ/enb> in Unit <top> is equivalent to the following FF/Latch, which will be removed : <gen_tiles[15].tile_i/SEQ/en_rom> 
+INFO:Xst:2261 - The FF/Latch <gen_tiles[14].tile_i/SEQ/enb> in Unit <top> is equivalent to the following FF/Latch, which will be removed : <gen_tiles[14].tile_i/SEQ/en_rom> 
+INFO:Xst:2261 - The FF/Latch <gen_tiles[0].tile_i/SEQ/enb> in Unit <top> is equivalent to the following FF/Latch, which will be removed : <gen_tiles[0].tile_i/SEQ/en_rom> 
+INFO:Xst:2261 - The FF/Latch <gen_tiles[19].tile_i/SEQ/enb> in Unit <top> is equivalent to the following FF/Latch, which will be removed : <gen_tiles[19].tile_i/SEQ/en_rom> 
+INFO:Xst:2261 - The FF/Latch <gen_tiles[3].tile_i/SEQ/enb> in Unit <top> is equivalent to the following FF/Latch, which will be removed : <gen_tiles[3].tile_i/SEQ/en_rom> 
+INFO:Xst:2261 - The FF/Latch <data_4> in Unit <ROM> is equivalent to the following 6 FFs/Latches, which will be removed : <data_5> <data_6> <data_7> <data_8> <data_9> <data_10> 
+
+Optimizing unit <top> ...
+
+Optimizing unit <ROM> ...
+
+Optimizing unit <mul> ...
+
+Optimizing unit <accu_tile> ...
+
+Optimizing unit <accu_tot> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block top, actual ratio is 11.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 1950
+ Flip-Flops                                            : 1950
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : top.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 6992
+#      GND                         : 1
+#      INV                         : 141
+#      LUT1                        : 4
+#      LUT2                        : 1674
+#      LUT3                        : 478
+#      LUT4                        : 1099
+#      LUT5                        : 809
+#      LUT6                        : 14
+#      MUXCY                       : 1360
+#      VCC                         : 1
+#      XORCY                       : 1411
+# FlipFlops/Latches                : 1950
+#      FDC                         : 460
+#      FDCE                        : 814
+#      FDE                         : 341
+#      FDR                         : 41
+#      FDRE                        : 294
+# RAMS                             : 20
+#      RAMB18E1                    : 20
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 108
+#      IBUF                        : 53
+#      OBUF                        : 55
+# DSPs                             : 20
+#      DSP48E1                     : 20
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 6vcx75tff484-2 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:            1950  out of  93120     2%  
+ Number of Slice LUTs:                 4219  out of  46560     9%  
+    Number used as Logic:              4219  out of  46560     9%  
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:   4628
+   Number with an unused Flip Flop:    2678  out of   4628    57%  
+   Number with an unused LUT:           409  out of   4628     8%  
+   Number of fully used LUT-FF pairs:  1541  out of   4628    33%  
+   Number of unique control sets:       186
+
+IO Utilization: 
+ Number of IOs:                         109
+ Number of bonded IOBs:                 109  out of    240    45%  
+
+Specific Feature Utilization:
+ Number of Block RAM/FIFO:               10  out of    156     6%  
+    Number using Block RAM only:         10
+ Number of BUFG/BUFGCTRLs:                1  out of     32     3%  
+ Number of DSP48E1s:                     20  out of    288     6%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk                                | BUFGP                  | 1990  |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+------------------------------------------------------------+-----------------------------------------------+-------+
+Control Signal                                              | Buffer(FF name)                               | Load  |
+------------------------------------------------------------+-----------------------------------------------+-------+
+N1(XST_GND:G)                                               | NONE(gen_tiles[3].tile_i/DPRAM_1/Mram_memory) | 80    |
+gen_tiles[0].tile_i/SEQ/wea(gen_tiles[0].tile_i/SEQ/wea:Q)  | NONE(gen_tiles[0].tile_i/DPRAM_1/Mram_memory) | 2     |
+gen_tiles[10].tile_i/SEQ/wea(gen_tiles[10].tile_i/SEQ/wea:Q)| NONE(gen_tiles[10].tile_i/DPRAM_1/Mram_memory)| 2     |
+gen_tiles[11].tile_i/SEQ/wea(gen_tiles[11].tile_i/SEQ/wea:Q)| NONE(gen_tiles[11].tile_i/DPRAM_1/Mram_memory)| 2     |
+gen_tiles[12].tile_i/SEQ/wea(gen_tiles[12].tile_i/SEQ/wea:Q)| NONE(gen_tiles[12].tile_i/DPRAM_1/Mram_memory)| 2     |
+gen_tiles[13].tile_i/SEQ/wea(gen_tiles[13].tile_i/SEQ/wea:Q)| NONE(gen_tiles[13].tile_i/DPRAM_1/Mram_memory)| 2     |
+gen_tiles[14].tile_i/SEQ/wea(gen_tiles[14].tile_i/SEQ/wea:Q)| NONE(gen_tiles[14].tile_i/DPRAM_1/Mram_memory)| 2     |
+gen_tiles[15].tile_i/SEQ/wea(gen_tiles[15].tile_i/SEQ/wea:Q)| NONE(gen_tiles[15].tile_i/DPRAM_1/Mram_memory)| 2     |
+gen_tiles[16].tile_i/SEQ/wea(gen_tiles[16].tile_i/SEQ/wea:Q)| NONE(gen_tiles[16].tile_i/DPRAM_1/Mram_memory)| 2     |
+gen_tiles[17].tile_i/SEQ/wea(gen_tiles[17].tile_i/SEQ/wea:Q)| NONE(gen_tiles[17].tile_i/DPRAM_1/Mram_memory)| 2     |
+gen_tiles[18].tile_i/SEQ/wea(gen_tiles[18].tile_i/SEQ/wea:Q)| NONE(gen_tiles[18].tile_i/DPRAM_1/Mram_memory)| 2     |
+gen_tiles[19].tile_i/SEQ/wea(gen_tiles[19].tile_i/SEQ/wea:Q)| NONE(gen_tiles[19].tile_i/DPRAM_1/Mram_memory)| 2     |
+gen_tiles[1].tile_i/SEQ/wea(gen_tiles[1].tile_i/SEQ/wea:Q)  | NONE(gen_tiles[1].tile_i/DPRAM_1/Mram_memory) | 2     |
+gen_tiles[2].tile_i/SEQ/wea(gen_tiles[2].tile_i/SEQ/wea:Q)  | NONE(gen_tiles[2].tile_i/DPRAM_1/Mram_memory) | 2     |
+gen_tiles[3].tile_i/SEQ/wea(gen_tiles[3].tile_i/SEQ/wea:Q)  | NONE(gen_tiles[3].tile_i/DPRAM_1/Mram_memory) | 2     |
+gen_tiles[4].tile_i/SEQ/wea(gen_tiles[4].tile_i/SEQ/wea:Q)  | NONE(gen_tiles[4].tile_i/DPRAM_1/Mram_memory) | 2     |
+gen_tiles[5].tile_i/SEQ/wea(gen_tiles[5].tile_i/SEQ/wea:Q)  | NONE(gen_tiles[5].tile_i/DPRAM_1/Mram_memory) | 2     |
+gen_tiles[6].tile_i/SEQ/wea(gen_tiles[6].tile_i/SEQ/wea:Q)  | NONE(gen_tiles[6].tile_i/DPRAM_1/Mram_memory) | 2     |
+gen_tiles[7].tile_i/SEQ/wea(gen_tiles[7].tile_i/SEQ/wea:Q)  | NONE(gen_tiles[7].tile_i/DPRAM_1/Mram_memory) | 2     |
+gen_tiles[8].tile_i/SEQ/wea(gen_tiles[8].tile_i/SEQ/wea:Q)  | NONE(gen_tiles[8].tile_i/DPRAM_1/Mram_memory) | 2     |
+gen_tiles[9].tile_i/SEQ/wea(gen_tiles[9].tile_i/SEQ/wea:Q)  | NONE(gen_tiles[9].tile_i/DPRAM_1/Mram_memory) | 2     |
+------------------------------------------------------------+-----------------------------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -2
+
+   Minimum period: 7.345ns (Maximum Frequency: 136.153MHz)
+   Minimum input arrival time before clock: 7.219ns
+   Maximum output required time after clock: 0.659ns
+   Maximum combinational path delay: No path found
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 7.345ns (frequency: 136.153MHz)
+  Total number of paths / destination ports: 12657139564 / 3898
+-------------------------------------------------------------------------
+Delay:               7.345ns (Levels of Logic = 63)
+  Source:            gen_tiles[18].tile_i/ACCU/buff_data_out_1 (FF)
+  Destination:       accu/buff_data_out_53 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: gen_tiles[18].tile_i/ACCU/buff_data_out_1 to accu/buff_data_out_53
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDCE:C->Q             3   0.317   0.369  gen_tiles[18].tile_i/ACCU/buff_data_out_1 (gen_tiles[18].tile_i/ACCU/buff_data_out_1)
+     LUT2:I1->O            2   0.061   0.517  gen_tiles[18].tile_i/ACCU/Mmux_data_out121 (s_data_out_tile<18><1>)
+     LUT3:I0->O            1   0.061   0.357  accu/ADDERTREE_INTERNAL_Madd101 (accu/ADDERTREE_INTERNAL_Madd101)
+     LUT4:I3->O            1   0.061   0.000  accu/ADDERTREE_INTERNAL_Madd10_lut<0>2 (accu/ADDERTREE_INTERNAL_Madd10_lut<0>2)
+     MUXCY:S->O            1   0.248   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_1 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>2)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_2 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>3)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_3 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>4)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_4 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>5)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_5 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>6)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_6 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>7)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_7 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>8)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_8 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>9)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_9 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>10)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_10 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>11)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_11 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>12)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_12 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>13)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_13 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>14)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_14 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>15)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_15 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>16)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_16 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>17)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_17 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>18)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_18 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>19)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_19 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>20)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_20 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>21)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_21 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>22)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_22 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>23)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_23 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>24)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_24 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>25)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_25 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>26)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_26 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>27)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_27 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>28)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_28 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>29)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_29 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>30)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_30 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>31)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_31 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>32)
+     XORCY:CI->O           2   0.204   0.362  accu/ADDERTREE_INTERNAL_Madd10_xor<0>_32 (accu/ADDERTREE_INTERNAL_Madd_3310)
+     LUT3:I2->O            1   0.061   0.357  accu/ADDERTREE_INTERNAL_Madd1242 (accu/ADDERTREE_INTERNAL_Madd1243)
+     LUT2:I1->O            1   0.061   0.000  accu/ADDERTREE_INTERNAL_Madd12_lut<0>34 (accu/ADDERTREE_INTERNAL_Madd12_lut<0>34)
+     MUXCY:S->O            1   0.248   0.000  accu/ADDERTREE_INTERNAL_Madd12_cy<0>_33 (accu/ADDERTREE_INTERNAL_Madd12_cy<0>34)
+     XORCY:CI->O           1   0.204   0.426  accu/ADDERTREE_INTERNAL_Madd12_xor<0>_34 (accu/ADDERTREE_INTERNAL_Madd_3512)
+     LUT2:I0->O            1   0.061   0.000  accu/ADDERTREE_INTERNAL_Madd17_lut<35> (accu/ADDERTREE_INTERNAL_Madd17_lut<35>)
+     MUXCY:S->O            1   0.248   0.000  accu/ADDERTREE_INTERNAL_Madd17_cy<35> (accu/ADDERTREE_INTERNAL_Madd17_cy<35>)
+     XORCY:CI->O           2   0.204   0.362  accu/ADDERTREE_INTERNAL_Madd17_xor<36> (accu/ADDERTREE_INTERNAL_Madd_3617)
+     LUT3:I2->O            1   0.061   0.357  accu/ADDERTREE_INTERNAL_Madd1836 (accu/ADDERTREE_INTERNAL_Madd1837)
+     LUT4:I3->O            1   0.061   0.000  accu/ADDERTREE_INTERNAL_Madd18_lut<0>37 (accu/ADDERTREE_INTERNAL_Madd18_lut<0>37)
+     MUXCY:S->O            1   0.248   0.000  accu/ADDERTREE_INTERNAL_Madd18_cy<0>_36 (accu/ADDERTREE_INTERNAL_Madd18_cy<0>37)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd18_cy<0>_37 (accu/ADDERTREE_INTERNAL_Madd18_cy<0>38)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd18_cy<0>_38 (accu/ADDERTREE_INTERNAL_Madd18_cy<0>39)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd18_cy<0>_39 (accu/ADDERTREE_INTERNAL_Madd18_cy<0>40)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd18_cy<0>_40 (accu/ADDERTREE_INTERNAL_Madd18_cy<0>41)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd18_cy<0>_41 (accu/ADDERTREE_INTERNAL_Madd18_cy<0>42)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd18_cy<0>_42 (accu/ADDERTREE_INTERNAL_Madd18_cy<0>43)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd18_cy<0>_43 (accu/ADDERTREE_INTERNAL_Madd18_cy<0>44)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd18_cy<0>_44 (accu/ADDERTREE_INTERNAL_Madd18_cy<0>45)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd18_cy<0>_45 (accu/ADDERTREE_INTERNAL_Madd18_cy<0>46)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd18_cy<0>_46 (accu/ADDERTREE_INTERNAL_Madd18_cy<0>47)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd18_cy<0>_47 (accu/ADDERTREE_INTERNAL_Madd18_cy<0>48)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd18_cy<0>_48 (accu/ADDERTREE_INTERNAL_Madd18_cy<0>49)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd18_cy<0>_49 (accu/ADDERTREE_INTERNAL_Madd18_cy<0>50)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd18_cy<0>_50 (accu/ADDERTREE_INTERNAL_Madd18_cy<0>51)
+     XORCY:CI->O           2   0.204   0.362  accu/ADDERTREE_INTERNAL_Madd18_xor<0>_51 (accu/ADDERTREE_INTERNAL_Madd_5218)
+     LUT2:I1->O            1   0.061   0.000  accu/Maccum_buff_data_out_lut<52> (accu/Maccum_buff_data_out_lut<52>)
+     MUXCY:S->O            0   0.248   0.000  accu/Maccum_buff_data_out_cy<52> (accu/Maccum_buff_data_out_cy<52>)
+     XORCY:CI->O           1   0.204   0.000  accu/Maccum_buff_data_out_xor<53> (accu/Result<53>)
+     FDRE:D                   -0.002          accu/buff_data_out_53
+    ----------------------------------------
+    Total                      7.345ns (3.874ns logic, 3.471ns route)
+                                       (52.7% logic, 47.3% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
+  Total number of paths / destination ports: 12656865446 / 3512
+-------------------------------------------------------------------------
+Offset:              7.219ns (Levels of Logic = 64)
+  Source:            select_out<18> (PAD)
+  Destination:       accu/buff_data_out_53 (FF)
+  Destination Clock: clk rising
+
+  Data Path: select_out<18> to accu/buff_data_out_53
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            38   0.003   0.557  select_out_18_IBUF (select_out_18_IBUF)
+     LUT2:I0->O            2   0.061   0.517  gen_tiles[18].tile_i/ACCU/Mmux_data_out121 (s_data_out_tile<18><1>)
+     LUT3:I0->O            1   0.061   0.357  accu/ADDERTREE_INTERNAL_Madd101 (accu/ADDERTREE_INTERNAL_Madd101)
+     LUT4:I3->O            1   0.061   0.000  accu/ADDERTREE_INTERNAL_Madd10_lut<0>2 (accu/ADDERTREE_INTERNAL_Madd10_lut<0>2)
+     MUXCY:S->O            1   0.248   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_1 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>2)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_2 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>3)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_3 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>4)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_4 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>5)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_5 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>6)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_6 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>7)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_7 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>8)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_8 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>9)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_9 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>10)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_10 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>11)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_11 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>12)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_12 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>13)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_13 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>14)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_14 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>15)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_15 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>16)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_16 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>17)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_17 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>18)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_18 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>19)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_19 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>20)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_20 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>21)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_21 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>22)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_22 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>23)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_23 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>24)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_24 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>25)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_25 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>26)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_26 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>27)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_27 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>28)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_28 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>29)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_29 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>30)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_30 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>31)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd10_cy<0>_31 (accu/ADDERTREE_INTERNAL_Madd10_cy<0>32)
+     XORCY:CI->O           2   0.204   0.362  accu/ADDERTREE_INTERNAL_Madd10_xor<0>_32 (accu/ADDERTREE_INTERNAL_Madd_3310)
+     LUT3:I2->O            1   0.061   0.357  accu/ADDERTREE_INTERNAL_Madd1242 (accu/ADDERTREE_INTERNAL_Madd1243)
+     LUT2:I1->O            1   0.061   0.000  accu/ADDERTREE_INTERNAL_Madd12_lut<0>34 (accu/ADDERTREE_INTERNAL_Madd12_lut<0>34)
+     MUXCY:S->O            1   0.248   0.000  accu/ADDERTREE_INTERNAL_Madd12_cy<0>_33 (accu/ADDERTREE_INTERNAL_Madd12_cy<0>34)
+     XORCY:CI->O           1   0.204   0.426  accu/ADDERTREE_INTERNAL_Madd12_xor<0>_34 (accu/ADDERTREE_INTERNAL_Madd_3512)
+     LUT2:I0->O            1   0.061   0.000  accu/ADDERTREE_INTERNAL_Madd17_lut<35> (accu/ADDERTREE_INTERNAL_Madd17_lut<35>)
+     MUXCY:S->O            1   0.248   0.000  accu/ADDERTREE_INTERNAL_Madd17_cy<35> (accu/ADDERTREE_INTERNAL_Madd17_cy<35>)
+     XORCY:CI->O           2   0.204   0.362  accu/ADDERTREE_INTERNAL_Madd17_xor<36> (accu/ADDERTREE_INTERNAL_Madd_3617)
+     LUT3:I2->O            1   0.061   0.357  accu/ADDERTREE_INTERNAL_Madd1836 (accu/ADDERTREE_INTERNAL_Madd1837)
+     LUT4:I3->O            1   0.061   0.000  accu/ADDERTREE_INTERNAL_Madd18_lut<0>37 (accu/ADDERTREE_INTERNAL_Madd18_lut<0>37)
+     MUXCY:S->O            1   0.248   0.000  accu/ADDERTREE_INTERNAL_Madd18_cy<0>_36 (accu/ADDERTREE_INTERNAL_Madd18_cy<0>37)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd18_cy<0>_37 (accu/ADDERTREE_INTERNAL_Madd18_cy<0>38)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd18_cy<0>_38 (accu/ADDERTREE_INTERNAL_Madd18_cy<0>39)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd18_cy<0>_39 (accu/ADDERTREE_INTERNAL_Madd18_cy<0>40)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd18_cy<0>_40 (accu/ADDERTREE_INTERNAL_Madd18_cy<0>41)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd18_cy<0>_41 (accu/ADDERTREE_INTERNAL_Madd18_cy<0>42)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd18_cy<0>_42 (accu/ADDERTREE_INTERNAL_Madd18_cy<0>43)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd18_cy<0>_43 (accu/ADDERTREE_INTERNAL_Madd18_cy<0>44)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd18_cy<0>_44 (accu/ADDERTREE_INTERNAL_Madd18_cy<0>45)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd18_cy<0>_45 (accu/ADDERTREE_INTERNAL_Madd18_cy<0>46)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd18_cy<0>_46 (accu/ADDERTREE_INTERNAL_Madd18_cy<0>47)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd18_cy<0>_47 (accu/ADDERTREE_INTERNAL_Madd18_cy<0>48)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd18_cy<0>_48 (accu/ADDERTREE_INTERNAL_Madd18_cy<0>49)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd18_cy<0>_49 (accu/ADDERTREE_INTERNAL_Madd18_cy<0>50)
+     MUXCY:CI->O           1   0.017   0.000  accu/ADDERTREE_INTERNAL_Madd18_cy<0>_50 (accu/ADDERTREE_INTERNAL_Madd18_cy<0>51)
+     XORCY:CI->O           2   0.204   0.362  accu/ADDERTREE_INTERNAL_Madd18_xor<0>_51 (accu/ADDERTREE_INTERNAL_Madd_5218)
+     LUT2:I1->O            1   0.061   0.000  accu/Maccum_buff_data_out_lut<52> (accu/Maccum_buff_data_out_lut<52>)
+     MUXCY:S->O            0   0.248   0.000  accu/Maccum_buff_data_out_cy<52> (accu/Maccum_buff_data_out_cy<52>)
+     XORCY:CI->O           1   0.204   0.000  accu/Maccum_buff_data_out_xor<53> (accu/Result<53>)
+     FDRE:D                   -0.002          accu/buff_data_out_53
+    ----------------------------------------
+    Total                      7.219ns (3.560ns logic, 3.659ns route)
+                                       (49.3% logic, 50.7% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 55 / 55
+-------------------------------------------------------------------------
+Offset:              0.659ns (Levels of Logic = 1)
+  Source:            accu/data_out_53 (FF)
+  Destination:       Datout_o<53> (PAD)
+  Source Clock:      clk rising
+
+  Data Path: accu/data_out_53 to Datout_o<53>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDCE:C->Q             1   0.317   0.339  accu/data_out_53 (accu/data_out_53)
+     OBUF:I->O                 0.003          Datout_o_53_OBUF (Datout_o<53>)
+    ----------------------------------------
+    Total                      0.659ns (0.320ns logic, 0.339ns route)
+                                       (48.5% logic, 51.5% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+Clock to Setup on destination clock clk
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk            |    7.345|         |         |         |
+---------------+---------+---------+---------+---------+
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 7.00 secs
+Total CPU time to Xst completion: 7.27 secs
+ 
+--> 
+
+
+Total memory usage is 468860 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :   21 (   0 filtered)
+Number of infos    :   23 (   0 filtered)
+
