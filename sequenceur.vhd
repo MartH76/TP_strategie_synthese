@@ -94,7 +94,7 @@ begin
                         addra <= std_logic_vector(to_unsigned(counter_nbr_multiplication, SIZE_ADDR));
                         ena <= '1';
                         wea <= '0';
-                        addrb <= std_logic_vector(to_unsigned(((2**(ROM_SIZE_ADDR))-1 + counter_nbr_multiplication), SIZE_ADDR));
+                        addrb <= std_logic_vector(to_unsigned(((2**(SIZE_ADDR-1))-1 + counter_nbr_multiplication), SIZE_ADDR));
                         enb <= '1';
                         web <= '0';
 
