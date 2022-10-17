@@ -21,7 +21,6 @@ end accu_tot;
 
 architecture rtl of accu_tot is
 
-    shared variable zero : std_logic_vector( NBR_TILES -1 downto 0) := (others => '0');
 
     shared variable buff_data_out : std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM + NBR_TILES - 1 downto 0);
 
@@ -34,7 +33,7 @@ begin
             elsif rising_edge(clk) then
                 if start = '1' then
                     for k in 0 to NBR_TILES - 1 loop
-                        buff_data_out := std_logic_vector(unsigned(buff_data_out) + (unsigned(zero) & unsigned(data_in(k))));
+                        buff_data_out := std_logic_vector(unsigned(buff_data_out) + unsigned(data_in(k)));
                     end loop;
                         data_out <= buff_data_out;
                         done <= '1';

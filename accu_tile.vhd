@@ -23,8 +23,6 @@ end accu_tile;
 
 architecture rtl of accu_tile is
 
-    shared variable zero : std_logic_vector(WIDTH_OF_ROM - 1 downto 0) := (others => '0');
-
     signal counter_accu_tile : integer range 0 to WIDTH_OF_ROM - 1 := 0;
 	 
 	signal buff_data_out : std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM - 1 downto 0) := (others => '0');
@@ -47,7 +45,7 @@ begin
                         counter_accu_tile <= 0;
                         buff_data_out <= (others => '0');
                     else
-                        buff_data_out <= std_logic_vector(unsigned(buff_data_out) + (unsigned(zero) & unsigned(data_in)));
+                        buff_data_out <= std_logic_vector(unsigned(buff_data_out) +  unsigned(data_in));
                         done <= '0';
                         counter_accu_tile <= counter_accu_tile + 1;
                     end if;
