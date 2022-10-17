@@ -37,7 +37,7 @@ architecture rtl of ROM is
         "00000001100", --12
         "00000001101", --13
         "00000001110", --14
-        "00000001111"  --15
+        "11111111111"  --15
     ); -- attention il faut réfléchir à tout tester (overflow...)
 
 begin
