@@ -69,7 +69,7 @@ begin
         port map (
             clk => clk,
             reset => reset,
-            start => s_done,
+            start => s_tile_done(0),
             done => done,
             data_out => Datout_o,
             data_in => s_data_out_tile
