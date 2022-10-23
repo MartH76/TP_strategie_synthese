@@ -59,7 +59,7 @@ architecture rtl of TOP is
 
     signal s_data_out_tile : input_accu;
 
-    signal s_tile_done : std_logic_vector(NBR_TILES-1 downto 0);
+    signal s_tile_done : std_logic_vector(NBR_TILES-1 downto 0) := (others => '0');
     
     signal s_done : std_logic;
 

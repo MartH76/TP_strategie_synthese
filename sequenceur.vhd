@@ -35,9 +35,9 @@ architecture rtl of sequenceur is
     type state_type is (IDLE, LOAD_RAM, CONFIG_CALCULATION, CALCULATION);
     signal state : state_type := IDLE;
 
-    signal counter_data_to_write : integer range 0 to (2**(RAM_SIZE_ADDR))-1 := 0;
+    signal counter_data_to_write : integer range 0 to (2**(RAM_SIZE_ADDR)) := 0;
 
-    signal counter_nbr_multiplication : integer range 0 to (2**(ROM_SIZE_ADDR))-1 := 0;
+    signal counter_nbr_multiplication : integer range 0 to (2**(ROM_SIZE_ADDR)) := 0;
     
 begin
     process(clk, reset) is 
@@ -71,7 +71,7 @@ begin
                     when LOAD_RAM =>
                         if (enable_load_ram = '1') then
                             -- si la ram n'est pas encore remplie
-                            if (counter_data_to_write < (2**(RAM_SIZE_ADDR))-1) then
+                            if (counter_data_to_write < (2**(RAM_SIZE_ADDR))) then
                                 -- écriture dans la ram
                                 addra <= std_logic_vector(to_unsigned(counter_data_to_write, RAM_SIZE_ADDR));
                                 ena <= '1';
@@ -104,7 +104,7 @@ begin
                         state <= CALCULATION;
    
                     when CALCULATION =>
-                        if(counter_nbr_multiplication < (2**(ROM_SIZE_ADDR))-1) then
+                        if(counter_nbr_multiplication < (2**(ROM_SIZE_ADDR))) then
                             counter_nbr_multiplication <= counter_nbr_multiplication + 1;
                             start_mul <= '1';
                             state <= CONFIG_CALCULATION;

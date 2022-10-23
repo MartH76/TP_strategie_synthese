@@ -60,6 +60,8 @@ begin
             wait until rising_edge(clk);
             cpt_remplissage_ram := cpt_remplissage_ram + 1;
         end loop;
+        wait for 10 ns;
+        enable_load_ram_i <= "0000";
         wait for 1000 ns;
  
     end process; 
