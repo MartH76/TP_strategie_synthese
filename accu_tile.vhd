@@ -44,8 +44,11 @@ begin
                     if counter_accu_tile = 2**ROM_SIZE_ADDR then
                         done <= '1';
                         counter_accu_tile <= 0;
-                        buff_data_out <= (others => '0');
+                        --buff_data_out <= (others => '0');
                     else
+                        if(counter_accu_tile = 0) then
+                            buff_data_out <= (others => '0');
+                        end if; 
                         buff_data_out <= std_logic_vector(unsigned(buff_data_out) +  unsigned(data_in));
                         done <= '0';
                         counter_accu_tile <= counter_accu_tile + 1;
