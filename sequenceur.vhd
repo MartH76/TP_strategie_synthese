@@ -15,6 +15,8 @@ entity sequenceur is
 
         start_mul       : out std_logic;
         
+        start_accu : out std_logic;
+
     
         -- output for DRAM
         addra           : out std_logic_vector(RAM_SIZE_ADDR-1 downto 0);
@@ -37,7 +39,7 @@ architecture rtl of sequenceur is
 
     signal counter_data_to_write : integer range 0 to (2**(RAM_SIZE_ADDR)) := 1;
 
-    signal counter_nbr_multiplication : integer range 0 to (2**(ROM_SIZE_ADDR)) := 0;
+    signal counter_nbr_multiplication : integer range 0 to (2**(ROM_SIZE_ADDR)) := 1;
     
 begin
     process(clk, reset) is 
@@ -89,6 +91,7 @@ begin
                                 en_rom <= '1'; -- on active la rom
                                 addra <= std_logic_vector(to_unsigned(0, RAM_SIZE_ADDR));
                                 addrb <= std_logic_vector(to_unsigned(((2**(RAM_SIZE_ADDR-1))), RAM_SIZE_ADDR));
+                                addr_rom <= std_logic_vector(to_unsigned(0, ROM_SIZE_ADDR));
                                 state <= CONFIG_CALCULATION;
                             end if;
                         end if;
@@ -103,12 +106,14 @@ begin
                         -- lecture data dans la rom
                         addr_rom <= std_logic_vector(to_unsigned(counter_nbr_multiplication, ROM_SIZE_ADDR));
                         state <= CALCULATION;
-   
+                        start_accu <= '1';
+
                     when CALCULATION =>
                         if(counter_nbr_multiplication < (2**(ROM_SIZE_ADDR))) then
                             counter_nbr_multiplication <= counter_nbr_multiplication + 1;
                             start_mul <= '1';
                             state <= CONFIG_CALCULATION;
+                            start_accu <= '0';
                         else
                             counter_nbr_multiplication <= 0;
                             start_mul <= '0';

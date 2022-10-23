@@ -16,7 +16,7 @@ entity top is
 
         enable_load_ram_i : in std_logic_vector(NBR_TILES-1 downto 0);
         --sortie
-        Datout_o : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM + NBR_TILES - 1 downto 0);
+        Datout_o : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + 2**(ROM_SIZE_ADDR) + NBR_TILES - 1 downto 0);
 
         select_out : in std_logic_vector(NBR_TILES-1 downto 0)
 
@@ -34,7 +34,7 @@ architecture rtl of TOP is
 
             input_data : in std_logic_vector(WIDTH_OF_RAM - 1 downto 0);
 
-            data_out : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM - 1 downto 0);
+            data_out : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + 2**(ROM_SIZE_ADDR) - 1 downto 0);
 
             done : out std_logic;
             
@@ -50,7 +50,7 @@ architecture rtl of TOP is
             start : in std_logic;
             done : out std_logic;
             
-            data_out : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM + NBR_TILES - 1 downto 0);
+            data_out : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + 2**(ROM_SIZE_ADDR) + NBR_TILES - 1 downto 0);
     
             data_in : in input_accu
 

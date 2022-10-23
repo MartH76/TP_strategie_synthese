@@ -17,7 +17,7 @@ architecture bench of top_tb is
           input_data : in std_logic_vector(WIDTH_OF_RAM-1 downto 0);
           done : out std_logic;
           enable_load_ram_i : in std_logic_vector(NBR_TILES-1 downto 0);
-          Datout_o : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM + NBR_TILES -1 downto 0);
+          Datout_o : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + 2**(ROM_SIZE_ADDR) + NBR_TILES - 1 downto 0);
           select_out : in std_logic_vector(NBR_TILES-1 downto 0)
       );
   end component;
@@ -27,7 +27,7 @@ architecture bench of top_tb is
   signal input_data: std_logic_vector(WIDTH_OF_RAM-1 downto 0) := (others => '0');
   signal done: std_logic;
   signal enable_load_ram_i: std_logic_vector(NBR_TILES-1 downto 0) := (others => '0');
-  signal Datout_o: std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM + NBR_TILES - 1 downto 0);
+  signal Datout_o: std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + 2**(ROM_SIZE_ADDR) + NBR_TILES - 1  downto 0);
   signal select_out: std_logic_vector(NBR_TILES-1 downto 0) := (others => '0');
 
   shared variable cpt_remplissage_ram : integer range 0 to (2**RAM_SIZE_ADDR) := 0;
@@ -52,7 +52,7 @@ begin
         reset <= '1';
         wait for 43 ns;
 
-        select_out <= "11111" after 1000 ns;
+        select_out <= "11111";
         --remplissage de la ram
         
         wait until rising_edge(clk);

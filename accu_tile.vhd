@@ -12,20 +12,20 @@ entity accu_tile is
         start : in std_logic;
         
         done : out std_logic;
-
+        start_accu : in std_logic;
         select_out : in std_logic;
 
-        data_in : in std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM  - 1 downto 0);
+        data_in : in std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM downto 0);
 
-        data_out : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM - 1 downto 0)
+        data_out : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + 2**(ROM_SIZE_ADDR) - 1 downto 0)
     );
 end accu_tile;
 
 architecture rtl of accu_tile is
 
     signal counter_accu_tile : integer range 0 to 2**ROM_SIZE_ADDR := 0;
-	 
-	signal buff_data_out : std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM - 1 downto 0) := (others => '0');
+
+	signal buff_data_out : std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + 2**(ROM_SIZE_ADDR) - 1 downto 0) := (others => '0');
 begin
     
         process(clk, rst)
@@ -49,9 +49,11 @@ begin
                         if(counter_accu_tile = 0) then
                             buff_data_out <= (others => '0');
                         end if; 
-                        buff_data_out <= std_logic_vector(unsigned(buff_data_out) +  unsigned(data_in));
-                        done <= '0';
-                        counter_accu_tile <= counter_accu_tile + 1;
+                        if (start_accu = '1') then
+                            buff_data_out <= std_logic_vector(unsigned(buff_data_out) +  unsigned(data_in));
+                            done <= '0';
+                            counter_accu_tile <= counter_accu_tile + 1;
+                        end if;
                     end if;
                     
                 end if;

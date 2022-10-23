@@ -12,7 +12,7 @@ package tp_pkg is
     constant ROM_SIZE_ADDR : integer range 0 to 100 := 4;
 
 
-    type input_accu is array (integer range 0 to  NBR_TILES - 1) of std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM - 1 downto 0);
+    type input_accu is array (integer range 0 to  NBR_TILES - 1) of std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + 2**(ROM_SIZE_ADDR) - 1 downto 0);
 
     -- DRAM
     constant RAM_SIZE_ADDR : integer range 1 to 28 := 5;

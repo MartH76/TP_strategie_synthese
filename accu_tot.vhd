@@ -13,16 +13,16 @@ entity accu_tot is
         start : in std_logic;
         done : out std_logic;
         
-        data_out : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM + NBR_TILES - 1 downto 0);
+        data_out : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + 2**(ROM_SIZE_ADDR) + NBR_TILES - 1 downto 0);
 
         data_in : in input_accu
     );
 end accu_tot;
 
 architecture rtl of accu_tot is
+    signal s_done : std_logic;
 
-
-    shared variable buff_data_out : std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM + NBR_TILES - 1 downto 0);
+    shared variable buff_data_out : std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + 2**(ROM_SIZE_ADDR) + NBR_TILES - 1 downto 0);
 
 begin
     
@@ -35,15 +35,20 @@ begin
                     for k in 0 to NBR_TILES - 1 loop
                         buff_data_out := std_logic_vector(unsigned(buff_data_out) + unsigned(data_in(k)));
                     end loop;
-                    data_out <= buff_data_out;
-                    done <= '1';
+                    if(s_done = '0')then 
+                        data_out <= buff_data_out;
+                        s_done <= '1';
+                    end if;
+                    if start = '0' then
+                        s_done <= '0';
+                    end if;
                 else
                     buff_data_out := (others => '0');
-                    done <= '0';
+                    s_done <= '0';
                 end if;
             end if;
     end process;
-
+    done <= s_done;
 end architecture;
 
 

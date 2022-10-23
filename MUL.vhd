@@ -14,7 +14,7 @@ port(
     start : in std_logic;
 
 
-    mul_out : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM -1  downto 0);
+    mul_out : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM downto 0);
 
     sum_a : in std_logic_vector(WIDTH_OF_RAM-1 downto 0) := (others => '0');
     sum_b : in std_logic_vector(WIDTH_OF_RAM-1 downto 0) := (others => '0');
@@ -26,7 +26,7 @@ port(
 end mul;
 
 architecture rtl of mul is
-    signal buff_calc: unsigned(WIDTH_OF_RAM + WIDTH_OF_ROM - 1  downto 0);
+    signal buff_calc: unsigned(WIDTH_OF_RAM + WIDTH_OF_ROM downto 0);
 begin
     process(clk, rst)
     begin
@@ -34,7 +34,7 @@ begin
             buff_calc <= (others => '0');
         elsif(rising_edge(clk)) then
             if(start = '1') then
-                buff_calc <= (unsigned(sum_a) + unsigned(sum_b))*unsigned(multipl); 
+                buff_calc <= to_unsigned((to_integer(unsigned(sum_a)) + to_integer(unsigned(sum_b)))*to_integer(unsigned(multipl)), WIDTH_OF_RAM + WIDTH_OF_ROM + 1); 
                 done <= '1';
             else
                 buff_calc <= (others => '0');

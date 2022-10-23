@@ -14,7 +14,7 @@ port(
 
     input_data : in std_logic_vector(WIDTH_OF_RAM-1 downto 0);
 
-    data_out : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM - 1 downto 0);
+    data_out : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + 2**(ROM_SIZE_ADDR) - 1 downto 0);
 
     done : out std_logic;
 
@@ -29,7 +29,7 @@ architecture rtl of Tile is
         clk : in std_logic;
         rst : in std_logic;
         start : in std_logic;
-        mul_out : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM - 1 downto 0);
+        mul_out : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM  downto 0);
         sum_a : in std_logic_vector(WIDTH_OF_RAM-1 downto 0);
         sum_b : in std_logic_vector(WIDTH_OF_RAM-1 downto 0);
         multipl   : in std_logic_vector(WIDTH_OF_ROM-1 downto 0);
@@ -74,8 +74,10 @@ architecture rtl of Tile is
     
             select_out : in std_logic;
     
-            data_in : in std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM - 1 downto 0);
-            data_out : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM - 1 downto 0)
+            start_accu : in std_logic;
+
+            data_in : in std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM  downto 0);
+            data_out : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + 2**(ROM_SIZE_ADDR) - 1 downto 0)
         );
     end component accu_tile;
 
@@ -88,6 +90,7 @@ architecture rtl of Tile is
 
             start_mul       : out std_logic; 
 
+            start_accu : out std_logic;
 
            
             -- output for DRAM
@@ -123,11 +126,13 @@ architecture rtl of Tile is
 
     signal s_start_mul      : std_logic;
 
-    signal s_accu_in        : std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM - 1 downto 0);
+    signal s_accu_in        : std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM downto 0);
 
     signal s_done_mul       : std_logic;
 
+    signal s_start_accu     : std_logic;
 
+    
 begin
 
     DPRAM_1 : DPRAM
@@ -174,7 +179,8 @@ begin
         done => done,
         select_out => select_out,
         data_in => s_accu_in,
-        data_out => data_out
+        data_out => data_out,
+        start_accu => s_start_accu
     );
 
     SEQ : sequenceur
@@ -189,7 +195,7 @@ begin
         addrb => s_ram_addr_b,
         web => s_web,
         enb => s_enb,
-
+        start_accu => s_start_accu,
         en_rom => s_en_rom,
         addr_rom => s_rom_addr
     );
