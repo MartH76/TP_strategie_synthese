@@ -23,7 +23,7 @@ end accu_tile;
 
 architecture rtl of accu_tile is
 
-    signal counter_accu_tile : integer range 0 to WIDTH_OF_ROM := 0;
+    signal counter_accu_tile : integer range 0 to 2**ROM_SIZE_ADDR := 0;
 	 
 	signal buff_data_out : std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM - 1 downto 0) := (others => '0');
 begin
