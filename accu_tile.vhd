@@ -40,7 +40,7 @@ begin
 					--	buff_data_out <= (others => '0');
                     --end if;
 
-                    if counter_accu_tile = WIDTH_OF_ROM then
+                    if counter_accu_tile = 2**ROM_SIZE_ADDR then
                         done <= '1';
                         counter_accu_tile <= 0;
                         buff_data_out <= (others => '0');

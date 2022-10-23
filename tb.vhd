@@ -30,7 +30,7 @@ architecture bench of top_tb is
   signal Datout_o: std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM + NBR_TILES - 1 downto 0);
   signal select_out: std_logic_vector(NBR_TILES-1 downto 0) := (others => '0');
 
-  variable cpt_remplissage_ram : integer range 0 to (2**RAM_SIZE_ADDR-1) := 0;
+  shared variable cpt_remplissage_ram : integer range 0 to (2**RAM_SIZE_ADDR-1) := 0;
 
 begin
 
@@ -54,7 +54,7 @@ begin
 
         select_out <= "11111" after 1000 ns;
         --remplissage de la ram
-        while cpt_remplissage_ram < (2**RAM_SIZE_ADDR-1) loop
+        while cpt_remplissage_ram < (2**RAM_SIZE_ADDR) loop
             enable_load_ram_i <= "11111";
             input_data <= in_ram(cpt_remplissage_ram);
             wait until rising_edge(clk);
