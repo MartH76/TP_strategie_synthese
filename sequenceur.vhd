@@ -35,7 +35,7 @@ architecture rtl of sequenceur is
     type state_type is (IDLE, LOAD_RAM, CONFIG_CALCULATION, CALCULATION);
     signal state : state_type := IDLE;
 
-    signal counter_data_to_write : integer range 0 to (2**(RAM_SIZE_ADDR)) := 0;
+    signal counter_data_to_write : integer range 0 to (2**(RAM_SIZE_ADDR)) := 1;
 
     signal counter_nbr_multiplication : integer range 0 to (2**(ROM_SIZE_ADDR)) := 0;
     
@@ -64,40 +64,42 @@ begin
 
                         if (enable_load_ram = '1') then
                             state <= LOAD_RAM;
-                            ena <= '1';
-                            wea <= '1'; 
                         end if;
 
 
                         
                     when LOAD_RAM =>
-                        --if (enable_load_ram = '1') then
+                        if (enable_load_ram = '1') then
+                            ena <= '1';
+                            wea <= '1'; 
                             -- si la ram n'est pas encore remplie
+                            addra <= std_logic_vector(to_unsigned(counter_data_to_write, RAM_SIZE_ADDR));       
+                            -- incrémentation du compteur d'addresses
+                            counter_data_to_write <= counter_data_to_write + 1;
+
                             if (counter_data_to_write < (2**(RAM_SIZE_ADDR))) then
                                 -- écriture dans la ram
-                                addra <= std_logic_vector(to_unsigned(counter_data_to_write, RAM_SIZE_ADDR));       
-                                -- incrémentation du compteur d'addresses
-                                counter_data_to_write <= counter_data_to_write + 1;
                                 state <= LOAD_RAM;
                             else
                                 counter_data_to_write <= 0;
+                                ena <= '1'; -- on active la ram port a
+                                enb <= '1'; -- on active la ram port b
+                                wea <= '0'; -- on active la lecture
+                                web <= '0'; -- on active la lecture
+                                en_rom <= '1'; -- on active la rom
+                                addra <= std_logic_vector(to_unsigned(0, RAM_SIZE_ADDR));
+                                addrb <= std_logic_vector(to_unsigned(((2**(RAM_SIZE_ADDR-1))), RAM_SIZE_ADDR));
                                 state <= CONFIG_CALCULATION;
-                                ena <= '1';
-                                wea <= '0';
-                                enb <= '1';
-                                web <= '0';
-                                en_rom <= '1';
                             end if;
-                       -- else
-                       --     state <= CONFIG_CALCULATION;
-                        --end if;
+                        end if;
+                        
 
 
                     when CONFIG_CALCULATION => -- chercher la data dans la dpram
 
                         -- lecture de la data dans la ram
                         addra <= std_logic_vector(to_unsigned(counter_nbr_multiplication, RAM_SIZE_ADDR));
-                        addrb <= std_logic_vector(to_unsigned(((2**(RAM_SIZE_ADDR-1))-1 + counter_nbr_multiplication), RAM_SIZE_ADDR));
+                        addrb <= std_logic_vector(to_unsigned(((2**(RAM_SIZE_ADDR-1)) + counter_nbr_multiplication), RAM_SIZE_ADDR));
                         -- lecture data dans la rom
                         addr_rom <= std_logic_vector(to_unsigned(counter_nbr_multiplication, ROM_SIZE_ADDR));
                         state <= CALCULATION;
@@ -110,9 +112,6 @@ begin
                         else
                             counter_nbr_multiplication <= 0;
                             start_mul <= '0';
-                            ena <= '0';
-                            enb <= '0';
-                            en_rom <= '0';
                             state <= IDLE;
                         end if;
 

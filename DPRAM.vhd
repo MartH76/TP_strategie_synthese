@@ -31,7 +31,7 @@ end entity;
 
 -- architecture of dram
 architecture rtl of DPRAM is
-    type mem is array ((2**(RAM_SIZE_ADDR))-1 downto 0) of std_logic_vector(WIDTH_OF_RAM-1 downto 0);
+    type mem is array (integer range (2**(RAM_SIZE_ADDR))-1 downto 0) of std_logic_vector(WIDTH_OF_RAM-1 downto 0);
     shared variable memory : mem;
 
 
@@ -39,16 +39,17 @@ architecture rtl of DPRAM is
     signal buff_doutb : std_logic_vector(WIDTH_OF_RAM-1 downto 0);
 
 begin
+
     process (clka)
     begin
         if rising_edge(clka) then
-            if (ena = '1') then
-                if (wea = '1') then
+            if (ena = '1' and wea = '1') then
                     memory(to_integer(unsigned(addra))) := dina;
                     buff_ina <= dina;
-                else
+            elsif (ena = '1' and wea = '0') then
                     douta <= memory(to_integer(unsigned(addra)));
-                end if;
+            else
+                    douta <= (others => 'Z');
             end if;
         end if;
     end process;
@@ -57,13 +58,14 @@ begin
     process(clkb)
     begin
         if rising_edge(clkb) then
-            if (enb = '1') then
-                if (web = '1') then
+            if (enb = '1' and web = '1') then
                     memory(to_integer(unsigned(addrb))) := dinb;
-                else
+            elsif (enb = '1' and web = '0') then
                     doutb <= memory(to_integer(unsigned(addrb)));
-                end if;
+            else
+                    doutb <= (others => 'Z');
             end if;
+                
         end if;
     end process;
 
