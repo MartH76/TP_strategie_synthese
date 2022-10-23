@@ -55,14 +55,13 @@ begin
         select_out <= "11111" after 1000 ns;
         --remplissage de la ram
         while cpt_remplissage_ram < (2**RAM_SIZE_ADDR) loop
-            
-            
-            input_data <= in_ram(cpt_remplissage_ram);
-            wait until rising_edge(clk);
             enable_load_ram_i <= "11111";
+            input_data <= in_ram(cpt_remplissage_ram);
+            
+            wait until rising_edge(clk);
+            
             cpt_remplissage_ram := cpt_remplissage_ram + 1;
         end loop;
-        wait for 30 ns;
         enable_load_ram_i <= "00000";
         wait for 1000 ns;
  

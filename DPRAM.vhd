@@ -34,8 +34,9 @@ architecture rtl of DPRAM is
     type mem is array ((2**(RAM_SIZE_ADDR))-1 downto 0) of std_logic_vector(WIDTH_OF_RAM-1 downto 0);
     shared variable memory : mem;
 
-    --signal buff_douta : std_logic_vector(WIDTH_OF_RAM-1 downto 0);
-    --signal buff_doutb : std_logic_vector(WIDTH_OF_RAM-1 downto 0);
+
+    signal buff_ina : std_logic_vector(WIDTH_OF_RAM-1 downto 0);
+    signal buff_doutb : std_logic_vector(WIDTH_OF_RAM-1 downto 0);
 
 begin
     process (clka)
@@ -44,8 +45,10 @@ begin
             if (ena = '1') then
                 if (wea = '1') then
                     memory(to_integer(unsigned(addra))) := dina;
+                    buff_ina <= dina;
+                else
+                    douta <= memory(to_integer(unsigned(addra)));
                 end if;
-                douta <= memory(to_integer(unsigned(addra)));
             end if;
         end if;
     end process;
@@ -57,8 +60,9 @@ begin
             if (enb = '1') then
                 if (web = '1') then
                     memory(to_integer(unsigned(addrb))) := dinb;
+                else
+                    doutb <= memory(to_integer(unsigned(addrb)));
                 end if;
-                doutb <= memory(to_integer(unsigned(addrb)));
             end if;
         end if;
     end process;

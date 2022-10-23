@@ -64,42 +64,41 @@ begin
 
                         if (enable_load_ram = '1') then
                             state <= LOAD_RAM;
+                            ena <= '1';
+                            wea <= '1'; 
                         end if;
 
 
-
+                        
                     when LOAD_RAM =>
-                        if (enable_load_ram = '1') then
+                        --if (enable_load_ram = '1') then
                             -- si la ram n'est pas encore remplie
                             if (counter_data_to_write < (2**(RAM_SIZE_ADDR))) then
                                 -- écriture dans la ram
-                                addra <= std_logic_vector(to_unsigned(counter_data_to_write, RAM_SIZE_ADDR));
-                                ena <= '1';
-                                wea <= '1';        
+                                addra <= std_logic_vector(to_unsigned(counter_data_to_write, RAM_SIZE_ADDR));       
                                 -- incrémentation du compteur d'addresses
                                 counter_data_to_write <= counter_data_to_write + 1;
                                 state <= LOAD_RAM;
                             else
                                 counter_data_to_write <= 0;
                                 state <= CONFIG_CALCULATION;
+                                ena <= '1';
+                                wea <= '0';
+                                enb <= '1';
+                                web <= '0';
+                                en_rom <= '1';
                             end if;
-                        else
-                            state <= CONFIG_CALCULATION;
-                        end if;
+                       -- else
+                       --     state <= CONFIG_CALCULATION;
+                        --end if;
 
 
                     when CONFIG_CALCULATION => -- chercher la data dans la dpram
 
                         -- lecture de la data dans la ram
                         addra <= std_logic_vector(to_unsigned(counter_nbr_multiplication, RAM_SIZE_ADDR));
-                        ena <= '1';
-                        wea <= '0';
                         addrb <= std_logic_vector(to_unsigned(((2**(RAM_SIZE_ADDR-1))-1 + counter_nbr_multiplication), RAM_SIZE_ADDR));
-                        enb <= '1';
-                        web <= '0';
-
                         -- lecture data dans la rom
-                        en_rom <= '1';
                         addr_rom <= std_logic_vector(to_unsigned(counter_nbr_multiplication, ROM_SIZE_ADDR));
                         state <= CALCULATION;
    
@@ -111,6 +110,9 @@ begin
                         else
                             counter_nbr_multiplication <= 0;
                             start_mul <= '0';
+                            ena <= '0';
+                            enb <= '0';
+                            en_rom <= '0';
                             state <= IDLE;
                         end if;
 
