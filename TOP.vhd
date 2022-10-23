@@ -69,7 +69,7 @@ begin
         port map (
             clk => clk,
             reset => reset,
-            start => s_tile_done(0),
+            start => s_done,
             done => done,
             data_out => Datout_o,
             data_in => s_data_out_tile
@@ -91,7 +91,7 @@ begin
     process (clk)
     begin
         if rising_edge(clk) then
-            if reset = '1' then
+            if reset = '0' then
                 s_done <= '0';
             else
                 for k in 0 to NBR_TILES-1 loop
