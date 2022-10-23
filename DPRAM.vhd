@@ -13,14 +13,14 @@ entity DPRAM is
 
         
         dina : in std_logic_vector(WIDTH_OF_RAM-1 downto 0);
-        addra : in std_logic_vector(SIZE_ADDR-1 downto 0);
+        addra : in std_logic_vector(RAM_SIZE_ADDR-1 downto 0);
         wea : in std_logic;
         ena : in std_logic;
 
         douta : out std_logic_vector(WIDTH_OF_RAM-1 downto 0);
 
         dinb : in std_logic_vector(WIDTH_OF_RAM-1 downto 0);
-        addrb : in std_logic_vector(SIZE_ADDR-1 downto 0);
+        addrb : in std_logic_vector(RAM_SIZE_ADDR-1 downto 0);
         web : in std_logic;
         enb : in std_logic;
 
@@ -31,7 +31,7 @@ end entity;
 
 -- architecture of dram
 architecture rtl of DPRAM is
-    type mem is array ((2**(SIZE_ADDR))-1 downto 0) of std_logic_vector(WIDTH_OF_RAM-1 downto 0);
+    type mem is array ((2**(RAM_SIZE_ADDR))-1 downto 0) of std_logic_vector(WIDTH_OF_RAM-1 downto 0);
     shared variable memory : mem;
 
     --signal buff_douta : std_logic_vector(WIDTH_OF_RAM-1 downto 0);

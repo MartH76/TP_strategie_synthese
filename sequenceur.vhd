@@ -17,11 +17,11 @@ entity sequenceur is
         
     
         -- output for DRAM
-        addra           : out std_logic_vector(SIZE_ADDR-1 downto 0);
+        addra           : out std_logic_vector(RAM_SIZE_ADDR-1 downto 0);
         wea             : out std_logic;
         ena             : out std_logic;
 
-        addrb           : out std_logic_vector(SIZE_ADDR-1 downto 0); 
+        addrb           : out std_logic_vector(RAM_SIZE_ADDR-1 downto 0); 
         web             : out std_logic;
         enb             : out std_logic;
 
@@ -35,7 +35,7 @@ architecture rtl of sequenceur is
     type state_type is (IDLE, LOAD_RAM, CONFIG_CALCULATION, CALCULATION);
     signal state : state_type := IDLE;
 
-    signal counter_data_to_write : integer range 0 to (2**(SIZE_ADDR))-1 := 0;
+    signal counter_data_to_write : integer range 0 to (2**(RAM_SIZE_ADDR))-1 := 0;
 
     signal counter_nbr_multiplication : integer range 0 to (2**(ROM_SIZE_ADDR))-1 := 0;
     
@@ -71,9 +71,9 @@ begin
                     when LOAD_RAM =>
                         if (enable_load_ram = '1') then
                             -- si la ram n'est pas encore remplie
-                            if (counter_data_to_write < (2**(SIZE_ADDR))-1) then
+                            if (counter_data_to_write < (2**(RAM_SIZE_ADDR))-1) then
                                 -- écriture dans la ram
-                                addra <= std_logic_vector(to_unsigned(counter_data_to_write, SIZE_ADDR));
+                                addra <= std_logic_vector(to_unsigned(counter_data_to_write, RAM_SIZE_ADDR));
                                 ena <= '1';
                                 wea <= '1';        
                                 -- incrémentation du compteur d'addresses
@@ -91,10 +91,10 @@ begin
                     when CONFIG_CALCULATION => -- chercher la data dans la dpram
 
                         -- lecture de la data dans la ram
-                        addra <= std_logic_vector(to_unsigned(counter_nbr_multiplication, SIZE_ADDR));
+                        addra <= std_logic_vector(to_unsigned(counter_nbr_multiplication, RAM_SIZE_ADDR));
                         ena <= '1';
                         wea <= '0';
-                        addrb <= std_logic_vector(to_unsigned(((2**(SIZE_ADDR-1))-1 + counter_nbr_multiplication), SIZE_ADDR));
+                        addrb <= std_logic_vector(to_unsigned(((2**(RAM_SIZE_ADDR-1))-1 + counter_nbr_multiplication), RAM_SIZE_ADDR));
                         enb <= '1';
                         web <= '0';
 
