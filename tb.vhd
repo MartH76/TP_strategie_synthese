@@ -30,6 +30,8 @@ architecture bench of top_tb is
   signal Datout_o: std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM + NBR_TILES - 1 downto 0);
   signal select_out: std_logic_vector(NBR_TILES-1 downto 0) := (others => '0');
 
+  variable cpt_remplissage_ram : integer range 0 to (2**RAM_SIZE_ADDR-1) := 0;
+
 begin
 
   uut: top port map ( clk               => clk,
@@ -42,10 +44,24 @@ begin
 
 
     clk <= not clk after 10 ns;
-    reset <= '0' after 100 ns, '1' after 200 ns;
-    input_data <= x"FAB" after 300 ns;
-    enable_load_ram_i <= "11111" after 400 ns; -- penser à inverser les bits generate 0 to NBR_TILES-1
-    select_out <= "11111" after 1000 ns;
-    
+
+    stimulus: process
+    begin
+        reset <= '0';
+        wait for 11 ns;
+        reset <= '1';
+        wait for 23 ns;
+
+        select_out <= "11111" after 1000 ns;
+        --remplissage de la ram
+        while cpt_remplissage_ram < (2**RAM_SIZE_ADDR-1) loop
+            enable_load_ram_i <= "11111";
+            input_data <= in_ram(cpt_remplissage_ram);
+            wait until rising_edge(clk);
+            cpt_remplissage_ram := cpt_remplissage_ram + 1;
+        end loop;
+        wait for 1000 ns;
+ 
+    end process; 
 
 end;

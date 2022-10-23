@@ -3,7 +3,7 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 package tp_pkg is
-    constant NBR_TILES : integer range 0 to 100 := 2; 
+    constant NBR_TILES : integer range 0 to 100 := 5; 
     
      
     constant WIDTH_OF_RAM : integer range 0 to 100 := 12;
