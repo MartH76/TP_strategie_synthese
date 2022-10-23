@@ -27,7 +27,7 @@ architecture bench of top_tb is
   signal input_data: std_logic_vector(WIDTH_OF_RAM-1 downto 0) := (others => '0');
   signal done: std_logic;
   signal enable_load_ram_i: std_logic_vector(NBR_TILES-1 downto 0) := (others => '0');
-  signal Datout_o: std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM + NBR_TILES downto 0);
+  signal Datout_o: std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + WIDTH_OF_ROM + NBR_TILES - 1 downto 0);
   signal select_out: std_logic_vector(NBR_TILES-1 downto 0) := (others => '0');
 
 begin
