@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="top_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="top_tb" />
+            <top_module name="tp_pkg" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="2,206.013 ns"></ZoomEndTime>
+      <Cursor1Time time="1,900.872 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="243"></NameColumnWidth>
+      <ValueColumnWidth column_width="189"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="56" />
+   <wvobject fp_name="/top_tb/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/reset" type="logic">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/input_data" type="array">
+      <obj_property name="ElementShortName">input_data[11:0]</obj_property>
+      <obj_property name="ObjectShortName">input_data[11:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/done" type="logic">
+      <obj_property name="ElementShortName">done</obj_property>
+      <obj_property name="ObjectShortName">done</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/enable_load_ram_i" type="array">
+      <obj_property name="ElementShortName">enable_load_ram_i[4:0]</obj_property>
+      <obj_property name="ObjectShortName">enable_load_ram_i[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/Datout_o" type="array">
+      <obj_property name="ElementShortName">Datout_o[43:0]</obj_property>
+      <obj_property name="ObjectShortName">Datout_o[43:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/select_out" type="array">
+      <obj_property name="ElementShortName">select_out[4:0]</obj_property>
+      <obj_property name="ObjectShortName">select_out[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider8">
+      <obj_property name="label">ram</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/uut/\gen_tiles(0)\/tile_i/DPRAM_1/buff_ina" type="array">
+      <obj_property name="ElementShortName">buff_ina[11:0]</obj_property>
+      <obj_property name="ObjectShortName">buff_ina[11:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/uut/\gen_tiles(0)\/tile_i/DPRAM_1/wea" type="logic">
+      <obj_property name="ElementShortName">wea</obj_property>
+      <obj_property name="ObjectShortName">wea</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/uut/\gen_tiles(0)\/tile_i/DPRAM_1/ena" type="logic">
+      <obj_property name="ElementShortName">ena</obj_property>
+      <obj_property name="ObjectShortName">ena</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/uut/\gen_tiles(0)\/tile_i/DPRAM_1/dina" type="array">
+      <obj_property name="ElementShortName">dina[11:0]</obj_property>
+      <obj_property name="ObjectShortName">dina[11:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/uut/\gen_tiles(0)\/tile_i/DPRAM_1/addra" type="array">
+      <obj_property name="ElementShortName">addra[4:0]</obj_property>
+      <obj_property name="ObjectShortName">addra[4:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/uut/\gen_tiles(0)\/tile_i/DPRAM_1/web" type="logic">
+      <obj_property name="ElementShortName">web</obj_property>
+      <obj_property name="ObjectShortName">web</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/uut/\gen_tiles(0)\/tile_i/DPRAM_1/enb" type="logic">
+      <obj_property name="ElementShortName">enb</obj_property>
+      <obj_property name="ObjectShortName">enb</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/uut/\gen_tiles(0)\/tile_i/DPRAM_1/dinb" type="array">
+      <obj_property name="ElementShortName">dinb[11:0]</obj_property>
+      <obj_property name="ObjectShortName">dinb[11:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/uut/\gen_tiles(0)\/tile_i/DPRAM_1/doutb" type="array">
+      <obj_property name="ElementShortName">doutb[11:0]</obj_property>
+      <obj_property name="ObjectShortName">doutb[11:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/uut/\gen_tiles(0)\/tile_i/DPRAM_1/douta" type="array">
+      <obj_property name="ElementShortName">douta[11:0]</obj_property>
+      <obj_property name="ObjectShortName">douta[11:0]</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider11">
+      <obj_property name="label">rom</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/uut/\gen_tiles(0)\/tile_i/ROM_1/ROM" type="array">
+      <obj_property name="ElementShortName">ROM[15:0][10:0]</obj_property>
+      <obj_property name="ObjectShortName">ROM[15:0][10:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/uut/\gen_tiles(0)\/tile_i/ROM_1/data" type="array">
+      <obj_property name="ElementShortName">data[10:0]</obj_property>
+      <obj_property name="ObjectShortName">data[10:0]</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider14">
+      <obj_property name="label">mul</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/uut/accu/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/uut/\gen_tiles(0)\/tile_i/DPRAM_1/addra" type="array">
+      <obj_property name="ElementShortName">addra[4:0]</obj_property>
+      <obj_property name="ObjectShortName">addra[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/uut/\gen_tiles(0)\/tile_i/DPRAM_1/addrb" type="array">
+      <obj_property name="ElementShortName">addrb[4:0]</obj_property>
+      <obj_property name="ObjectShortName">addrb[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/uut/\gen_tiles(0)\/tile_i/MULTIPLIEUR/sum_a" type="array">
+      <obj_property name="ElementShortName">sum_a[11:0]</obj_property>
+      <obj_property name="ObjectShortName">sum_a[11:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/uut/\gen_tiles(0)\/tile_i/MULTIPLIEUR/sum_b" type="array">
+      <obj_property name="ElementShortName">sum_b[11:0]</obj_property>
+      <obj_property name="ObjectShortName">sum_b[11:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/uut/\gen_tiles(0)\/tile_i/MULTIPLIEUR/multipl" type="array">
+      <obj_property name="ElementShortName">multipl[10:0]</obj_property>
+      <obj_property name="ObjectShortName">multipl[10:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/uut/\gen_tiles(0)\/tile_i/MULTIPLIEUR/mul_out" type="array">
+      <obj_property name="ElementShortName">mul_out[23:0]</obj_property>
+      <obj_property name="ObjectShortName">mul_out[23:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/uut/\gen_tiles(0)\/tile_i/MULTIPLIEUR/start" type="logic">
+      <obj_property name="ElementShortName">start</obj_property>
+      <obj_property name="ObjectShortName">start</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/uut/\gen_tiles(0)\/tile_i/MULTIPLIEUR/done" type="logic">
+      <obj_property name="ElementShortName">done</obj_property>
+      <obj_property name="ObjectShortName">done</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider21">
+      <obj_property name="label">accu</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/select_out" type="array">
+      <obj_property name="ElementShortName">select_out[4:0]</obj_property>
+      <obj_property name="ObjectShortName">select_out[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/uut/\gen_tiles(0)\/tile_i/ACCU/start" type="logic">
+      <obj_property name="ElementShortName">start</obj_property>
+      <obj_property name="ObjectShortName">start</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/uut/\gen_tiles(0)\/tile_i/ACCU/done" type="logic">
+      <obj_property name="ElementShortName">done</obj_property>
+      <obj_property name="ObjectShortName">done</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/uut/\gen_tiles(0)\/tile_i/ACCU/data_in" type="array">
+      <obj_property name="ElementShortName">data_in[23:0]</obj_property>
+      <obj_property name="ObjectShortName">data_in[23:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/uut/\gen_tiles(0)\/tile_i/ACCU/buff_data_out" type="array">
+      <obj_property name="ElementShortName">buff_data_out[38:0]</obj_property>
+      <obj_property name="ObjectShortName">buff_data_out[38:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/uut/\gen_tiles(0)\/tile_i/ACCU/data_out" type="array">
+      <obj_property name="ElementShortName">data_out[38:0]</obj_property>
+      <obj_property name="ObjectShortName">data_out[38:0]</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider27">
+      <obj_property name="label">seq</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/uut/\gen_tiles(0)\/tile_i/SEQ/start_mul" type="logic">
+      <obj_property name="ElementShortName">start_mul</obj_property>
+      <obj_property name="ObjectShortName">start_mul</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/uut/\gen_tiles(0)\/tile_i/SEQ/state" type="other">
+      <obj_property name="ElementShortName">state</obj_property>
+      <obj_property name="ObjectShortName">state</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/uut/\gen_tiles(0)\/tile_i/SEQ/counter_data_to_write" type="other">
+      <obj_property name="ElementShortName">counter_data_to_write</obj_property>
+      <obj_property name="ObjectShortName">counter_data_to_write</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/uut/\gen_tiles(0)\/tile_i/SEQ/counter_nbr_multiplication" type="other">
+      <obj_property name="ElementShortName">counter_nbr_multiplication</obj_property>
+      <obj_property name="ObjectShortName">counter_nbr_multiplication</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider32">
+      <obj_property name="label">accu_tot</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/uut/accu/data_in" type="array">
+      <obj_property name="ElementShortName">data_in[0:4][38:0]</obj_property>
+      <obj_property name="ObjectShortName">data_in[0:4][38:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/uut/accu/start" type="logic">
+      <obj_property name="ElementShortName">start</obj_property>
+      <obj_property name="ObjectShortName">start</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/uut/accu/done" type="logic">
+      <obj_property name="ElementShortName">done</obj_property>
+      <obj_property name="ObjectShortName">done</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/uut/accu/data_out" type="array">
+      <obj_property name="ElementShortName">data_out[43:0]</obj_property>
+      <obj_property name="ObjectShortName">data_out[43:0]</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider651">
+      <obj_property name="label">tile</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/uut/\gen_tiles(0)\/tile_i/s_ena" type="logic">
+      <obj_property name="ElementShortName">s_ena</obj_property>
+      <obj_property name="ObjectShortName">s_ena</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/uut/\gen_tiles(0)\/tile_i/s_enb" type="logic">
+      <obj_property name="ElementShortName">s_enb</obj_property>
+      <obj_property name="ObjectShortName">s_enb</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/uut/\gen_tiles(0)\/tile_i/s_wea" type="logic">
+      <obj_property name="ElementShortName">s_wea</obj_property>
+      <obj_property name="ObjectShortName">s_wea</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/uut/\gen_tiles(0)\/tile_i/s_web" type="logic">
+      <obj_property name="ElementShortName">s_web</obj_property>
+      <obj_property name="ObjectShortName">s_web</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/uut/\gen_tiles(0)\/tile_i/s_start_mul" type="logic">
+      <obj_property name="ElementShortName">s_start_mul</obj_property>
+      <obj_property name="ObjectShortName">s_start_mul</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/uut/\gen_tiles(0)\/tile_i/s_done_mul" type="logic">
+      <obj_property name="ElementShortName">s_done_mul</obj_property>
+      <obj_property name="ObjectShortName">s_done_mul</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/uut/\gen_tiles(0)\/tile_i/enable_load_ram" type="logic">
+      <obj_property name="ElementShortName">enable_load_ram</obj_property>
+      <obj_property name="ObjectShortName">enable_load_ram</obj_property>
+   </wvobject>
+</wave_config>

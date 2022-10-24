@@ -1,0 +1,15 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../../tp_pkg.vhd" \
+"../../../../../DPRAM.vhd" \
+"../../../../../MUL.vhd" \
+"../../../../../ROM.vhd" \
+"../../../../../TOP.vhd" \
+"../../../../../Tile.vhd" \
+"../../../../../accu_tile.vhd" \
+"../../../../../accu_tot.vhd" \
+"../../../../../sequenceur.vhd" \
+"../../../../../tb.vhd" \
+
+# Do not sort compile order
+nosort
