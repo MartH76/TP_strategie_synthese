@@ -1,0 +1,1208 @@
+Release 14.7 - xst P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> 
+Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.02 secs
+ 
+--> 
+Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.02 secs
+ 
+--> 
+Reading design: top.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "top.prj"
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "top"
+Output Format                      : NGC
+Target Device                      : xc6vcx75t-2-ff484
+
+---- Source Options
+Top Module Name                    : top
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Shift Register Extraction          : YES
+ROM Style                          : Auto
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Shift Register Minimum Size        : 2
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Auto
+Reduce Control Sets                : Auto
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 32
+Register Duplication               : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Parsing VHDL file "/home/martin/Desktop/TP_strategie_synthese/tp_pkg.vhd" into library work
+Parsing package <tp_pkg>.
+Parsing VHDL file "/home/martin/Desktop/TP_strategie_synthese/sequenceur.vhd" into library work
+Parsing entity <sequenceur>.
+Parsing architecture <rtl> of entity <sequenceur>.
+Parsing VHDL file "/home/martin/Desktop/TP_strategie_synthese/ROM.vhd" into library work
+Parsing entity <ROM>.
+Parsing architecture <rtl> of entity <rom>.
+Parsing VHDL file "/home/martin/Desktop/TP_strategie_synthese/MUL.vhd" into library work
+Parsing entity <mul>.
+Parsing architecture <rtl> of entity <mul>.
+Parsing VHDL file "/home/martin/Desktop/TP_strategie_synthese/DPRAM.vhd" into library work
+Parsing entity <DPRAM>.
+Parsing architecture <rtl> of entity <dpram>.
+Parsing VHDL file "/home/martin/Desktop/TP_strategie_synthese/accu_tile.vhd" into library work
+Parsing entity <accu_tile>.
+Parsing architecture <rtl> of entity <accu_tile>.
+Parsing VHDL file "/home/martin/Desktop/TP_strategie_synthese/Tile.vhd" into library work
+Parsing entity <Tile>.
+Parsing architecture <rtl> of entity <tile>.
+Parsing VHDL file "/home/martin/Desktop/TP_strategie_synthese/accu_tot.vhd" into library work
+Parsing entity <accu_tot>.
+Parsing architecture <rtl> of entity <accu_tot>.
+Parsing VHDL file "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" into library work
+Parsing entity <top>.
+Parsing architecture <rtl> of entity <top>.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating entity <top> (architecture <rtl>) from library <work>.
+
+Elaborating entity <accu_tot> (architecture <rtl>) from library <work>.
+
+Elaborating entity <Tile> (architecture <rtl>) from library <work>.
+
+Elaborating entity <DPRAM> (architecture <rtl>) from library <work>.
+WARNING:HDLCompiler:1127 - "/home/martin/Desktop/TP_strategie_synthese/DPRAM.vhd" Line 43: Assignment to buff_ina ignored, since the identifier is never used
+
+Elaborating entity <ROM> (architecture <rtl>) from library <work>.
+
+Elaborating entity <mul> (architecture <rtl>) from library <work>.
+
+Elaborating entity <accu_tile> (architecture <rtl>) from library <work>.
+
+Elaborating entity <sequenceur> (architecture <rtl>) from library <work>.
+INFO:HDLCompiler:679 - "/home/martin/Desktop/TP_strategie_synthese/sequenceur.vhd" Line 124. Case statement is complete. others clause is never selected
+WARNING:HDLCompiler:1127 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" Line 91: Assignment to s_done ignored, since the identifier is never used
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <top>.
+    Related source file is "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd".
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[1].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[2].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[3].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[4].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[5].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[6].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[7].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[8].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[9].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[10].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[11].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[12].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[13].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[14].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[15].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[16].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[17].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[18].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[19].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[20].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[21].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[22].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[23].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[24].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[25].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[26].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[27].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[28].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[29].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[30].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[31].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[32].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[33].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[34].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[35].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[36].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[37].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[38].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[39].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[40].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[41].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[42].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[43].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[44].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[45].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[46].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[47].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[48].tile_i> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/martin/Desktop/TP_strategie_synthese/TOP.vhd" line 79: Output port <done> of the instance <gen_tiles[49].tile_i> is unconnected or connected to loadless signal.
+    Summary:
+	no macro.
+Unit <top> synthesized.
+
+Synthesizing Unit <accu_tot>.
+    Related source file is "/home/martin/Desktop/TP_strategie_synthese/accu_tot.vhd".
+    Found 89-bit register for signal <data_out>.
+    Found 89-bit register for signal <buff_data_out>.
+    Found 1-bit register for signal <s_done>.
+    Found 89-bit adder for signal <_n0370> created at line 36.
+    Found 89-bit adder for signal <_n0371> created at line 36.
+    Found 89-bit adder for signal <_n0372> created at line 36.
+    Found 89-bit adder for signal <_n0373> created at line 36.
+    Found 89-bit adder for signal <_n0374> created at line 36.
+    Found 89-bit adder for signal <_n0375> created at line 36.
+    Found 89-bit adder for signal <_n0376> created at line 36.
+    Found 89-bit adder for signal <_n0377> created at line 36.
+    Found 89-bit adder for signal <_n0378> created at line 36.
+    Found 89-bit adder for signal <_n0379> created at line 36.
+    Found 89-bit adder for signal <_n0380> created at line 36.
+    Found 89-bit adder for signal <_n0381> created at line 36.
+    Found 89-bit adder for signal <_n0382> created at line 36.
+    Found 89-bit adder for signal <_n0383> created at line 36.
+    Found 89-bit adder for signal <_n0384> created at line 36.
+    Found 89-bit adder for signal <_n0385> created at line 36.
+    Found 89-bit adder for signal <_n0386> created at line 36.
+    Found 89-bit adder for signal <_n0387> created at line 36.
+    Found 89-bit adder for signal <_n0388> created at line 36.
+    Found 89-bit adder for signal <_n0389> created at line 36.
+    Found 89-bit adder for signal <_n0390> created at line 36.
+    Found 89-bit adder for signal <_n0391> created at line 36.
+    Found 89-bit adder for signal <_n0392> created at line 36.
+    Found 89-bit adder for signal <_n0393> created at line 36.
+    Found 89-bit adder for signal <_n0394> created at line 36.
+    Found 89-bit adder for signal <_n0395> created at line 36.
+    Found 89-bit adder for signal <_n0396> created at line 36.
+    Found 89-bit adder for signal <_n0397> created at line 36.
+    Found 89-bit adder for signal <_n0398> created at line 36.
+    Found 89-bit adder for signal <_n0399> created at line 36.
+    Found 89-bit adder for signal <_n0400> created at line 36.
+    Found 89-bit adder for signal <_n0401> created at line 36.
+    Found 89-bit adder for signal <_n0402> created at line 36.
+    Found 89-bit adder for signal <_n0403> created at line 36.
+    Found 89-bit adder for signal <_n0404> created at line 36.
+    Found 89-bit adder for signal <_n0405> created at line 36.
+    Found 89-bit adder for signal <_n0406> created at line 36.
+    Found 89-bit adder for signal <_n0407> created at line 36.
+    Found 89-bit adder for signal <_n0408> created at line 36.
+    Found 89-bit adder for signal <_n0409> created at line 36.
+    Found 89-bit adder for signal <_n0410> created at line 36.
+    Found 89-bit adder for signal <_n0411> created at line 36.
+    Found 89-bit adder for signal <_n0412> created at line 36.
+    Found 89-bit adder for signal <_n0413> created at line 36.
+    Found 89-bit adder for signal <_n0414> created at line 36.
+    Found 89-bit adder for signal <_n0415> created at line 36.
+    Found 89-bit adder for signal <_n0416> created at line 36.
+    Found 89-bit adder for signal <_n0417> created at line 36.
+    Found 89-bit adder for signal <_n0418> created at line 36.
+    Found 89-bit adder for signal <buff_data_out[88]_GND_6_o_add_49_OUT> created at line 36.
+    Summary:
+	inferred  50 Adder/Subtractor(s).
+	inferred 179 D-type flip-flop(s).
+Unit <accu_tot> synthesized.
+
+Synthesizing Unit <Tile>.
+    Related source file is "/home/martin/Desktop/TP_strategie_synthese/Tile.vhd".
+    Summary:
+	no macro.
+Unit <Tile> synthesized.
+
+Synthesizing Unit <DPRAM>.
+    Related source file is "/home/martin/Desktop/TP_strategie_synthese/DPRAM.vhd".
+    Found 32x12-bit dual-port RAM <Mram_memory> for signal <memory>.
+    Found 12-bit register for signal <Z_8_o_dff_6_OUT>.
+    Found 1-bit register for signal <ena_clka_DFF_103>.
+    Found 1-bit register for signal <ena_clka_DFF_104>.
+    Found 1-bit register for signal <ena_clka_DFF_105>.
+    Found 1-bit register for signal <ena_clka_DFF_106>.
+    Found 1-bit register for signal <ena_clka_DFF_107>.
+    Found 1-bit register for signal <ena_clka_DFF_108>.
+    Found 1-bit register for signal <ena_clka_DFF_109>.
+    Found 1-bit register for signal <ena_clka_DFF_110>.
+    Found 1-bit register for signal <ena_clka_DFF_111>.
+    Found 1-bit register for signal <ena_clka_DFF_112>.
+    Found 1-bit register for signal <ena_clka_DFF_113>.
+    Found 1-bit register for signal <ena_clka_DFF_114>.
+    Found 12-bit register for signal <Z_8_o_dff_11_OUT>.
+    Found 1-bit register for signal <enb_clkb_DFF_115>.
+    Found 1-bit register for signal <enb_clkb_DFF_116>.
+    Found 1-bit register for signal <enb_clkb_DFF_117>.
+    Found 1-bit register for signal <enb_clkb_DFF_118>.
+    Found 1-bit register for signal <enb_clkb_DFF_119>.
+    Found 1-bit register for signal <enb_clkb_DFF_120>.
+    Found 1-bit register for signal <enb_clkb_DFF_121>.
+    Found 1-bit register for signal <enb_clkb_DFF_122>.
+    Found 1-bit register for signal <enb_clkb_DFF_123>.
+    Found 1-bit register for signal <enb_clkb_DFF_124>.
+    Found 1-bit register for signal <enb_clkb_DFF_125>.
+    Found 1-bit register for signal <enb_clkb_DFF_126>.
+    Found 1-bit tristate buffer for signal <douta<11>> created at line 43
+    Found 1-bit tristate buffer for signal <douta<10>> created at line 43
+    Found 1-bit tristate buffer for signal <douta<9>> created at line 43
+    Found 1-bit tristate buffer for signal <douta<8>> created at line 43
+    Found 1-bit tristate buffer for signal <douta<7>> created at line 43
+    Found 1-bit tristate buffer for signal <douta<6>> created at line 43
+    Found 1-bit tristate buffer for signal <douta<5>> created at line 43
+    Found 1-bit tristate buffer for signal <douta<4>> created at line 43
+    Found 1-bit tristate buffer for signal <douta<3>> created at line 43
+    Found 1-bit tristate buffer for signal <douta<2>> created at line 43
+    Found 1-bit tristate buffer for signal <douta<1>> created at line 43
+    Found 1-bit tristate buffer for signal <douta<0>> created at line 43
+    Found 1-bit tristate buffer for signal <doutb<11>> created at line 58
+    Found 1-bit tristate buffer for signal <doutb<10>> created at line 58
+    Found 1-bit tristate buffer for signal <doutb<9>> created at line 58
+    Found 1-bit tristate buffer for signal <doutb<8>> created at line 58
+    Found 1-bit tristate buffer for signal <doutb<7>> created at line 58
+    Found 1-bit tristate buffer for signal <doutb<6>> created at line 58
+    Found 1-bit tristate buffer for signal <doutb<5>> created at line 58
+    Found 1-bit tristate buffer for signal <doutb<4>> created at line 58
+    Found 1-bit tristate buffer for signal <doutb<3>> created at line 58
+    Found 1-bit tristate buffer for signal <doutb<2>> created at line 58
+    Found 1-bit tristate buffer for signal <doutb<1>> created at line 58
+    Found 1-bit tristate buffer for signal <doutb<0>> created at line 58
+    Summary:
+	inferred   1 RAM(s).
+	inferred  48 D-type flip-flop(s).
+	inferred   4 Multiplexer(s).
+	inferred  24 Tristate(s).
+Unit <DPRAM> synthesized.
+
+Synthesizing Unit <ROM>.
+    Related source file is "/home/martin/Desktop/TP_strategie_synthese/ROM.vhd".
+    Found 11-bit register for signal <data>.
+    Found 16x11-bit Read Only RAM for signal <addr[3]_GND_57_o_wide_mux_0_OUT>
+    Summary:
+	inferred   1 RAM(s).
+	inferred  11 D-type flip-flop(s).
+Unit <ROM> synthesized.
+
+Synthesizing Unit <mul>.
+    Related source file is "/home/martin/Desktop/TP_strategie_synthese/MUL.vhd".
+    Found 24-bit register for signal <buff_calc>.
+    Found 1-bit register for signal <done>.
+    Found 13-bit adder for signal <n0016> created at line 37.
+    Found 13x11-bit multiplier for signal <BUS_0001_multipl[10]_MuLt_1_OUT> created at line 37.
+    Summary:
+	inferred   1 Multiplier(s).
+	inferred   1 Adder/Subtractor(s).
+	inferred  25 D-type flip-flop(s).
+	inferred   1 Multiplexer(s).
+Unit <mul> synthesized.
+
+Synthesizing Unit <accu_tile>.
+    Related source file is "/home/martin/Desktop/TP_strategie_synthese/accu_tile.vhd".
+    Found 5-bit register for signal <counter_accu_tile>.
+    Found 39-bit register for signal <buff_data_out>.
+    Found 1-bit register for signal <done>.
+    Found 39-bit adder for signal <buff_data_out[38]_GND_60_o_add_3_OUT> created at line 53.
+    Found 5-bit adder for signal <counter_accu_tile[4]_GND_60_o_add_4_OUT> created at line 55.
+    Summary:
+	inferred   2 Adder/Subtractor(s).
+	inferred  45 D-type flip-flop(s).
+	inferred   3 Multiplexer(s).
+Unit <accu_tile> synthesized.
+
+Synthesizing Unit <sequenceur>.
+    Related source file is "/home/martin/Desktop/TP_strategie_synthese/sequenceur.vhd".
+    Found 6-bit register for signal <counter_data_to_write>.
+    Found 5-bit register for signal <counter_nbr_multiplication>.
+    Found 1-bit register for signal <start_mul>.
+    Found 1-bit register for signal <ena>.
+    Found 1-bit register for signal <enb>.
+    Found 1-bit register for signal <en_rom>.
+    Found 5-bit register for signal <addra>.
+    Found 5-bit register for signal <addrb>.
+    Found 1-bit register for signal <wea>.
+    Found 1-bit register for signal <web>.
+    Found 4-bit register for signal <addr_rom>.
+    Found 1-bit register for signal <start_accu>.
+    Found 2-bit register for signal <state>.
+    Found finite state machine <FSM_0> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 4                                              |
+    | Transitions        | 8                                              |
+    | Inputs             | 3                                              |
+    | Outputs            | 7                                              |
+    | Clock              | clk (rising_edge)                              |
+    | Reset              | reset_INV_46_o (positive)                      |
+    | Reset type         | synchronous                                    |
+    | Reset State        | idle                                           |
+    | Power Up State     | idle                                           |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 6-bit adder for signal <counter_data_to_write[5]_GND_61_o_add_1_OUT> created at line 80.
+    Found 5-bit adder for signal <PWR_36_o_counter_nbr_multiplication[4]_add_13_OUT> created at line 105.
+    Found 5-bit adder for signal <counter_nbr_multiplication[4]_GND_61_o_add_15_OUT> created at line 113.
+    Found 6-bit comparator greater for signal <counter_data_to_write[5]_PWR_36_o_LessThan_3_o> created at line 82
+    Found 5-bit comparator greater for signal <counter_nbr_multiplication[4]_PWR_36_o_LessThan_15_o> created at line 112
+    Summary:
+	inferred   3 Adder/Subtractor(s).
+	inferred  31 D-type flip-flop(s).
+	inferred   2 Comparator(s).
+	inferred   8 Multiplexer(s).
+	inferred   1 Finite State Machine(s).
+Unit <sequenceur> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 100
+ 16x11-bit single-port Read Only RAM                   : 50
+ 32x12-bit dual-port RAM                               : 50
+# Multipliers                                          : 50
+ 13x11-bit multiplier                                  : 50
+# Adders/Subtractors                                   : 350
+ 13-bit adder                                          : 50
+ 39-bit adder                                          : 50
+ 5-bit adder                                           : 150
+ 6-bit adder                                           : 50
+ 89-bit adder                                          : 50
+# Registers                                            : 2153
+ 1-bit register                                        : 1601
+ 11-bit register                                       : 50
+ 12-bit register                                       : 100
+ 24-bit register                                       : 50
+ 39-bit register                                       : 50
+ 4-bit register                                        : 50
+ 5-bit register                                        : 200
+ 6-bit register                                        : 50
+ 89-bit register                                       : 2
+# Comparators                                          : 100
+ 5-bit comparator greater                              : 50
+ 6-bit comparator greater                              : 50
+# Multiplexers                                         : 800
+ 1-bit 2-to-1 multiplexer                              : 50
+ 12-bit 2-to-1 multiplexer                             : 200
+ 24-bit 2-to-1 multiplexer                             : 50
+ 39-bit 2-to-1 multiplexer                             : 100
+ 4-bit 2-to-1 multiplexer                              : 50
+ 5-bit 2-to-1 multiplexer                              : 300
+ 6-bit 2-to-1 multiplexer                              : 50
+# Tristates                                            : 1200
+ 1-bit tristate buffer                                 : 1200
+# FSMs                                                 : 50
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM_1> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+
+Synthesizing (advanced) Unit <DPRAM>.
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram_memory> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 32-word x 12-bit                    |          |
+    |     clkA           | connected to signal <clka>          | rise     |
+    |     weA            | connected to internal node          | high     |
+    |     addrA          | connected to signal <addra>         |          |
+    |     diA            | connected to signal <dina>          |          |
+    |     doA            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+    | Port B                                                              |
+    |     aspect ratio   | 32-word x 12-bit                    |          |
+    |     clkB           | connected to signal <clkb>          | rise     |
+    |     weB            | connected to internal node          | high     |
+    |     addrB          | connected to signal <addrb>         |          |
+    |     diB            | connected to signal <dinb>          |          |
+    |     doB            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+Unit <DPRAM> synthesized (advanced).
+
+Synthesizing (advanced) Unit <ROM>.
+INFO:Xst:3231 - The small RAM <Mram_addr[3]_GND_57_o_wide_mux_0_OUT> will be implemented on LUTs in order to maximize performance and save block RAM resources. If you want to force its implementation on block, use option/constraint ram_style.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 16-word x 11-bit                    |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <addr>          |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+Unit <ROM> synthesized (advanced).
+
+Synthesizing (advanced) Unit <accu_tile>.
+The following registers are absorbed into accumulator <buff_data_out>: 1 register on signal <buff_data_out>.
+The following registers are absorbed into counter <counter_accu_tile>: 1 register on signal <counter_accu_tile>.
+Unit <accu_tile> synthesized (advanced).
+
+Synthesizing (advanced) Unit <accu_tot>.
+The following registers are absorbed into accumulator <buff_data_out>: 1 register on signal <buff_data_out>.
+Unit <accu_tot> synthesized (advanced).
+
+Synthesizing (advanced) Unit <mul>.
+	Adder/Subtractor <Madd_n0016> in block <mul> and  <Mmult_BUS_0001_multipl[10]_MuLt_1_OUT> in block <mul> are combined into a MULT with pre-adder <Mmult_BUS_0001_multipl[10]_MuLt_1_OUT1>.
+Unit <mul> synthesized (advanced).
+
+Synthesizing (advanced) Unit <sequenceur>.
+The following registers are absorbed into counter <counter_data_to_write>: 1 register on signal <counter_data_to_write>.
+The following registers are absorbed into counter <counter_nbr_multiplication>: 1 register on signal <counter_nbr_multiplication>.
+Unit <sequenceur> synthesized (advanced).
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 100
+ 16x11-bit single-port distributed Read Only RAM       : 50
+ 32x12-bit dual-port distributed RAM                   : 50
+# MACs                                                 : 50
+ 13x11-to-24-bit Mult with pre-adder                   : 50
+# Adders/Subtractors                                   : 100
+ 5-bit adder                                           : 50
+ 89-bit adder                                          : 50
+# Counters                                             : 150
+ 5-bit up counter                                      : 100
+ 6-bit up counter                                      : 50
+# Accumulators                                         : 51
+ 39-bit up loadable accumulator                        : 50
+ 89-bit up accumulator                                 : 1
+# Registers                                            : 5340
+ Flip-Flops                                            : 5340
+# Comparators                                          : 100
+ 5-bit comparator greater                              : 50
+ 6-bit comparator greater                              : 50
+# Multiplexers                                         : 600
+ 1-bit 2-to-1 multiplexer                              : 50
+ 12-bit 2-to-1 multiplexer                             : 200
+ 24-bit 2-to-1 multiplexer                             : 50
+ 39-bit 2-to-1 multiplexer                             : 50
+ 4-bit 2-to-1 multiplexer                              : 50
+ 5-bit 2-to-1 multiplexer                              : 200
+# FSMs                                                 : 50
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+INFO:Xst:2261 - The FF/Latch <ena_clka_DFF_105> in Unit <DPRAM> is equivalent to the following 11 FFs/Latches, which will be removed : <ena_clka_DFF_103> <ena_clka_DFF_104> <ena_clka_DFF_106> <ena_clka_DFF_107> <ena_clka_DFF_108> <ena_clka_DFF_109> <ena_clka_DFF_112> <ena_clka_DFF_110> <ena_clka_DFF_111> <ena_clka_DFF_113> <ena_clka_DFF_114> 
+INFO:Xst:2261 - The FF/Latch <enb_clkb_DFF_115> in Unit <DPRAM> is equivalent to the following 11 FFs/Latches, which will be removed : <enb_clkb_DFF_118> <enb_clkb_DFF_116> <enb_clkb_DFF_117> <enb_clkb_DFF_119> <enb_clkb_DFF_120> <enb_clkb_DFF_121> <enb_clkb_DFF_122> <enb_clkb_DFF_125> <enb_clkb_DFF_123> <enb_clkb_DFF_124> <enb_clkb_DFF_126> 
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <gen_tiles[49].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[48].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[47].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[46].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[45].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[44].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[43].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[42].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[41].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[40].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[39].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[38].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[37].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[36].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[35].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[34].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[33].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[32].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[31].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[30].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[29].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[28].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[27].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[26].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[25].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[24].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[23].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[22].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[21].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[20].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[19].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[18].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[17].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[16].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[15].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[14].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[13].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[12].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[11].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[10].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[9].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[8].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[7].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[6].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[5].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[4].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[3].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[2].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[1].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+Optimizing FSM <gen_tiles[0].tile_i/SEQ/FSM_0> on signal <state[1:2]> with user encoding.
+--------------------------------
+ State              | Encoding
+--------------------------------
+ idle               | 00
+ load_ram           | 01
+ config_calculation | 10
+ calculation        | 11
+--------------------------------
+INFO:Xst:2261 - The FF/Latch <data_4> in Unit <ROM> is equivalent to the following 6 FFs/Latches, which will be removed : <data_5> <data_6> <data_7> <data_8> <data_9> <data_10> 
+INFO:Xst:2261 - The FF/Latch <en_rom> in Unit <sequenceur> is equivalent to the following FF/Latch, which will be removed : <enb> 
+WARNING:Xst:2042 - Unit DPRAM: 24 internal tristates are replaced by logic (pull-up yes): douta<0>, douta<10>, douta<11>, douta<1>, douta<2>, douta<3>, douta<4>, douta<5>, douta<6>, douta<7>, douta<8>, douta<9>, doutb<0>, doutb<10>, doutb<11>, doutb<1>, doutb<2>, doutb<3>, doutb<4>, doutb<5>, doutb<6>, doutb<7>, doutb<8>, doutb<9>.
+
+Optimizing unit <top> ...
+
+Optimizing unit <DPRAM> ...
+
+Optimizing unit <ROM> ...
+
+Optimizing unit <mul> ...
+
+Optimizing unit <accu_tile> ...
+
+Optimizing unit <sequenceur> ...
+
+Optimizing unit <accu_tot> ...
+WARNING:Xst:2677 - Node <gen_tiles[1].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[2].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[3].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[4].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[5].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[6].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[7].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[8].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[9].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[10].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[11].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[12].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[13].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[14].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[15].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[16].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[17].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[18].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[19].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[20].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[21].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[22].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[23].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[24].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[25].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[26].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[27].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[28].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[29].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[30].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[31].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[32].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[33].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[34].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[35].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[36].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[37].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[38].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[39].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[40].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[41].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[42].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[43].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[44].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[45].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[46].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[47].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[48].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <gen_tiles[49].tile_i/ACCU/done> of sequential type is unconnected in block <top>.
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block top, actual ratio is 130.
+Optimizing block <top> to meet ratio 100 (+ 5) of 11640 slices :
+WARNING:Xst:2254 - Area constraint could not be met for block <top>, final ratio is 130.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 25730
+ Flip-Flops                                            : 25730
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : top.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 52474
+#      GND                         : 1
+#      INV                         : 251
+#      LUT1                        : 1
+#      LUT2                        : 24572
+#      LUT3                        : 2351
+#      LUT4                        : 1718
+#      LUT5                        : 1477
+#      LUT6                        : 13750
+#      MUXCY                       : 3540
+#      MUXF7                       : 1200
+#      VCC                         : 1
+#      XORCY                       : 3612
+# FlipFlops/Latches                : 25730
+#      FD                          : 1351
+#      FDC                         : 1200
+#      FDCE                        : 2290
+#      FDE                         : 20000
+#      FDR                         : 200
+#      FDRE                        : 689
+# Clock Buffers                    : 2
+#      BUFG                        : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 203
+#      IBUF                        : 113
+#      OBUF                        : 90
+# DSPs                             : 50
+#      DSP48E1                     : 50
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 6vcx75tff484-2 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:           25730  out of  93120    27%  
+ Number of Slice LUTs:                44120  out of  46560    94%  
+    Number used as Logic:             44120  out of  46560    94%  
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:  47645
+   Number with an unused Flip Flop:   21915  out of  47645    45%  
+   Number with an unused LUT:          3525  out of  47645     7%  
+   Number of fully used LUT-FF pairs: 22205  out of  47645    46%  
+   Number of unique control sets:      1957
+
+IO Utilization: 
+ Number of IOs:                         204
+ Number of bonded IOBs:                 204  out of    240    85%  
+
+Specific Feature Utilization:
+ Number of BUFG/BUFGCTRLs:                2  out of     32     6%  
+ Number of DSP48E1s:                     50  out of    288    17%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk                                | BUFGP                  | 25780 |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -2
+
+   Minimum period: 8.712ns (Maximum Frequency: 114.785MHz)
+   Minimum input arrival time before clock: 8.665ns
+   Maximum output required time after clock: 0.671ns
+   Maximum combinational path delay: No path found
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 8.712ns (frequency: 114.785MHz)
+  Total number of paths / destination ports: 7877014183095 / 49209
+-------------------------------------------------------------------------
+Delay:               8.712ns (Levels of Logic = 100)
+  Source:            gen_tiles[3].tile_i/ACCU/buff_data_out_0 (FF)
+  Destination:       accu/buff_data_out_88 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: gen_tiles[3].tile_i/ACCU/buff_data_out_0 to accu/buff_data_out_88
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDCE:C->Q             3   0.317   0.438  gen_tiles[3].tile_i/ACCU/buff_data_out_0 (gen_tiles[3].tile_i/ACCU/buff_data_out_0)
+     LUT4:I2->O            1   0.061   0.000  accu/Madd__n0382_lut<0> (accu/Madd__n0382_lut<0>)
+     MUXCY:S->O            1   0.248   0.000  accu/Madd__n0382_cy<0> (accu/Madd__n0382_cy<0>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<1> (accu/Madd__n0382_cy<1>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<2> (accu/Madd__n0382_cy<2>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<3> (accu/Madd__n0382_cy<3>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<4> (accu/Madd__n0382_cy<4>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<5> (accu/Madd__n0382_cy<5>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<6> (accu/Madd__n0382_cy<6>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<7> (accu/Madd__n0382_cy<7>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<8> (accu/Madd__n0382_cy<8>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<9> (accu/Madd__n0382_cy<9>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<10> (accu/Madd__n0382_cy<10>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<11> (accu/Madd__n0382_cy<11>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<12> (accu/Madd__n0382_cy<12>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<13> (accu/Madd__n0382_cy<13>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<14> (accu/Madd__n0382_cy<14>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<15> (accu/Madd__n0382_cy<15>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<16> (accu/Madd__n0382_cy<16>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<17> (accu/Madd__n0382_cy<17>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<18> (accu/Madd__n0382_cy<18>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<19> (accu/Madd__n0382_cy<19>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<20> (accu/Madd__n0382_cy<20>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<21> (accu/Madd__n0382_cy<21>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<22> (accu/Madd__n0382_cy<22>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<23> (accu/Madd__n0382_cy<23>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<24> (accu/Madd__n0382_cy<24>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<25> (accu/Madd__n0382_cy<25>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<26> (accu/Madd__n0382_cy<26>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<27> (accu/Madd__n0382_cy<27>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<28> (accu/Madd__n0382_cy<28>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<29> (accu/Madd__n0382_cy<29>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<30> (accu/Madd__n0382_cy<30>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<31> (accu/Madd__n0382_cy<31>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<32> (accu/Madd__n0382_cy<32>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<33> (accu/Madd__n0382_cy<33>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<34> (accu/Madd__n0382_cy<34>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<35> (accu/Madd__n0382_cy<35>)
+     XORCY:CI->O           2   0.204   0.362  accu/Madd__n0382_xor<36> (accu/_n0382<36>)
+     LUT3:I2->O            1   0.061   0.357  accu/Madd__n038336 (accu/Madd__n038336)
+     LUT4:I3->O            1   0.061   0.000  accu/Madd__n0383_lut<0>37 (accu/Madd__n0383_lut<0>37)
+     MUXCY:S->O            1   0.248   0.000  accu/Madd__n0383_cy<0>_36 (accu/Madd__n0383_cy<0>37)
+     XORCY:CI->O           2   0.204   0.362  accu/Madd__n0383_xor<0>_37 (accu/_n0383<38>)
+     LUT3:I2->O            1   0.061   0.357  accu/Madd__n038438 (accu/Madd__n038438)
+     LUT2:I1->O            1   0.061   0.000  accu/Madd__n0384_lut<0>39 (accu/Madd__n0384_lut<0>39)
+     MUXCY:S->O            1   0.248   0.000  accu/Madd__n0384_cy<0>_38 (accu/Madd__n0384_cy<0>39)
+     MUXCY:CI->O           0   0.017   0.000  accu/Madd__n0384_cy<0>_39 (accu/Madd__n0384_cy<0>40)
+     XORCY:CI->O           2   0.204   0.431  accu/Madd__n0384_xor<0>_40 (accu/_n0384<41>)
+     LUT3:I1->O            1   0.061   0.357  accu/Madd__n038641 (accu/Madd__n038641)
+     LUT4:I3->O            1   0.061   0.000  accu/Madd__n0386_lut<0>42 (accu/Madd__n0386_lut<0>42)
+     MUXCY:S->O            1   0.248   0.000  accu/Madd__n0386_cy<0>_41 (accu/Madd__n0386_cy<0>42)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_42 (accu/Madd__n0386_cy<0>43)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_43 (accu/Madd__n0386_cy<0>44)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_44 (accu/Madd__n0386_cy<0>45)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_45 (accu/Madd__n0386_cy<0>46)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_46 (accu/Madd__n0386_cy<0>47)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_47 (accu/Madd__n0386_cy<0>48)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_48 (accu/Madd__n0386_cy<0>49)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_49 (accu/Madd__n0386_cy<0>50)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_50 (accu/Madd__n0386_cy<0>51)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_51 (accu/Madd__n0386_cy<0>52)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_52 (accu/Madd__n0386_cy<0>53)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_53 (accu/Madd__n0386_cy<0>54)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_54 (accu/Madd__n0386_cy<0>55)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_55 (accu/Madd__n0386_cy<0>56)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_56 (accu/Madd__n0386_cy<0>57)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_57 (accu/Madd__n0386_cy<0>58)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_58 (accu/Madd__n0386_cy<0>59)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_59 (accu/Madd__n0386_cy<0>60)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_60 (accu/Madd__n0386_cy<0>61)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_61 (accu/Madd__n0386_cy<0>62)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_62 (accu/Madd__n0386_cy<0>63)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_63 (accu/Madd__n0386_cy<0>64)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_64 (accu/Madd__n0386_cy<0>65)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_65 (accu/Madd__n0386_cy<0>66)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_66 (accu/Madd__n0386_cy<0>67)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_67 (accu/Madd__n0386_cy<0>68)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_68 (accu/Madd__n0386_cy<0>69)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_69 (accu/Madd__n0386_cy<0>70)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_70 (accu/Madd__n0386_cy<0>71)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_71 (accu/Madd__n0386_cy<0>72)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_72 (accu/Madd__n0386_cy<0>73)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_73 (accu/Madd__n0386_cy<0>74)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_74 (accu/Madd__n0386_cy<0>75)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_75 (accu/Madd__n0386_cy<0>76)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_76 (accu/Madd__n0386_cy<0>77)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_77 (accu/Madd__n0386_cy<0>78)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_78 (accu/Madd__n0386_cy<0>79)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_79 (accu/Madd__n0386_cy<0>80)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_80 (accu/Madd__n0386_cy<0>81)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_81 (accu/Madd__n0386_cy<0>82)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_82 (accu/Madd__n0386_cy<0>83)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_83 (accu/Madd__n0386_cy<0>84)
+     XORCY:CI->O           2   0.204   0.362  accu/Madd__n0386_xor<0>_84 (accu/_n0386<85>)
+     LUT3:I2->O            1   0.061   0.357  accu/Madd__n041885 (accu/Madd__n041885)
+     LUT4:I3->O            1   0.061   0.000  accu/Madd__n0418_lut<0>86 (accu/Madd__n0418_lut<0>86)
+     MUXCY:S->O            1   0.248   0.000  accu/Madd__n0418_cy<0>_85 (accu/Madd__n0418_cy<0>86)
+     XORCY:CI->O           2   0.204   0.362  accu/Madd__n0418_xor<0>_86 (accu/_n0418<87>)
+     LUT2:I1->O            1   0.061   0.000  accu/Madd_buff_data_out[88]_GND_6_o_add_49_OUT_lut<87> (accu/Madd_buff_data_out[88]_GND_6_o_add_49_OUT_lut<87>)
+     MUXCY:S->O            0   0.248   0.000  accu/Madd_buff_data_out[88]_GND_6_o_add_49_OUT_cy<87> (accu/Madd_buff_data_out[88]_GND_6_o_add_49_OUT_cy<87>)
+     XORCY:CI->O           1   0.204   0.000  accu/Madd_buff_data_out[88]_GND_6_o_add_49_OUT_xor<88> (accu/buff_data_out[88]_GND_6_o_add_49_OUT<88>)
+     FDCE:D                   -0.002          accu/data_out_88
+    ----------------------------------------
+    Total                      8.712ns (4.965ns logic, 3.747ns route)
+                                       (57.0% logic, 43.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
+  Total number of paths / destination ports: 7877013594352 / 23108
+-------------------------------------------------------------------------
+Offset:              8.665ns (Levels of Logic = 101)
+  Source:            select_out<2> (PAD)
+  Destination:       accu/buff_data_out_88 (FF)
+  Destination Clock: clk rising
+
+  Data Path: select_out<2> to accu/buff_data_out_88
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            80   0.003   0.705  select_out_2_IBUF (select_out_2_IBUF)
+     LUT4:I0->O            1   0.061   0.000  accu/Madd__n0382_lut<0> (accu/Madd__n0382_lut<0>)
+     MUXCY:S->O            1   0.248   0.000  accu/Madd__n0382_cy<0> (accu/Madd__n0382_cy<0>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<1> (accu/Madd__n0382_cy<1>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<2> (accu/Madd__n0382_cy<2>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<3> (accu/Madd__n0382_cy<3>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<4> (accu/Madd__n0382_cy<4>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<5> (accu/Madd__n0382_cy<5>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<6> (accu/Madd__n0382_cy<6>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<7> (accu/Madd__n0382_cy<7>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<8> (accu/Madd__n0382_cy<8>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<9> (accu/Madd__n0382_cy<9>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<10> (accu/Madd__n0382_cy<10>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<11> (accu/Madd__n0382_cy<11>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<12> (accu/Madd__n0382_cy<12>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<13> (accu/Madd__n0382_cy<13>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<14> (accu/Madd__n0382_cy<14>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<15> (accu/Madd__n0382_cy<15>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<16> (accu/Madd__n0382_cy<16>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<17> (accu/Madd__n0382_cy<17>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<18> (accu/Madd__n0382_cy<18>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<19> (accu/Madd__n0382_cy<19>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<20> (accu/Madd__n0382_cy<20>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<21> (accu/Madd__n0382_cy<21>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<22> (accu/Madd__n0382_cy<22>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<23> (accu/Madd__n0382_cy<23>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<24> (accu/Madd__n0382_cy<24>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<25> (accu/Madd__n0382_cy<25>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<26> (accu/Madd__n0382_cy<26>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<27> (accu/Madd__n0382_cy<27>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<28> (accu/Madd__n0382_cy<28>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<29> (accu/Madd__n0382_cy<29>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<30> (accu/Madd__n0382_cy<30>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<31> (accu/Madd__n0382_cy<31>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<32> (accu/Madd__n0382_cy<32>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<33> (accu/Madd__n0382_cy<33>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<34> (accu/Madd__n0382_cy<34>)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0382_cy<35> (accu/Madd__n0382_cy<35>)
+     XORCY:CI->O           2   0.204   0.362  accu/Madd__n0382_xor<36> (accu/_n0382<36>)
+     LUT3:I2->O            1   0.061   0.357  accu/Madd__n038336 (accu/Madd__n038336)
+     LUT4:I3->O            1   0.061   0.000  accu/Madd__n0383_lut<0>37 (accu/Madd__n0383_lut<0>37)
+     MUXCY:S->O            1   0.248   0.000  accu/Madd__n0383_cy<0>_36 (accu/Madd__n0383_cy<0>37)
+     XORCY:CI->O           2   0.204   0.362  accu/Madd__n0383_xor<0>_37 (accu/_n0383<38>)
+     LUT3:I2->O            1   0.061   0.357  accu/Madd__n038438 (accu/Madd__n038438)
+     LUT2:I1->O            1   0.061   0.000  accu/Madd__n0384_lut<0>39 (accu/Madd__n0384_lut<0>39)
+     MUXCY:S->O            1   0.248   0.000  accu/Madd__n0384_cy<0>_38 (accu/Madd__n0384_cy<0>39)
+     MUXCY:CI->O           0   0.017   0.000  accu/Madd__n0384_cy<0>_39 (accu/Madd__n0384_cy<0>40)
+     XORCY:CI->O           2   0.204   0.431  accu/Madd__n0384_xor<0>_40 (accu/_n0384<41>)
+     LUT3:I1->O            1   0.061   0.357  accu/Madd__n038641 (accu/Madd__n038641)
+     LUT4:I3->O            1   0.061   0.000  accu/Madd__n0386_lut<0>42 (accu/Madd__n0386_lut<0>42)
+     MUXCY:S->O            1   0.248   0.000  accu/Madd__n0386_cy<0>_41 (accu/Madd__n0386_cy<0>42)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_42 (accu/Madd__n0386_cy<0>43)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_43 (accu/Madd__n0386_cy<0>44)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_44 (accu/Madd__n0386_cy<0>45)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_45 (accu/Madd__n0386_cy<0>46)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_46 (accu/Madd__n0386_cy<0>47)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_47 (accu/Madd__n0386_cy<0>48)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_48 (accu/Madd__n0386_cy<0>49)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_49 (accu/Madd__n0386_cy<0>50)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_50 (accu/Madd__n0386_cy<0>51)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_51 (accu/Madd__n0386_cy<0>52)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_52 (accu/Madd__n0386_cy<0>53)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_53 (accu/Madd__n0386_cy<0>54)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_54 (accu/Madd__n0386_cy<0>55)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_55 (accu/Madd__n0386_cy<0>56)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_56 (accu/Madd__n0386_cy<0>57)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_57 (accu/Madd__n0386_cy<0>58)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_58 (accu/Madd__n0386_cy<0>59)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_59 (accu/Madd__n0386_cy<0>60)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_60 (accu/Madd__n0386_cy<0>61)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_61 (accu/Madd__n0386_cy<0>62)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_62 (accu/Madd__n0386_cy<0>63)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_63 (accu/Madd__n0386_cy<0>64)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_64 (accu/Madd__n0386_cy<0>65)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_65 (accu/Madd__n0386_cy<0>66)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_66 (accu/Madd__n0386_cy<0>67)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_67 (accu/Madd__n0386_cy<0>68)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_68 (accu/Madd__n0386_cy<0>69)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_69 (accu/Madd__n0386_cy<0>70)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_70 (accu/Madd__n0386_cy<0>71)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_71 (accu/Madd__n0386_cy<0>72)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_72 (accu/Madd__n0386_cy<0>73)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_73 (accu/Madd__n0386_cy<0>74)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_74 (accu/Madd__n0386_cy<0>75)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_75 (accu/Madd__n0386_cy<0>76)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_76 (accu/Madd__n0386_cy<0>77)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_77 (accu/Madd__n0386_cy<0>78)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_78 (accu/Madd__n0386_cy<0>79)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_79 (accu/Madd__n0386_cy<0>80)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_80 (accu/Madd__n0386_cy<0>81)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_81 (accu/Madd__n0386_cy<0>82)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_82 (accu/Madd__n0386_cy<0>83)
+     MUXCY:CI->O           1   0.017   0.000  accu/Madd__n0386_cy<0>_83 (accu/Madd__n0386_cy<0>84)
+     XORCY:CI->O           2   0.204   0.362  accu/Madd__n0386_xor<0>_84 (accu/_n0386<85>)
+     LUT3:I2->O            1   0.061   0.357  accu/Madd__n041885 (accu/Madd__n041885)
+     LUT4:I3->O            1   0.061   0.000  accu/Madd__n0418_lut<0>86 (accu/Madd__n0418_lut<0>86)
+     MUXCY:S->O            1   0.248   0.000  accu/Madd__n0418_cy<0>_85 (accu/Madd__n0418_cy<0>86)
+     XORCY:CI->O           2   0.204   0.362  accu/Madd__n0418_xor<0>_86 (accu/_n0418<87>)
+     LUT2:I1->O            1   0.061   0.000  accu/Madd_buff_data_out[88]_GND_6_o_add_49_OUT_lut<87> (accu/Madd_buff_data_out[88]_GND_6_o_add_49_OUT_lut<87>)
+     MUXCY:S->O            0   0.248   0.000  accu/Madd_buff_data_out[88]_GND_6_o_add_49_OUT_cy<87> (accu/Madd_buff_data_out[88]_GND_6_o_add_49_OUT_cy<87>)
+     XORCY:CI->O           1   0.204   0.000  accu/Madd_buff_data_out[88]_GND_6_o_add_49_OUT_xor<88> (accu/buff_data_out[88]_GND_6_o_add_49_OUT<88>)
+     FDCE:D                   -0.002          accu/data_out_88
+    ----------------------------------------
+    Total                      8.665ns (4.651ns logic, 4.014ns route)
+                                       (53.7% logic, 46.3% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 90 / 90
+-------------------------------------------------------------------------
+Offset:              0.671ns (Levels of Logic = 1)
+  Source:            accu/s_done (FF)
+  Destination:       done (PAD)
+  Source Clock:      clk rising
+
+  Data Path: accu/s_done to done
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               3   0.317   0.351  accu/s_done (accu/s_done)
+     OBUF:I->O                 0.003          done_OBUF (done)
+    ----------------------------------------
+    Total                      0.671ns (0.320ns logic, 0.351ns route)
+                                       (47.7% logic, 52.3% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+Clock to Setup on destination clock clk
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk            |    8.712|         |         |         |
+---------------+---------+---------+---------+---------+
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 56.00 secs
+Total CPU time to Xst completion: 54.75 secs
+ 
+--> 
+
+
+Total memory usage is 966488 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :   53 (   0 filtered)
+Number of infos    :  155 (   0 filtered)
+
