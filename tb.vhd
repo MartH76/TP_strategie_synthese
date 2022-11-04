@@ -19,7 +19,7 @@ architecture bench of top_tb is
           enable_load_ram_i : in std_logic_vector(NBR_TILES-1 downto 0);
           Datout_o : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + 2**(ROM_SIZE_ADDR) + NBR_TILES - 1 downto 0);
           select_out : in std_logic_vector(NBR_TILES-1 downto 0)
-      );
+          );
   end component;
 
   signal clk: std_logic := '0';
@@ -51,8 +51,8 @@ begin
         wait for 11 ns;
         reset <= '1';
         wait for 43 ns;
-
-        select_out <= "11111";
+        
+        select_out <= "11110";
         --remplissage de la ram
         
         wait until rising_edge(clk);

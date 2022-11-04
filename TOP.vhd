@@ -19,7 +19,6 @@ entity top is
         Datout_o : out std_logic_vector(WIDTH_OF_RAM + WIDTH_OF_ROM + 2**(ROM_SIZE_ADDR) + NBR_TILES - 1 downto 0);
 
         select_out : in std_logic_vector(NBR_TILES-1 downto 0)
-
     );
 end top;
 

@@ -18,8 +18,7 @@ end entity;
 
 --architecture of the ROM
 architecture rtl of ROM is
-    
-    --declaration of the ROM
+        --declaration of the ROM
     type ROM_TYPE is array (2**ROM_SIZE_ADDR-1 downto 0) of std_logic_vector (WIDTH_OF_ROM-1 downto 0);
     constant ROM : ROM_TYPE := (
         "00000000000", --0
@@ -39,7 +38,6 @@ architecture rtl of ROM is
         "00000001110", --14
         "11111111111"  --15
     ); -- attention il faut réfléchir à tout tester (overflow...)
-
 begin
     process (clk)
     begin
