@@ -35,21 +35,46 @@ architecture rtl of DPRAM is
     shared variable memory : mem;
 
 
-    signal buff_ina : std_logic_vector(WIDTH_OF_RAM-1 downto 0);
-    signal buff_doutb : std_logic_vector(WIDTH_OF_RAM-1 downto 0);
 
 begin
+
+    -- process (clka)
+    -- begin
+    --     if rising_edge(clka) then
+    --         if (ena = '1' and wea = '1') then
+    --                 memory(to_integer(unsigned(addra))) := dina;
+    --         elsif (ena = '1' and wea = '0') then
+    --                 douta <= memory(to_integer(unsigned(addra)));
+    --         else
+    --                 douta <= (others => 'Z');
+    --         end if;
+    --     end if;
+    -- end process;
+
+
+    -- process(clkb)
+    -- begin
+    --     if rising_edge(clkb) then
+    --         if (enb = '1' and web = '1') then
+    --                 memory(to_integer(unsigned(addrb))) := dinb;
+    --         elsif (enb = '1' and web = '0') then
+    --                 doutb <= memory(to_integer(unsigned(addrb)));
+    --         else
+    --                 doutb <= (others => 'Z');
+    --         end if;
+                
+    --     end if;
+    -- end process;
+
 
     process (clka)
     begin
         if rising_edge(clka) then
-            if (ena = '1' and wea = '1') then
+            if (ena = '1') then
+                douta <= memory(to_integer(unsigned(addra))); 
+                if (wea = '1') then
                     memory(to_integer(unsigned(addra))) := dina;
-                    buff_ina <= dina;
-            elsif (ena = '1' and wea = '0') then
-                    douta <= memory(to_integer(unsigned(addra)));
-            else
-                    douta <= (others => 'Z');
+                end if;
             end if;
         end if;
     end process;
@@ -58,20 +83,14 @@ begin
     process(clkb)
     begin
         if rising_edge(clkb) then
-            if (enb = '1' and web = '1') then
+            if (enb = '1') then
+                doutb <= memory(to_integer(unsigned(addrb))); 
+                if (web = '1') then
                     memory(to_integer(unsigned(addrb))) := dinb;
-            elsif (enb = '1' and web = '0') then
-                    doutb <= memory(to_integer(unsigned(addrb)));
-            else
-                    doutb <= (others => 'Z');
-            end if;
-                
+                end if;
+            end if;        
         end if;
     end process;
-
-    --tri-state buffer control
-    --douta <= buff_douta when (ena = '1' and wea = '0') else (others => 'Z');
-    --doutb <= buff_doutb when (enb = '1' and web = '0') else (others => 'Z');
 
 end architecture;
 
